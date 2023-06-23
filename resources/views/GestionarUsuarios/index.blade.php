@@ -14,7 +14,7 @@
                         </div>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item">Gestionar Usuarios</li>
-                            <li class="breadcrumb-item">Gestionar Añadir</li>
+                            <li class="breadcrumb-item">Añadir</li>
                         </ul>
                     </div>
                 </div>

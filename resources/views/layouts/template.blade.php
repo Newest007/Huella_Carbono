@@ -78,29 +78,29 @@
 						<label>Gestionar Usuarios</label>
 					</li>
 					<li class="pc-item">
-						<a href="index.html" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Añadir</span></a>
+						<a href="/añadir" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Añadir</span></a>
 					</li>
 					<li class="pc-item">
-						<a href="index.html" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">person_search</i></span><span class="pc-mtext">Visualizar</span></a>
+						<a href="" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">person_search</i></span><span class="pc-mtext">Visualizar</span></a>
 					</li>
 					<li class="pc-item pc-caption">
-						<label>Elements</label>
-						<span>UI Components</span>
+						<label>Gestionar datos</label>
+						<!--<span>UI Components</span>-->
 					</li>
+					<!--
 					<li class="pc-item pc-hasmenu">
 						<a href="#!" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">business_center</i></span><span class="pc-mtext">Basic</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
 						<ul class="pc-submenu">
-							<li class="pc-item"><a class="pc-link" href="#">Alert</a></li>
-							<li class="pc-item"><a class="pc-link" href="#">Button</a></li>
-							<li class="pc-item"><a class="pc-link" href="#">Badges</a></li>
-							<li class="pc-item"><a class="pc-link" href="#">Breadcrumb & paggination</a></li>
-							<li class="pc-item"><a class="pc-link" href="#">Cards</a></li>
-							<li class="pc-item"><a class="pc-link" href="#">Collapse</a></li>
-							<li class="pc-item"><a class="pc-link" href="#">Carousel</a></li>
-							<li class="pc-item"><a class="pc-link" href="#">Progress</a></li>
-							<li class="pc-item"><a class="pc-link" href="#">Modal</a></li>
-
-							<li class="pc-item"><a class="pc-link" href="#">Typography</a></li>
+							<li class="pc-item"><a class="pc-link" href="">Alert</a></li>
+							<li class="pc-item"><a class="pc-link" href="">Button</a></li>
+							<li class="pc-item"><a class="pc-link" href="">Badges</a></li>
+							<li class="pc-item"><a class="pc-link" href="">Breadcrumb & paggination</a></li>
+							<li class="pc-item"><a class="pc-link" href="">Cards</a></li>
+							<li class="pc-item"><a class="pc-link" href="">Collapse</a></li>
+							<li class="pc-item"><a class="pc-link" href="">Carousel</a></li>
+							<li class="pc-item"><a class="pc-link" href="">Progress</a></li>
+							<li class="pc-item"><a class="pc-link" href="">Modal</a></li>
+							<li class="pc-item"><a class="pc-link" href="">Typography</a></li>
 						</ul>
 					</li>
 					<li class="pc-item">
@@ -183,7 +183,7 @@
 							</li>
 						</ul>
 					</li>
-					<li class="pc-item"><a href="sample-page.html" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">storefront</i></span><span class="pc-mtext">Sample page</span></a></li>
+					<li class="pc-item"><a href="sample-page.html" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">storefront</i></span><span class="pc-mtext">Sample page</span></a></li>-->
 
 				</ul>
 			</div>

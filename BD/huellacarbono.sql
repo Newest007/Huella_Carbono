@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 23-06-2023 a las 20:19:56
+-- Tiempo de generación: 23-06-2023 a las 21:24:42
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.2.0
 
@@ -22,7 +22,6 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `huellacarbono` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 USE `huellacarbono`;
-
 -- --------------------------------------------------------
 
 --
@@ -32,10 +31,11 @@ USE `huellacarbono`;
 DROP TABLE IF EXISTS `colegio`;
 CREATE TABLE IF NOT EXISTS `colegio` (
   `id_colegio` char(36) NOT NULL,
-  `id_usuario` char(36) DEFAULT NULL,
+  `id_usuario` char(36) NOT NULL,
   `Nombre` varchar(255) DEFAULT NULL,
   `Ubicacion` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id_colegio`)
+  PRIMARY KEY (`id_colegio`),
+  KEY `id_usuario` (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -621,7 +621,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id_usuario`, `id_rol`, `nombre`, `email`, `password`, `remember_token`) VALUES
-('CDB002', 'ADM001', 'Monica Rivera', 'rivera6577@gmail.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'ACbRb8vJTeqVBzo5kKts2z15QxKAp2ayWuTuk8Wwz3n9ZQhJrSUOqt6Zc7Gw');
+('Usuario_CDB', 'ADM001', 'Monica Rivera', 'rivera6577@gmail.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'ACbRb8vJTeqVBzo5kKts2z15QxKAp2ayWuTuk8Wwz3n9ZQhJrSUOqt6Zc7Gw');
 
 --
 -- Restricciones para tablas volcadas
@@ -697,7 +697,7 @@ ALTER TABLE `inventario`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `colegio` (`id_colegio`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `user_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `colegio` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

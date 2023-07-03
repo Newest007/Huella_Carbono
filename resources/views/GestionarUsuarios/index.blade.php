@@ -20,7 +20,7 @@
         </div>
         <div class ="row">
             <div class="col-sm-12">
-                <div class="card bg-dark text-light">
+                <div class="card bg-dark">
 
                     <div class="login-box">
                         <div class="card-header">

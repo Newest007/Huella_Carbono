@@ -14682,7 +14682,7 @@ pre[class*="language-"] > code {
 .pc-sidebar .pc-link {
     display: block;
     padding: 13px 20px;
-    color: #ced4dc;
+    color: white;
     font-size: 13px;
     font-weight: 500;
 }
@@ -14718,7 +14718,7 @@ pre[class*="language-"] > code {
     height: 70px;
     display: flex;
     align-items: center;
-    padding: 15px 30px;
+    padding: 10px 20px;
     background: #161c25;
 }
 

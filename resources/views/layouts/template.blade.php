@@ -13,10 +13,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="DashboardKit is made using Bootstrap 5 design framework. Download the free admin template & use it for your project.">
-    <meta name="keywords" content="DashboardKit, Dashboard Kit, Dashboard UI Kit, Bootstrap 5, Admin Template, Admin Dashboard, CRM, CMS, Free Bootstrap Admin Template">
-    <meta name="author" content="DashboardKit ">
-
 
     <!-- Favicon icon -->
     <link rel="icon" href="{{asset('images/favicon.svg')}}" type="image/x-icon">
@@ -41,8 +37,8 @@
 	<!-- [ Pre-loader ] End -->
 	<!-- [ Mobile header ] start -->
 	<div class="pc-mob-header pc-header">
-		<div class="pcm-logo">
-			<img src="{{asset('img/logo.svg')}}" alt="" class="logo logo-lg">
+		<div class="pcm-logo" style="color:white">
+			<img src="https://lh4.googleusercontent.com/WBI2lI_TsmehP23LZTSCd7UYQpBTsvNdUylx8XvLse4Xou8I3UPGDVLXifmN74tiyT8SIc55RBYrKdTOYi5btFs=w16383"width="40" height="40">  Don Bosco Green Alliance
 		</div>
 		<div class="pcm-toolbar">
 			<a href="#!" class="pc-head-link" id="mobile-collapse">
@@ -52,9 +48,10 @@
 					</div>
 				</div>
 			</a>
+			<!--
 			<a href="#!" class="pc-head-link" id="headerdrp-collapse">
 				<i data-feather="align-right"></i>
-			</a>
+			</a>-->
 			<a href="#!" class="pc-head-link" id="header-collapse">
 				<i data-feather="more-vertical"></i>
 			</a>
@@ -66,10 +63,9 @@
 	<nav class="pc-sidebar ">
 		<div class="navbar-wrapper">
 			<div class="m-header">
-				<a href="index.html" class="b-brand">
+				<a href="index" class="b-brand" style="color:white">
 					<!-- ========   change your logo hear   ============ -->
-					<img src="{{asset('img/logo.svg')}}" alt="" class="logo logo-lg">
-					<img src="{{asset('img/logo-sm.svg')}}" alt="" class="logo logo-sm">
+					<img src="https://lh4.googleusercontent.com/-Tr9CPx-P9uFxFZc7qyBLvTYDEhQmfcGtMjiwFFL829dTNhDJcM3tMzVSe8Ajgh8rx8fGymMV1i3zxin1Un8rqM=w16383"width="40" height="40">  Don Bosco Green Alliance
 				</a>
 			</div>
 			<div class="navbar-content">
@@ -85,8 +81,27 @@
 					</li>
 					<li class="pc-item pc-caption">
 						<label>Gestionar datos</label>
-						<!--<span>UI Components</span>-->
 					</li>
+					<li class="pc-item">
+						<a href="" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">dashboard</i></span><span class="pc-mtext">Graficas</span></a>
+					</li>
+					<li class="pc-item">
+						<a href="" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Registrar datos</span></a>
+					</li>
+					<li class="pc-item">
+						<a href="" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Ver datos</span></a>
+					</li>
+					<li class="pc-item pc-caption">
+						<label>Gestionar Inventario</label>
+					</li>
+					<li class="pc-item">
+						<a href="" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Registrar</span></a>
+					</li>
+					<li class="pc-item">
+						<a href="" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Visualizar</span></a>
+					</li>
+
+					
 					<!--
 					<li class="pc-item pc-hasmenu">
 						<a href="#!" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">business_center</i></span><span class="pc-mtext">Basic</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
@@ -273,7 +288,6 @@
 							<!--<div class=" dropdown-header">
 								<h5 class="text-overflow m-0"><span class="badge bg-light-primary">Bienvenido!</a></span></h5>
 							</div>-->
-				
 							<a href="/logout" class="dropdown-item">
 								<i class="material-icons-two-tone">settings_power</i>
 								<span>Cerrar Sesion</span>

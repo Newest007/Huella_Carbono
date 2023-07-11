@@ -65,7 +65,7 @@
 			<div class="m-header">
 				<a href="index" class="b-brand" style="color:white">
 					<!-- ========   change your logo hear   ============ -->
-					<img src="https://lh4.googleusercontent.com/-Tr9CPx-P9uFxFZc7qyBLvTYDEhQmfcGtMjiwFFL829dTNhDJcM3tMzVSe8Ajgh8rx8fGymMV1i3zxin1Un8rqM=w16383"width="40" height="40">  Don Bosco Green Alliance
+					<img src="{{asset('assets/dbga logo square.png')}}"width="40" height="40">  Don Bosco Green Alliance
 				</a>
 			</div>
 			<div class="navbar-content">
@@ -278,7 +278,7 @@
 				<ul class="list-unstyled">
 					<li class="dropdown pc-h-item">
 						<a class="pc-head-link dropdown-toggle arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-							<img src="{{asset('img/user/avatar-2.jpg')}}" alt="user-image" class="user-avtar">
+							<span class="pc-micon"><i class="material-icons-two-tone">person</i></span>
 							<span>
 								<span class="user-name">Nombre del usuario</span>
 								<span class="user-desc">Rol del usuario</span>

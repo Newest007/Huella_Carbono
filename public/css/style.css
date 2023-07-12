@@ -14617,7 +14617,7 @@ pre[class*="language-"] > code {
 }
 
 .pc-sidebar {
-    background: #1c232f;
+    background: #161c25; /*Color del menu*/
     box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
     width: 280px;
     position: fixed;
@@ -14633,7 +14633,7 @@ pre[class*="language-"] > code {
 }
 
 .pc-sidebar .pc-caption {
-    color: #7267EF;
+    color: #6FB43F; /*Colores de los enunciados*/
     display: block;
     padding: 15px 20px 10px;
     letter-spacing: 0.07em;
@@ -14667,7 +14667,7 @@ pre[class*="language-"] > code {
 }
 
 .pc-sidebar .pc-micon i.material-icons-two-tone {
-    background-color: #778290;
+    background-color: white; /*Colores de los iconos*/
     font-size: 22px;
     display: inline-block;
 }
@@ -14719,7 +14719,7 @@ pre[class*="language-"] > code {
     display: flex;
     align-items: center;
     padding: 10px 20px;
-    background: #161c25;
+    background: #161c25; /*Fondo del logo*/
 }
 
 .pc-sidebar .m-header .logo-sm {
@@ -14756,7 +14756,7 @@ pre[class*="language-"] > code {
 }
 
 .pc-sidebar .pc-navbar > .pc-item.active > .pc-link, .pc-sidebar .pc-navbar > .pc-item:focus > .pc-link, .pc-sidebar .pc-navbar > .pc-item:hover > .pc-link {
-    background: #161c25;
+    background: #4d7e2b; /*Hover de los items del menu lateral*/
 }
 
 .pc-sidebar .pc-hasmenu.pc-trigger > .pc-submenu {
@@ -14939,7 +14939,7 @@ body:not(.minimenu) .pc-sidebar .pc-submenu .pc-submenu .pc-submenu > .pc-item:b
 }
 
 .pc-header {
-    background: #fff;
+    background: #6FB43F; /*Color del header*/
     box-shadow: 0 1px 0 0 #f1f1f1;
     color: #525b69;
     min-height: 70px;
@@ -14994,8 +14994,8 @@ body:not(.minimenu) .pc-sidebar .pc-submenu .pc-submenu .pc-submenu > .pc-item:b
 
 .pc-header .pc-head-link.active, .pc-header .pc-head-link:active, .pc-header .pc-head-link:focus, .pc-header .pc-head-link:hover {
     text-decoration: none;
-    color: #0f9d58;
-    background: #daf5e1;
+    color: #fff; /*Color del sea bienvenido*/
+    background: #548b30; /*hover del cerrar sesión*/
 }
 
 .pc-header .pc-head-link.active .hamburger .hamburger-inner, .pc-header .pc-head-link:active .hamburger .hamburger-inner, .pc-header .pc-head-link:focus .hamburger .hamburger-inner, .pc-header .pc-head-link:hover .hamburger .hamburger-inner {
@@ -15007,7 +15007,7 @@ body:not(.minimenu) .pc-sidebar .pc-submenu .pc-submenu .pc-submenu > .pc-item:b
 }
 
 .pc-header .pc-head-link.active i.material-icons-two-tone, .pc-header .pc-head-link:active i.material-icons-two-tone, .pc-header .pc-head-link:focus i.material-icons-two-tone, .pc-header .pc-head-link:hover i.material-icons-two-tone {
-    background-color: #096036;
+    background-color: #fff; /*Color del bordel del corazón*/
 }
 
 .pc-header .pc-head-link .pc-h-badge {

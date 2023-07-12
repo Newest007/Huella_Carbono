@@ -278,10 +278,10 @@
 				<ul class="list-unstyled">
 					<li class="dropdown pc-h-item">
 						<a class="pc-head-link dropdown-toggle arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-							<span class="pc-micon"><i class="material-icons-two-tone">person</i></span>
+							<span class="pc-micon" style="color:white"><i class="material-icons-two-tone">person</i></span>
 							<span>
-								<span class="user-name">Nombre del usuario</span>
-								<span class="user-desc">Rol del usuario</span>
+								<span class="user-name" style="color:white">Nombre del usuario</span>
+								<span class="user-desc" style="color:white">Rol del usuario</span>
 							</span>
 						</a>
 						<div class="dropdown-menu dropdown-menu-right pc-h-dropdown">

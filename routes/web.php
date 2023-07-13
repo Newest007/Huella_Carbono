@@ -20,7 +20,20 @@ Route::view('/','login')->name('login');
 Route::view('login','login')->name('login');
 
 Route::post('login', [LoginController::class, 'store']);
-Route::view('index','layouts.template')->middleware('auth'); //No permite acceder a la vista hasta que no inicie sesión
-Route::view('añadir','GestionarUsuarios.index')->middleware('auth');
+
+// GESTIONAR USUARIOS
+Route::view('index','GestionarDatos.index')->middleware('auth'); //No permite acceder a la vista hasta que no inicie sesión
+Route::view('AñadirUsuario','GestionarUsuarios.index')->middleware('auth');
+Route::view('VerUsuario','GestionarUsuarios.verUsuario')->middleware('auth');
+
+//GESTIONAR DATOS
+
+
+//GESTIONAR INVENTARIO
+Route::view('VerInventario','GestionarInventarios.verInventarios')->middleware('auth');
+
+
+
+Route::view('verDefault','layouts.defaultpage')->middleware('auth');
 
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');

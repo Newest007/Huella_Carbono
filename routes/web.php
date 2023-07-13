@@ -22,15 +22,21 @@ Route::view('login','login')->name('login');
 Route::post('login', [LoginController::class, 'store']);
 
 // GESTIONAR USUARIOS
-Route::view('index','GestionarDatos.index')->middleware('auth'); //No permite acceder a la vista hasta que no inicie sesión
 Route::view('AñadirUsuario','GestionarUsuarios.index')->middleware('auth');
-Route::view('VerUsuario','GestionarUsuarios.verUsuario')->middleware('auth');
+Route::view('VerUsuarios','GestionarUsuarios.verUsuarios')->middleware('auth');
 
 //GESTIONAR DATOS
+Route::view('index','GestionarDatos.index')->middleware('auth'); //No permite acceder a la vista hasta que no inicie sesión
+Route::view('VerGraficas','GestionarDatos.index')->middleware('auth');
+Route::view('VerDatos','GestionarDatos.verDatos')->middleware('auth');
+Route::view('AñadirDatos','GestionarDatos.añadirDatos')->middleware('auth');
+
 
 
 //GESTIONAR INVENTARIO
 Route::view('VerInventario','GestionarInventarios.verInventarios')->middleware('auth');
+Route::view('AñadirInventario','GestionarInventarios.añadirInventarios')->middleware('auth');
+
 
 
 

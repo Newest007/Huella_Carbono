@@ -9,6 +9,7 @@ use Illuminate\Auth\Events\PasswordReset;
 use App\Models\User;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
@@ -19,8 +20,19 @@ class LoginController extends Controller
     
         if( auth()->attempt($credentials,$remember)){
             request()->session()->regenerate();
-    
-            return redirect('index');
+            $usuario = auth()->user();
+            $idrol = $usuario->id_rol;
+
+            if($idrol == "ADM001"){
+                session(['nombreRol'=> 'Admin General']);
+                session(['nombre'=> $usuario->nombre]);
+                return redirect('index');
+            }
+            else if($idrol == "CLG001"){
+                session(['nombreRol'=> 'Admin de Colegio']);
+                session(['nombre'=> $usuario->nombre]);
+                return redirect('verDefault');
+            }
         }
         throw ValidationException::withMessages(['email'=> __('auth.failed')]);
     }

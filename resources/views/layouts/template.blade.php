@@ -107,106 +107,6 @@
 						<a href="/verDefault" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Pagina Muestra</span></a>
 					</li>
 					
-
-					
-					<!--
-					<li class="pc-item pc-hasmenu">
-						<a href="#!" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">business_center</i></span><span class="pc-mtext">Basic</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
-						<ul class="pc-submenu">
-							<li class="pc-item"><a class="pc-link" href="">Alert</a></li>
-							<li class="pc-item"><a class="pc-link" href="">Button</a></li>
-							<li class="pc-item"><a class="pc-link" href="">Badges</a></li>
-							<li class="pc-item"><a class="pc-link" href="">Breadcrumb & paggination</a></li>
-							<li class="pc-item"><a class="pc-link" href="">Cards</a></li>
-							<li class="pc-item"><a class="pc-link" href="">Collapse</a></li>
-							<li class="pc-item"><a class="pc-link" href="">Carousel</a></li>
-							<li class="pc-item"><a class="pc-link" href="">Progress</a></li>
-							<li class="pc-item"><a class="pc-link" href="">Modal</a></li>
-							<li class="pc-item"><a class="pc-link" href="">Typography</a></li>
-						</ul>
-					</li>
-					<li class="pc-item">
-						<a href="#" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">history_edu</i></span><span class="pc-mtext">Icons</span></a>
-					</li>
-					<li class="pc-item pc-caption">
-						<label>Forms</label>
-					</li>
-					<li class="pc-item pc-hasmenu">
-						<a href="#!" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">edit</i></span><span class="pc-mtext">Forms Elements</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
-						<ul class="pc-submenu">
-							<li class="pc-item"><a class="pc-link" href="#">Form Basic</a></li>
-							<li class="pc-item"><a class="pc-link" href="#">Input Groups</a></li>
-							<li class="pc-item"><a class="pc-link" href="#">Checkbox</a></li>
-							<li class="pc-item"><a class="pc-link" href="#">Radio</a></li>
-						</ul>
-					</li>
-					<li class="pc-item pc-caption">
-						<label>table</label>
-					</li>
-					<li class="pc-item">
-						<a href="#" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">table_rows</i></span><span class="pc-mtext">Bootstrap table</span></a>
-					</li>
-					<li class="pc-item pc-caption">
-						<label>Chart & Maps</label>
-						<span>Tones of readymade charts</span>
-					</li>
-					<li class="pc-item">
-						<a href="#" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">bubble_chart</i></span><span class="pc-mtext">Chart</span></a>
-					</li>
-					<li class="pc-item">
-						<a href="#" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">my_location</i></span><span class="pc-mtext">Maps</span></a>
-					</li>
-					<li class="pc-item pc-caption">
-						<label>Pages</label>
-						<span>Redymade Pages</span>
-					</li>
-					<li class="pc-item pc-hasmenu">
-						<a href="#!" class="pc-link"><span class="pc-micon"><i class="material-icons-two-tone">https</i></span><span class="pc-mtext">Authentication</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
-						<ul class="pc-submenu">
-							<li class="pc-item"><a class="pc-link" href="auth-signup.html" target="_blank">Sign up</a></li>
-							<li class="pc-item"><a class="pc-link" href="auth-signin.html" target="_blank">Sign in</a></li>
-						</ul>
-					</li>
-					<li class="pc-item pc-caption">
-						<label>Other</label>
-						<span>Extra more things</span>
-					</li>
-					<li class="pc-item pc-hasmenu">
-						<a href="#!" class="pc-link"><span class="pc-micon"><i class="material-icons-two-tone">list_alt</i></span><span class="pc-mtext">Menu levels</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
-						<ul class="pc-submenu">
-							<li class="pc-item"><a class="pc-link" href="#!">Menu Level 2.1</a></li>
-							<li class="pc-item pc-hasmenu">
-								<a href="#!" class="pc-link">Menu level 2.2<span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
-								<ul class="pc-submenu">
-									<li class="pc-item"><a class="pc-link" href="#!">Menu level 3.1</a></li>
-									<li class="pc-item"><a class="pc-link" href="#!">Menu level 3.2</a></li>
-									<li class="pc-item pc-hasmenu">
-										<a href="#!" class="pc-link">Menu level 3.3<span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
-										<ul class="pc-submenu">
-											<li class="pc-item"><a class="pc-link" href="#!">Menu level 4.1</a></li>
-											<li class="pc-item"><a class="pc-link" href="#!">Menu level 4.2</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li class="pc-item pc-hasmenu">
-								<a href="#!" class="pc-link">Menu level 2.3<span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
-								<ul class="pc-submenu">
-									<li class="pc-item"><a class="pc-link" href="#!">Menu level 3.1</a></li>
-									<li class="pc-item"><a class="pc-link" href="#!">Menu level 3.2</a></li>
-									<li class="pc-item pc-hasmenu">
-										<a href="#!" class="pc-link">Menu level 3.3<span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
-										<ul class="pc-submenu">
-											<li class="pc-item"><a class="pc-link" href="#!">Menu level 4.1</a></li>
-											<li class="pc-item"><a class="pc-link" href="#!">Menu level 4.2</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-					<li class="pc-item"><a href="sample-page.html" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">storefront</i></span><span class="pc-mtext">Sample page</span></a></li>-->
-
 				</ul>
 			</div>
 		</div>
@@ -285,10 +185,10 @@
 				<ul class="list-unstyled">
 					<li class="dropdown pc-h-item">
 						<a class="pc-head-link dropdown-toggle arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-							<span class="pc-micon" style="color:white"><i class="material-icons-two-tone">person</i></span>
+							<span class="pc-micon mr-2" style="color:white"><i class="material-icons-two-tone">person</i></span>
 							<span>
-								<span class="user-name" style="color:white">Nombre del usuario</span>
-								<span class="user-desc" style="color:white">Rol del usuario</span>
+								<span class="user-name" style="color:white">{{session('nombre')}}</span>
+								<span class="user-desc" style="color:white">{{session('nombreRol')}}</span>
 							</span>
 						</a>
 						<div class="dropdown-menu dropdown-menu-right pc-h-dropdown">
@@ -311,9 +211,7 @@
 <!-- [ Main Content ] start -->
 <div class="pc-container">
     <div class="pcoded-content">
-        
         @yield('content')
-		
     </div>
 </div>
 <!-- [ Main Content ] end -->

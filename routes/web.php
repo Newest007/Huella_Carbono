@@ -31,8 +31,6 @@ Route::view('VerGraficas','GestionarDatos.index')->middleware('auth');
 Route::view('VerDatos','GestionarDatos.verDatos')->middleware('auth');
 Route::view('AñadirDatos','GestionarDatos.añadirDatos')->middleware('auth');
 
-
-
 //GESTIONAR INVENTARIO
 Route::view('VerInventario','GestionarInventarios.verInventarios')->middleware('auth');
 Route::view('AñadirInventario','GestionarInventarios.añadirInventarios')->middleware('auth');

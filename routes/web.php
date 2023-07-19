@@ -42,6 +42,10 @@ Route::view('AñadirInventario','GestionarInventarios.añadirInventarios')->midd
 
 
 
+
+
 Route::view('verDefault','layouts.defaultpage')->middleware('auth');
+Route::view('verColegio','layouts.templateColegio')->middleware('auth');
+
 
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');

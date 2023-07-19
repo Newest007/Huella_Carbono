@@ -18,64 +18,46 @@
                 </div>
             </div>
         </div>
-        <div class ="row">
-            <div class="col-sm-12">
-                <div class="card bg-dark">
-
-                    <div class="login-box">
-                        <div class="card-header">
-                            <h2>Registro de nuevo usuario</h2>
-                        </div>
-                        <div class="card-body">
-                            <form>
-                            <div class="row align-items-center">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="user-box">
-                                            <input type="text" id="name" name="" required="">
-                                            <label>Nombre y Apellido</label>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="user-box">
-                                            <input type="text" id="colegio" name="" required="">
-                                            <label>Colegio perteneciente</label>
-                                        </div>
-                                    </div>
+        <div class="container mt-4">
+            <div class="row justify-content-center">
+                <div class="card">
+                    <div class="card-header mt-3 ">
+                        <center><h2 class="card-title">Añadir nuevo usuario</h2></center>
+                    </div>
+                    <div class="card-body mt-3">
+                        <form>
+                            <div class="row mb-3">
+                                <div class="col-xxl-6 col-sm-12">
+                                    <label for="userName" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="userName">
                                 </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="user-box">
-                                            <input type="email" id="email" name="" required="">
-                                            <label>Correo electronico</label>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="user-box">
-                                            <input type="text" name="" required="">
-                                            <label>Contraseña</label>
-                                        </div>
-                                    </div>
+                                <div class="col-xxl-6 col-sm-12">
+                                    <label for="userLastName" class="form-label">Apellido</label>
+                                    <input type="text" class="form-control" id="userLastName">
+                                </div>
+                                
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-xxl-6 col-sm-12">
+                                    <label for="userEmail" class="form-label">Correo Electrónico</label>
+                                    <input type="email" class="form-control" id="userEmail">
+                                </div>
+                                <div class="col-xxl-6 col-sm-12">
+                                    <label for="userSchool" class="form-label">Institución Salesiana</label>
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option>Institución 1</option>
+                                        <option>Institución 2</option>
+                                        <option>Institución 3</option>
+                                        <option>Institución 4</option>
+                                    </select>
                                 </div>
                             </div>
-                            </form>
                             
-                            <form>
-                                <div class="mb-3">
-                                    <label for="name" class="form-label">Nombre</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Ingresa tu nombre">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Correo electrónico</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo electrónico">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Registrar</button>
-                            </form>
-                        </div>
+                            <button type="submit" class="btn btn-primary mt-3">Registrar</button>
+                        </form>
                     </div>
                 </div>
             </div>
-
         </div>   
     </div>
 

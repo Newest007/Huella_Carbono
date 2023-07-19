@@ -71,15 +71,6 @@
 			<div class="navbar-content">
 				<ul class="pc-navbar">
 					<li class="pc-item pc-caption">
-						<label>Gestionar Usuarios</label>
-					</li>
-					<li class="pc-item">
-						<a href="/AñadirUsuario" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Añadir</span></a>
-					</li>
-					<li class="pc-item">
-						<a href="/VerUsuarios" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">person_search</i></span><span class="pc-mtext">Visualizar</span></a>
-					</li>
-					<li class="pc-item pc-caption">
 						<label>Gestionar datos</label>
 					</li>
 					<li class="pc-item">
@@ -105,9 +96,6 @@
 					</li>
 					<li class="pc-item">
 						<a href="/verDefault" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Pagina Muestra</span></a>
-					</li>
-					<li class="pc-item">
-						<a href="/verColegio" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Rol Colegio</span></a>
 					</li>
 					
 				</ul>

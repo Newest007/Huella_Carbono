@@ -74,7 +74,7 @@
 						<label>Gestionar Usuarios</label>
 					</li>
 					<li class="pc-item">
-						<a href="/AñadirUsuario" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Añadir</span></a>
+						<a href="/AñadirUsuarios" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Añadir</span></a>
 					</li>
 					<li class="pc-item">
 						<a href="/VerUsuarios" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">person_search</i></span><span class="pc-mtext">Visualizar</span></a>

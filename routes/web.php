@@ -24,10 +24,12 @@ Route::post('login', [LoginController::class, 'store']);
 
 // GESTIONAR USUARIOS
 Route::resource('usuarios',UsuariosController::class)->middleware('auth');
-Route::get('AñadirUsuario',[UsuariosController::class,'create'])->middleware('auth');
+Route::get('AñadirUsuarios',[UsuariosController::class,'create'])->middleware('auth');
 Route::get('VerUsuarios',[UsuariosController::class,'index'])->middleware('auth');
 
+Route::post('/usuarios',[UsuariosController::class,'store'])->name('usuarios.store')->middleware('auth');
 Route::delete('/usuarios/{id_usuario}',[UsuariosController::class,'destroy'])->name('usuarios.destroy')->middleware('auth');
+
 
 //GESTIONAR DATOS
 Route::view('index','GestionarDatos.index')->middleware('auth'); //No permite acceder a la vista hasta que no inicie sesión

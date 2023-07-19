@@ -22,6 +22,8 @@ Route::view('login','login')->name('login');
 
 Route::post('login', [LoginController::class, 'store']);
 
+//  -------------------- Rol de Admin General --------------------------------
+
 // GESTIONAR USUARIOS
 Route::resource('usuarios',UsuariosController::class)->middleware('auth');
 Route::get('AñadirUsuarios',[UsuariosController::class,'create'])->middleware('auth');
@@ -42,12 +44,24 @@ Route::view('VerInventario','GestionarInventarios.verInventarios')->middleware('
 Route::view('AñadirInventario','GestionarInventarios.añadirInventarios')->middleware('auth');
 
 
+//  -------------------- Rol de Admin Colegio --------------------------------
 
+// GESTIONAR DATOS
+Route::view('indexColegio','GestionarDatos.indexColegio')->middleware('auth'); //No permite acceder a la vista hasta que no inicie sesión
+Route::view('VerGraficasColegio','GestionarDatos.indexColegio')->middleware('auth');
+Route::view('VerDatosColegio','GestionarDatos.verDatosColegio')->middleware('auth');
+Route::view('AñadirDatosColegio','GestionarDatos.añadirDatosColegio')->middleware('auth');
 
+//GESTIONAR INVENTARIO
+Route::view('VerInventarioColegio','GestionarInventarios.verInventariosColegio')->middleware('auth');
+Route::view('AñadirInventarioColegio','GestionarInventarios.añadirInventariosColegio')->middleware('auth');
 
 
 Route::view('verDefault','layouts.defaultpage')->middleware('auth');
-Route::view('verColegio','layouts.templateColegio')->middleware('auth');
+Route::view('verColegio','GestionarDatos.indexColegio')->middleware('auth');
+
+
+
 
 
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');

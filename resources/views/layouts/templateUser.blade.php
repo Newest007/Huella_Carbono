@@ -63,7 +63,7 @@
 	<nav class="pc-sidebar ">
 		<div class="navbar-wrapper">
 			<div class="m-header">
-				<a href="index" class="b-brand" style="color:white">
+				<a href="/verColegio" class="b-brand" style="color:white">
 					<!-- ========   change your logo hear   ============ -->
 					<img src="{{asset('assets/dbga logo square.png')}}"width="40" height="40">  Don Bosco Green Alliance
 				</a>
@@ -74,22 +74,22 @@
 						<label>Gestionar datos</label>
 					</li>
 					<li class="pc-item">
-						<a href="VerGraficas" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">dashboard</i></span><span class="pc-mtext">Graficas</span></a>
+						<a href="VerGraficasColegio" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">dashboard</i></span><span class="pc-mtext">Graficas</span></a>
 					</li>
 					<li class="pc-item">
-						<a href="/AñadirDatos" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Registrar datos</span></a>
+						<a href="/AñadirDatosColegio" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Registrar datos</span></a>
 					</li>
 					<li class="pc-item">
-						<a href="VerDatos" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Ver datos</span></a>
+						<a href="VerDatosColegio" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Ver datos</span></a>
 					</li>
 					<li class="pc-item pc-caption">
 						<label>Gestionar Inventario</label>
 					</li>
 					<li class="pc-item">
-						<a href="/AñadirInventario" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Registrar</span></a>
+						<a href="/AñadirInventarioColegio" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Registrar</span></a>
 					</li>
 					<li class="pc-item">
-						<a href="/VerInventario" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Visualizar</span></a>
+						<a href="/VerInventarioColegio" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Visualizar</span></a>
 					</li>
 					<li class="pc-item pc-caption">
 						<label>Página por defecto</label>

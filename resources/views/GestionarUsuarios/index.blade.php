@@ -20,8 +20,9 @@
         </div>
         <div class="container mt-4">
             <div class="row justify-content-center">
-                <div class="card">
-                    <div class="card-header mt-3 ">
+                <div class="row mt-5 mb-4"></div>
+                <div class="card border-dark mt-5">
+                    <div class="card-header border-dark mt-3 ">
                         <center><h2 class="card-title">Añadir nuevo usuario</h2></center>
                     </div>
                     @if($errors->any())
@@ -39,26 +40,38 @@
                             <div class="row mb-3">
                                 <div class="col-xxl-6 col-sm-12">
                                     <label for="userName" class="form-label">Nombre</label>
-                                    <input type="text" class="form-control" id="userName" name="nombre" value="{{old('nombre')}}">
+                                    <div class="input-group flex-nowrap">
+                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">person</i></span>
+                                        <input type="text" class="form-control" id="userName" name="nombre" value="{{old('nombre')}}">
+                                    </div>
                                 </div>
                                 <div class="col-xxl-6 col-sm-12">
                                     <label for="userLastName" class="form-label">Apellido</label>
-                                    <input type="text" class="form-control" id="userLastName" name="apellido" value="{{old('apellido')}}">
+                                    <div class="input-group flex-nowrap">
+                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">group</i></span>
+                                        <input type="text" class="form-control" id="userLastName" name="apellido" value="{{old('apellido')}}">
+                                    </div>
                                 </div>
                                 
                             </div>
                             <div class="row mb-3">
                                 <div class="col-xxl-6 col-sm-12">
                                     <label for="userEmail" class="form-label">Correo Electrónico</label>
-                                    <input type="email" class="form-control" id="userEmail" name="correoElectrónico" value="{{old('correoElectrónico')}}">
+                                    <div class="input-group flex-nowrap">
+                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">mail</i></span>
+                                        <input type="email" class="form-control" id="userEmail" name="correoElectrónico" value="{{old('correoElectrónico')}}">
+                                    </div>
                                 </div>
                                 <div class="col-xxl-6 col-sm-12">
                                     <label for="userSchool" class="form-label">Institución Salesiana</label>
-                                    <select class="form-select" name="colegio">
-                                        @foreach($colegios as $colegio)
-                                        <option value="{{$colegio->Nombre}}">{{$colegio->Nombre}}</option>
-                                        @endforeach
-                                    </select>
+                                    <div class="input-group flex-nowrap">
+                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">corporate_fare</i></span>
+                                        <select class="form-select" name="colegio">
+                                            @foreach($colegios as $colegio)
+                                            <option value="{{$colegio->Nombre}}">{{$colegio->Nombre}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             

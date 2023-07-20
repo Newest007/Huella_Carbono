@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Model;
  * Class Colegio
  * 
  * @property string $id_colegio
- * @property string|null $id_usuario
  * @property string|null $Nombre
  * @property string|null $Ubicacion
  * 
@@ -27,7 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Collection|ConsumoGasolinaAnual[] $consumo_gasolina_anuals
  * @property ConsumoPapel $consumo_papel
  * @property Inventario $inventario
- * @property Usuario $usuario
+ * @property Collection|User[] $users
  *
  * @package App\Models
  */
@@ -39,7 +38,6 @@ class Colegio extends Model
 	public $timestamps = false;
 
 	protected $fillable = [
-		'id_usuario',
 		'Nombre',
 		'Ubicacion'
 	];
@@ -94,8 +92,8 @@ class Colegio extends Model
 		return $this->hasOne(Inventario::class, 'id_colegio');
 	}
 
-	public function usuario()
+	public function users()
 	{
-		return $this->hasOne(Usuario::class, 'id_usuario');
+		return $this->hasMany(User::class, 'id_colegio');
 	}
 }

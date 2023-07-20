@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
 use App\Models\User;
 use App\Models\Colegio;
+use App\Mail\CorreoPass;
 
 class UsuariosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $viewBag = array();
@@ -21,9 +21,6 @@ class UsuariosController extends Controller
         return view('GestionarUsuarios.verUsuarios',$viewBag);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $viewBag=array();
@@ -31,9 +28,6 @@ class UsuariosController extends Controller
         return view('GestionarUsuarios.index',$viewBag);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),[
@@ -47,38 +41,58 @@ class UsuariosController extends Controller
             return redirect('/AñadirUsuarios')->withErrors($validator)->withInput();
         }
         else{
+            $usuarios = new User();
+
+            $colegioSeleccionado = $request->input('colegio');
+            $nombre = $request->input('nombre');
+            $apellido = $request->input('apellido');
+            $correo = $request->input('correoElectrónico');
+            $iniciales = strtoupper(substr($nombre,0,2));
+            $numeros = rand(1000,9999);
+
+            $colegio = json_decode(Colegio::where('Nombre',$colegioSeleccionado)->get()); //Obteniendo toda la información referente al colegio seleccionado en el select
             
+            //Guardado de datos
+            $usuarios->id_usuario = $iniciales.$numeros;
+            $usuarios->id_colegio = $colegio[0]->id_colegio;
+            $usuarios->id_rol = "CLG001";
+            $usuarios->nombre = $nombre.' '.$apellido;
+            $usuarios->email = $correo;
+            
+
+            //Generando contraseña y enviando el correo
+            $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $contraseña = '';
+            $tamaño = 9;
+
+            for($i=0; $i < $tamaño; $i++){
+                $contraseña .= $caracteres[random_int(0,strlen($caracteres) - 1)];
+            }
+
+            Mail::to($correo)->send(new CorreoPass($contraseña)); //Transmiento variable de acceso
+            $usuarios->password = password_hash($contraseña, PASSWORD_BCRYPT);
+            $usuarios->save();
+
+            return redirect('VerUsuarios')->with('success','Se ha registrado el usuario '. $nombre.' '.$apellido . ' correctamente');
         }
 
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id_usuario)
     {
         User::destroy($id_usuario);

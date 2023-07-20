@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $id_rol
  * @property string|null $nombre_rol
  * 
- * @property Collection|Usuario[] $usuarios
+ * @property Collection|User[] $users
  *
  * @package App\Models
  */
@@ -30,8 +30,8 @@ class Role extends Model
 		'nombre_rol'
 	];
 
-	public function usuarios()
+	public function users()
 	{
-		return $this->hasMany(Usuario::class, 'id_rol');
+		return $this->hasMany(User::class, 'id_rol');
 	}
 }

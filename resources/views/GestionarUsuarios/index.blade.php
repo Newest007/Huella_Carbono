@@ -66,7 +66,7 @@
                                     <label for="userSchool" class="form-label">Institución Salesiana</label>
                                     <div class="input-group flex-nowrap">
                                         <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">corporate_fare</i></span>
-                                        <select class="form-select" name="colegio">
+                                        <select class="form-select" id="colegio" name="colegio">
                                             @foreach($colegios as $colegio)
                                             <option value="{{$colegio->Nombre}}">{{$colegio->Nombre}}</option>
                                             @endforeach

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\DatosController;
 use App\Http\Controllers\Auth;
 
 
@@ -25,16 +26,18 @@ Route::post('login', [LoginController::class, 'store']);
 //  -------------------- Rol de Admin General --------------------------------
 
 // GESTIONAR USUARIOS
-Route::resource('usuarios',UsuariosController::class)->middleware('auth');
-Route::get('AñadirUsuarios',[UsuariosController::class,'create'])->middleware('auth');
-Route::get('VerUsuarios',[UsuariosController::class,'index'])->middleware('auth');
+Route::resource('usuarios', UsuariosController::class)->middleware('auth');
+Route::get('AñadirUsuarios', [UsuariosController::class,'create'])->middleware('auth');
+Route::get('VerUsuarios', [UsuariosController::class,'index'])->middleware('auth');
 
 Route::post('/usuarios',[UsuariosController::class,'store'])->name('usuarios.store')->middleware('auth');
 Route::delete('/usuarios/{id_usuario}',[UsuariosController::class,'destroy'])->name('usuarios.destroy')->middleware('auth');
 
 
 //GESTIONAR DATOS
-Route::view('index','GestionarDatos.index')->middleware('auth'); //No permite acceder a la vista hasta que no inicie sesión
+Route::resource('datos', DatosController::class)->middleware('auth');
+
+Route::view('index','GestionarDatos.index')->middleware('auth');
 Route::view('VerGraficas','GestionarDatos.index')->middleware('auth');
 Route::view('VerDatos','GestionarDatos.verDatos')->middleware('auth');
 Route::view('AñadirDatos','GestionarDatos.añadirDatos')->middleware('auth');
@@ -59,9 +62,6 @@ Route::view('AñadirInventarioColegio','GestionarInventarios.añadirInventariosC
 
 Route::view('verDefault','layouts.defaultpage')->middleware('auth');
 Route::view('verColegio','GestionarDatos.indexColegio')->middleware('auth');
-
-
-
 
 
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');

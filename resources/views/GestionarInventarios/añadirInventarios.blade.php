@@ -1,6 +1,6 @@
 @extends('layouts.template')
 @section('content')
-@section('title','Gestionar Usuarios')
+@section('title','Gestionar Inventarios')
 @csrf
     <div class="pcoded-content">
         <div class="page-header">

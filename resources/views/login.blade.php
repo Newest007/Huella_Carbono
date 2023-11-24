@@ -35,11 +35,11 @@ header("Pragma: no-cache");
                     <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
                     @if($errors->any())
                     <ul>
-                        @foreach($errors->all() as $error)
-                        <li style="color:red">{{$error}}</li>
+                      @foreach($errors->all() as $error)
+                      <li style="color:red">{{$error}}</li>
                         @endforeach
-                        </ul>
-                        @endif
+                      </ul>
+                    @endif
                     <div class="form-outline mb-4">
               <input type="email"  name="email" required autofocus value="{{old('email')}}" id="typeEmailX-2" class="form-control form-control-lg" placeholder="Email..."/>
             </div>

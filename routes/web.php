@@ -37,10 +37,15 @@ Route::delete('/usuarios/{id_usuario}',[UsuariosController::class,'destroy'])->n
 //GESTIONAR DATOS
 Route::resource('datos', DatosController::class)->middleware('auth');
 
-Route::view('index','GestionarDatos.index')->middleware('auth');
 Route::view('VerGraficas','GestionarDatos.index')->middleware('auth');
 Route::view('VerDatos','GestionarDatos.verDatos')->middleware('auth');
 Route::view('AñadirDatos','GestionarDatos.añadirDatos')->middleware('auth');
+
+Route::post('/datosAgua',[DatosController::class,'storeAgua'])->name('datos.storeAgua')->middleware('auth');
+Route::post('/datosDiesel',[DatosController::class,'storeDiesel'])->name('datos.storeDiesel')->middleware('auth');
+Route::post('/datosEnergia',[DatosController::class,'storeEnergia'])->name('datos.storeEnergia')->middleware('auth');
+Route::post('/datosGasolina',[DatosController::class,'storeGasolina'])->name('datos.storeGasolina')->middleware('auth');
+Route::post('/datosPapel',[DatosController::class,'storePapel'])->name('datos.storePapel')->middleware('auth');
 
 //GESTIONAR INVENTARIO
 Route::view('VerInventario','GestionarInventarios.verInventarios')->middleware('auth');

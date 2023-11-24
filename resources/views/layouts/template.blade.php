@@ -74,10 +74,10 @@
 						<label>Gestionar Usuarios</label>
 					</li>
 					<li class="pc-item">
-						<a href="/AñadirUsuarios" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Añadir</span></a>
+						<a href="AñadirUsuarios" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Añadir</span></a>
 					</li>
 					<li class="pc-item">
-						<a href="/VerUsuarios" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">person_search</i></span><span class="pc-mtext">Visualizar</span></a>
+						<a href="VerUsuarios" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">person_search</i></span><span class="pc-mtext">Visualizar</span></a>
 					</li>
 					<li class="pc-item pc-caption">
 						<label>Gestionar datos</label>
@@ -86,7 +86,7 @@
 						<a href="VerGraficas" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">dashboard</i></span><span class="pc-mtext">Graficas</span></a>
 					</li>
 					<li class="pc-item">
-						<a href="/AñadirDatos" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Registrar datos</span></a>
+						<a href="AñadirDatos" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Registrar datos</span></a>
 					</li>
 					<li class="pc-item">
 						<a href="VerDatos" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Ver datos</span></a>
@@ -95,19 +95,19 @@
 						<label>Gestionar Inventario</label>
 					</li>
 					<li class="pc-item">
-						<a href="/AñadirInventario" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Registrar</span></a>
+						<a href="AñadirInventario" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Registrar</span></a>
 					</li>
 					<li class="pc-item">
-						<a href="/VerInventario" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Visualizar</span></a>
+						<a href="VerInventario" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Visualizar</span></a>
 					</li>
 					<li class="pc-item pc-caption">
 						<label>Página por defecto</label>
 					</li>
 					<li class="pc-item">
-						<a href="/verDefault" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Pagina Muestra</span></a>
+						<a href="verDefault" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Pagina Muestra</span></a>
 					</li>
 					<li class="pc-item">
-						<a href="/verColegio" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Rol Colegio</span></a>
+						<a href="verColegio" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Rol Colegio</span></a>
 					</li>
 					
 				</ul>

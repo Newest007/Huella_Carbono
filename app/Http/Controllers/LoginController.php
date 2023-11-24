@@ -26,12 +26,12 @@ class LoginController extends Controller
             if($idrol == "ADM001"){
                 session(['nombreRol'=> 'Admin General']);
                 session(['nombre'=> $usuario->nombre]);
-                return redirect('index');
+                return redirect('VerGraficas');
             }
             else if($idrol == "CLG001"){
                 session(['nombreRol'=> 'Admin de Colegio']);
                 session(['nombre'=> $usuario->nombre]);
-                return redirect('verDefault');
+                return redirect('VerGraficasColegio');
             }
         }
         throw ValidationException::withMessages(['email'=> __('auth.failed')]);

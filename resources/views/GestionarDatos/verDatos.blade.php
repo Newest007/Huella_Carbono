@@ -1,6 +1,6 @@
 @extends('layouts.template')
 @section('content')
-@section('title','Gestionar Usuarios')
+@section('title','Gestionar Datos')
 @csrf
     <!-- inicio breadcrumb NO QUITAR  -->
     <div class="pcoded-content">

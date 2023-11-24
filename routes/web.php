@@ -36,9 +36,9 @@ Route::delete('/usuarios/{id_usuario}',[UsuariosController::class,'destroy'])->n
 
 //GESTIONAR DATOS
 Route::resource('datos', DatosController::class)->middleware('auth');
+Route::get('VerDatos',[DatosController::class,'show'])->middleware('auth');
 
 Route::view('VerGraficas','GestionarDatos.index')->middleware('auth');
-Route::view('VerDatos','GestionarDatos.verDatos')->middleware('auth');
 Route::view('AñadirDatos','GestionarDatos.añadirDatos')->middleware('auth');
 
 Route::post('/datosAgua',[DatosController::class,'storeAgua'])->name('datos.storeAgua')->middleware('auth');

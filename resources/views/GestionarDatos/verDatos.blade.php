@@ -25,6 +25,42 @@
         <!-- INICIO DE CONTENIDO -->
 
         <div class="card table-card mt-4">
+            <div class="card-header">
+                <center><h5>Datos Registrados del Consumo de Agua</h5></center>
+            </div>
+            <div class="pro-scroll " style=";position:relative;">
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        @if($consumoAgua)
+                            <table class="table table-hover m-b-0">
+                                <thead>
+                                    <tr>
+                                        <th>Colegio Perteneciente</th>
+                                        <th>Año</th>
+                                        <th>Mes</th>
+                                        <th>Consumo en m3</th>
+                                        <th>Toneladas de CO2 en m3</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($consumoAgua as $agua)
+                                    <tr>
+                                        <td>{{$agua->Nombre}}</td>
+                                        <td>{{$agua->id_Anio}}</td>
+                                        <td>{{$agua->Mes}}</td>
+                                        <td>{{$agua->Consumo_m3}}</td>
+                                        <td>{{$agua->Ton_CO2_m3}}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card table-card mt-4">
                     <div class="card-header">
                         <center><h5>Datos DE PRUEBA </h5></center>
                     </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 23-06-2023 a las 21:24:42
+-- Tiempo de generación: 22-11-2023 a las 20:16:35
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.2.0
 
@@ -20,8 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `huellacarbono`
 --
-CREATE DATABASE IF NOT EXISTS `huellacarbono` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-USE `huellacarbono`;
+
 -- --------------------------------------------------------
 
 --
@@ -31,22 +30,20 @@ USE `huellacarbono`;
 DROP TABLE IF EXISTS `colegio`;
 CREATE TABLE IF NOT EXISTS `colegio` (
   `id_colegio` char(36) NOT NULL,
-  `id_usuario` char(36) NOT NULL,
   `Nombre` varchar(255) DEFAULT NULL,
   `Ubicacion` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id_colegio`),
-  KEY `id_usuario` (`id_usuario`)
+  PRIMARY KEY (`id_colegio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `colegio`
 --
 
-INSERT INTO `colegio` (`id_colegio`, `id_usuario`, `Nombre`, `Ubicacion`) VALUES
-('CDB002', 'Usuario_CDB', 'Colegio Don Bosco', 'Soyapango, San Salvador'),
-('CSC004', 'Usuario_CSC', 'Colegio Santa Cecilia', 'Santa Tecla, La Libertad'),
-('CSJ003', 'Usuario_CSJ', 'Colegio San Jose', 'Santa Ana'),
-('MAX001', 'Usuario_MAX', 'Casa Maria Auxiliadora', 'Chalchuapa, Santa Ana');
+INSERT INTO `colegio` (`id_colegio`, `Nombre`, `Ubicacion`) VALUES
+('CDB002', 'Colegio Don Bosco', 'Soyapango, San Salvador'),
+('CSC004', 'Colegio Santa Cecilia', 'Santa Tecla, La Libertad'),
+('CSJ003', 'Colegio San Jose', 'Santa Ana'),
+('MAX001', 'Casa Maria Auxiliadora', 'Chalchuapa, Santa Ana');
 
 -- --------------------------------------------------------
 
@@ -57,12 +54,11 @@ INSERT INTO `colegio` (`id_colegio`, `id_usuario`, `Nombre`, `Ubicacion`) VALUES
 DROP TABLE IF EXISTS `consumo_agua`;
 CREATE TABLE IF NOT EXISTS `consumo_agua` (
   `id_colegio` char(36) DEFAULT NULL,
-  `id_Anio` int DEFAULT NULL,
+  `id_Anio` int NOT NULL,
   `Mes` varchar(255) DEFAULT NULL,
   `Consumo_m3` double DEFAULT NULL,
   `Ton_CO2_m3` double DEFAULT NULL,
-  KEY `id_colegio` (`id_colegio`),
-  KEY `id_Anio` (`id_Anio`)
+  KEY `id_colegio` (`id_colegio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -95,7 +91,6 @@ CREATE TABLE IF NOT EXISTS `consumo_agua_anual` (
   `id_Anio` int NOT NULL,
   `Consumo_Agua_Anual` double DEFAULT NULL,
   `Ton_CO2_Anual` double DEFAULT NULL,
-  PRIMARY KEY (`id_Anio`),
   KEY `id_colegio` (`id_colegio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -121,8 +116,7 @@ CREATE TABLE IF NOT EXISTS `consumo_diesel` (
   `Combustible_m3` double DEFAULT NULL,
   `Ton_CO2_m3` double DEFAULT NULL,
   `kGr_CO2_m3` double DEFAULT NULL,
-  KEY `id_colegio` (`id_colegio`),
-  KEY `id_Anio` (`id_Anio`)
+  KEY `id_colegio` (`id_colegio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -157,7 +151,6 @@ CREATE TABLE IF NOT EXISTS `consumo_diesel_anual` (
   `Combustible_m3_Anual` double DEFAULT NULL,
   `Ton_CO2_m3_Anual` double DEFAULT NULL,
   `kGr_CO2_m3_Anual` double DEFAULT NULL,
-  PRIMARY KEY (`id_Anio`),
   KEY `id_colegio` (`id_colegio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -177,12 +170,11 @@ INSERT INTO `consumo_diesel_anual` (`id_colegio`, `id_Anio`, `Cantidad_Anual`, `
 DROP TABLE IF EXISTS `consumo_energetico`;
 CREATE TABLE IF NOT EXISTS `consumo_energetico` (
   `id_colegio` char(36) DEFAULT NULL,
-  `id_Anio` int DEFAULT NULL,
+  `id_Anio` int NOT NULL,
   `Mes` varchar(255) DEFAULT NULL,
   `Consumo_kWts` double DEFAULT NULL,
   `Ton_CO2` double DEFAULT NULL,
-  KEY `id_colegio` (`id_colegio`),
-  KEY `id_Anio` (`id_Anio`)
+  KEY `id_colegio` (`id_colegio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -215,7 +207,6 @@ CREATE TABLE IF NOT EXISTS `consumo_energetico_anual` (
   `id_Anio` int NOT NULL,
   `Consumo_kWts_Anual` double DEFAULT NULL,
   `Ton_CO2_Anual` double DEFAULT NULL,
-  PRIMARY KEY (`id_Anio`),
   KEY `id_colegio` (`id_colegio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -234,15 +225,14 @@ INSERT INTO `consumo_energetico_anual` (`id_colegio`, `id_Anio`, `Consumo_kWts_A
 
 DROP TABLE IF EXISTS `consumo_gasolina`;
 CREATE TABLE IF NOT EXISTS `consumo_gasolina` (
-  `id_colegio` char(1) DEFAULT NULL,
-  `id_Anio` int DEFAULT NULL,
+  `id_colegio` char(36) DEFAULT NULL,
+  `id_Anio` int NOT NULL,
   `Mes` varchar(255) DEFAULT NULL,
   `Cantidad` double DEFAULT NULL,
   `Combustible_m3` double DEFAULT NULL,
   `Ton_CO2_m3` double DEFAULT NULL,
   `Km_CO2_m3` double DEFAULT NULL,
-  KEY `id_colegio` (`id_colegio`),
-  KEY `id_Anio` (`id_Anio`)
+  KEY `id_colegio` (`id_colegio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -259,7 +249,6 @@ CREATE TABLE IF NOT EXISTS `consumo_gasolina_anual` (
   `Combustible_m3_Anual` double DEFAULT NULL,
   `Ton_CO2_m3_Anual` double DEFAULT NULL,
   `Km_CO2_m3_Anual` double DEFAULT NULL,
-  PRIMARY KEY (`id_Anio`),
   KEY `id_colegio` (`id_colegio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -272,12 +261,11 @@ CREATE TABLE IF NOT EXISTS `consumo_gasolina_anual` (
 DROP TABLE IF EXISTS `consumo_papel`;
 CREATE TABLE IF NOT EXISTS `consumo_papel` (
   `id_colegio` char(36) DEFAULT NULL,
-  `id_Anio` int DEFAULT NULL,
+  `id_Anio` int NOT NULL,
   `Mes` varchar(255) DEFAULT NULL,
   `Consumo_m3` double DEFAULT NULL,
   `Ton_CO2` double DEFAULT NULL,
-  KEY `id_colegio` (`id_colegio`),
-  KEY `id_Anio` (`id_Anio`)
+  KEY `id_colegio` (`id_colegio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -292,7 +280,7 @@ CREATE TABLE IF NOT EXISTS `consumo_papel_anual` (
   `id_Anio` int NOT NULL,
   `Consumo_m3_Anual` double DEFAULT NULL,
   `Ton_CO2_Anual` double DEFAULT NULL,
-  PRIMARY KEY (`id_Anio`)
+  KEY `id_colegio` (`id_colegio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -607,21 +595,25 @@ INSERT INTO `roles` (`id_rol`, `nombre_rol`) VALUES
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id_usuario` char(36) NOT NULL,
+  `id_colegio` char(36) NOT NULL,
   `id_rol` char(36) DEFAULT NULL,
   `nombre` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `email` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `password` varchar(191) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
   `remember_token` varchar(100) CHARACTER SET utf32 COLLATE utf32_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id_usuario`),
-  KEY `id_rol` (`id_rol`)
+  KEY `id_rol` (`id_rol`),
+  KEY `id_colegio` (`id_colegio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `user`
 --
 
-INSERT INTO `user` (`id_usuario`, `id_rol`, `nombre`, `email`, `password`, `remember_token`) VALUES
-('Usuario_CDB', 'ADM001', 'Monica Rivera', 'rivera6577@gmail.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'ACbRb8vJTeqVBzo5kKts2z15QxKAp2ayWuTuk8Wwz3n9ZQhJrSUOqt6Zc7Gw');
+INSERT INTO `user` (`id_usuario`, `id_colegio`, `id_rol`, `nombre`, `email`, `password`, `remember_token`) VALUES
+('AN5667', 'CDB002', 'CLG001', 'Antonio Martinez', 'andersonmelendez73@gmail.com', '$2y$10$jn/sUY7BYf0fAm3ElUofaO0PfvceSJ6nYtMpu9t4YKiabtpQAxJ.i', NULL),
+('AR8138', 'CDB002', 'CLG001', 'Arian Montes', 'adilsonarian@outlook.com', '$2y$10$bwChTyd17qRGneWA8VPjmeRwfuybXqhNZdrEfmSCu3yqNZWa8EqFS', NULL),
+('MR1543', 'CDB002', 'ADM001', 'Monica Rivera', 'rivera6577@gmail.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'MMXJ81MEeX8THL0eUKXm7x8h1kwE6B0Bbli3iwBsyeD3mE5NJH8aqh2RE9Cr');
 
 --
 -- Restricciones para tablas volcadas
@@ -631,8 +623,7 @@ INSERT INTO `user` (`id_usuario`, `id_rol`, `nombre`, `email`, `password`, `reme
 -- Filtros para la tabla `consumo_agua`
 --
 ALTER TABLE `consumo_agua`
-  ADD CONSTRAINT `consumo_agua_ibfk_1` FOREIGN KEY (`id_colegio`) REFERENCES `colegio` (`id_colegio`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `consumo_agua_ibfk_2` FOREIGN KEY (`id_Anio`) REFERENCES `consumo_agua_anual` (`id_Anio`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `consumo_agua_ibfk_1` FOREIGN KEY (`id_colegio`) REFERENCES `colegio` (`id_colegio`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `consumo_agua_anual`
@@ -644,8 +635,7 @@ ALTER TABLE `consumo_agua_anual`
 -- Filtros para la tabla `consumo_diesel`
 --
 ALTER TABLE `consumo_diesel`
-  ADD CONSTRAINT `consumo_diesel_ibfk_1` FOREIGN KEY (`id_colegio`) REFERENCES `colegio` (`id_colegio`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `consumo_diesel_ibfk_2` FOREIGN KEY (`id_Anio`) REFERENCES `consumo_diesel_anual` (`id_Anio`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `consumo_diesel_ibfk_1` FOREIGN KEY (`id_colegio`) REFERENCES `colegio` (`id_colegio`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `consumo_diesel_anual`
@@ -657,8 +647,7 @@ ALTER TABLE `consumo_diesel_anual`
 -- Filtros para la tabla `consumo_energetico`
 --
 ALTER TABLE `consumo_energetico`
-  ADD CONSTRAINT `consumo_energetico_ibfk_1` FOREIGN KEY (`id_colegio`) REFERENCES `colegio` (`id_colegio`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `consumo_energetico_ibfk_2` FOREIGN KEY (`id_Anio`) REFERENCES `consumo_energetico_anual` (`id_Anio`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `consumo_energetico_ibfk_1` FOREIGN KEY (`id_colegio`) REFERENCES `colegio` (`id_colegio`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `consumo_energetico_anual`
@@ -670,8 +659,7 @@ ALTER TABLE `consumo_energetico_anual`
 -- Filtros para la tabla `consumo_gasolina`
 --
 ALTER TABLE `consumo_gasolina`
-  ADD CONSTRAINT `consumo_gasolina_ibfk_1` FOREIGN KEY (`id_colegio`) REFERENCES `colegio` (`id_colegio`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `consumo_gasolina_ibfk_2` FOREIGN KEY (`id_Anio`) REFERENCES `consumo_gasolina_anual` (`id_Anio`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `consumo_gasolina_ibfk_1` FOREIGN KEY (`id_colegio`) REFERENCES `colegio` (`id_colegio`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `consumo_gasolina_anual`
@@ -683,8 +671,12 @@ ALTER TABLE `consumo_gasolina_anual`
 -- Filtros para la tabla `consumo_papel`
 --
 ALTER TABLE `consumo_papel`
-  ADD CONSTRAINT `consumo_papel_ibfk_1` FOREIGN KEY (`id_colegio`) REFERENCES `colegio` (`id_colegio`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `consumo_papel_ibfk_2` FOREIGN KEY (`id_Anio`) REFERENCES `consumo_papel_anual` (`id_Anio`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `consumo_papel_ibfk_1` FOREIGN KEY (`id_colegio`) REFERENCES `colegio` (`id_colegio`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- Filtros para la tabla `consumo_papel_anual`
+--
+ALTER TABLE `consumo_papel_anual`
+  ADD CONSTRAINT `consumo_papel_anual_ibfk_1` FOREIGN KEY (`id_colegio`) REFERENCES `colegio` (`id_colegio`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `inventario`
@@ -696,8 +688,8 @@ ALTER TABLE `inventario`
 -- Filtros para la tabla `user`
 --
 ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `colegio` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `user_ibfk_3` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user_ibfk_4` FOREIGN KEY (`id_colegio`) REFERENCES `colegio` (`id_colegio`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

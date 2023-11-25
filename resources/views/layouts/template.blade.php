@@ -89,9 +89,9 @@
 						<a href="AñadirDatos" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Registrar datos</span></a>
 					</li>
 					<li class="pc-item">
-						<a href="VerDatos" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Ver datos</span></a>
+						<a href="VerDatosAgua" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Ver datos</span></a>
 					</li>
-					<li class="pc-item pc-caption">
+					<li class="pc-item pc-caption"> 
 						<label>Gestionar Inventario</label>
 					</li>
 					<li class="pc-item">

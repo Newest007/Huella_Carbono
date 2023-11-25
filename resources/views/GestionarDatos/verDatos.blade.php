@@ -23,6 +23,23 @@
         <!-- fin de breadcrumb -->
 
         <!-- INICIO DE CONTENIDO -->
+        
+        <div class="container mt-4">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="">Consumo de Agua</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Enlace</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Enlace</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled">Deshabilitado</a>
+            </li>
+        </ul>
+        </div>
 
         <div class="card table-card mt-4">
             <div class="card-header">

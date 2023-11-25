@@ -36,7 +36,12 @@ Route::delete('/usuarios/{id_usuario}',[UsuariosController::class,'destroy'])->n
 
 //GESTIONAR DATOS
 Route::resource('datos', DatosController::class)->middleware('auth');
-Route::get('VerDatos',[DatosController::class,'show'])->middleware('auth');
+
+Route::get('VerDatosAgua',[DatosController::class,'showAgua'])->middleware('auth');
+Route::get('VerDatosDiesel',[DatosController::class,'showDiesel'])->middleware('auth');
+Route::get('VerDatosEnergia',[DatosController::class,'showEnergia'])->middleware('auth');
+Route::get('VerDatosGas',[DatosController::class,'showGas'])->middleware('auth');
+Route::get('VerDatosPapel',[DatosController::class,'showPapel'])->middleware('auth');
 
 Route::view('VerGraficas','GestionarDatos.index')->middleware('auth');
 Route::view('AñadirDatos','GestionarDatos.añadirDatos')->middleware('auth');

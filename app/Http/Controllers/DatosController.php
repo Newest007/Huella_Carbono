@@ -264,7 +264,7 @@ class DatosController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show()
+    /*public function show()
     {
         $nombre = session('nombre');
         $colegio = json_decode(User::where('nombre',$nombre)->get());
@@ -273,12 +273,93 @@ class DatosController extends Controller
 
         $viewBag = array();
         $viewBag['consumoAgua'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->get();
-        $viewBag['consumoDiesel'] = DB::table('consumo_diesel')->join('colegio','colegio.id_colegio','=','consumo_diesel.id_colegio')->get();
-        $viewBag['consumoGasolina'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->get();
-        $viewBag['consumoPapel'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->get();
+        //$viewBag['consumoDiesel'] = DB::table('consumo_diesel')->join('colegio','colegio.id_colegio','=','consumo_diesel.id_colegio')->get();
+        //$viewBag['consumoGasolina'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->get();
+        //$viewBag['consumoPapel'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->get();
         //$viewBag['consumoAgua'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->where('colegio.id_colegio',$idColegio)->get();
         return view('GestionarDatos.verDatos',$viewBag);
+    }*/
+
+    public function showAgua()
+    {
+        $nombre = session('nombre');
+        $colegio = json_decode(User::where('nombre',$nombre)->get());
+        //var_dump($colegio[0]->id_colegio); //Obteniendo el id del colegio
+        $idColegio = $colegio[0]->id_colegio;
+
+        $viewBag = array();
+        $viewBag['consumoAgua'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->get();
+        //$viewBag['consumoDiesel'] = DB::table('consumo_diesel')->join('colegio','colegio.id_colegio','=','consumo_diesel.id_colegio')->get();
+        //$viewBag['consumoGasolina'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->get();
+        //$viewBag['consumoPapel'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->get();
+        //$viewBag['consumoAgua'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->where('colegio.id_colegio',$idColegio)->get();
+        return view('GestionarDatos.tablaDatos.datosAgua',$viewBag);
     }
+
+    public function showDiesel()
+    {
+        $nombre = session('nombre');
+        $colegio = json_decode(User::where('nombre',$nombre)->get());
+        //var_dump($colegio[0]->id_colegio); //Obteniendo el id del colegio
+        $idColegio = $colegio[0]->id_colegio;
+
+        $viewBag = array();
+        $viewBag['consumoDiesel'] = DB::table('consumo_diesel')->join('colegio','colegio.id_colegio','=','consumo_diesel.id_colegio')->get();
+        //$viewBag['consumoDiesel'] = DB::table('consumo_diesel')->join('colegio','colegio.id_colegio','=','consumo_diesel.id_colegio')->get();
+        //$viewBag['consumoGasolina'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->get();
+        //$viewBag['consumoPapel'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->get();
+        //$viewBag['consumoAgua'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->where('colegio.id_colegio',$idColegio)->get();
+        return view('GestionarDatos.tablaDatos.datosDiesel',$viewBag);
+    }
+
+    public function showEnergia()
+    {
+        $nombre = session('nombre');
+        $colegio = json_decode(User::where('nombre',$nombre)->get());
+        //var_dump($colegio[0]->id_colegio); //Obteniendo el id del colegio
+        $idColegio = $colegio[0]->id_colegio;
+
+        $viewBag = array();
+        $viewBag['consumoEnergia'] = DB::table('consumo_energetico')->join('colegio','colegio.id_colegio','=','consumo_energetico.id_colegio')->get();
+        //$viewBag['consumoDiesel'] = DB::table('consumo_diesel')->join('colegio','colegio.id_colegio','=','consumo_diesel.id_colegio')->get();
+        //$viewBag['consumoGasolina'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->get();
+        //$viewBag['consumoPapel'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->get();
+        //$viewBag['consumoAgua'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->where('colegio.id_colegio',$idColegio)->get();
+        return view('GestionarDatos.tablaDatos.datosEnergia',$viewBag);
+    }
+
+    public function showGas()
+    {
+        $nombre = session('nombre');
+        $colegio = json_decode(User::where('nombre',$nombre)->get());
+        //var_dump($colegio[0]->id_colegio); //Obteniendo el id del colegio
+        $idColegio = $colegio[0]->id_colegio;
+
+        $viewBag = array();
+        $viewBag['consumoGas'] = DB::table('consumo_gasolina')->join('colegio','colegio.id_colegio','=','consumo_gasolina.id_colegio')->get();
+        //$viewBag['consumoDiesel'] = DB::table('consumo_diesel')->join('colegio','colegio.id_colegio','=','consumo_diesel.id_colegio')->get();
+        //$viewBag['consumoGasolina'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->get();
+        //$viewBag['consumoPapel'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->get();
+        //$viewBag['consumoAgua'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->where('colegio.id_colegio',$idColegio)->get();
+        return view('GestionarDatos.tablaDatos.datosGas',$viewBag);
+    }
+
+    public function showPapel()
+    {
+        $nombre = session('nombre');
+        $colegio = json_decode(User::where('nombre',$nombre)->get());
+        //var_dump($colegio[0]->id_colegio); //Obteniendo el id del colegio
+        $idColegio = $colegio[0]->id_colegio;
+
+        $viewBag = array();
+        $viewBag['consumoPapel'] = DB::table('consumo_papel')->join('colegio','colegio.id_colegio','=','consumo_papel.id_colegio')->get();
+        //$viewBag['consumoDiesel'] = DB::table('consumo_diesel')->join('colegio','colegio.id_colegio','=','consumo_diesel.id_colegio')->get();
+        //$viewBag['consumoGasolina'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->get();
+        //$viewBag['consumoPapel'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->get();
+        //$viewBag['consumoAgua'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->where('colegio.id_colegio',$idColegio)->get();
+        return view('GestionarDatos.tablaDatos.datosPapel',$viewBag);
+    }
+
 
     /**
      * Show the form for editing the specified resource.

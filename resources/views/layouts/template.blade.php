@@ -64,7 +64,6 @@
 		<div class="navbar-wrapper">
 			<div class="m-header">
 				<a href="index" class="b-brand" style="color:white">
-					<!-- ========   change your logo hear   ============ -->
 					<img src="{{asset('assets/dbga logo square.png')}}"width="40" height="40">  Don Bosco Green Alliance
 				</a>
 			</div>
@@ -107,7 +106,7 @@
 						<a href="verDefault" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Pagina Muestra</span></a>
 					</li>
 					<li class="pc-item">
-						<a href="verColegio" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Rol Colegio</span></a>
+						<a href="VerGraficasC" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Rol Colegio</span></a>
 					</li>
 					
 				</ul>

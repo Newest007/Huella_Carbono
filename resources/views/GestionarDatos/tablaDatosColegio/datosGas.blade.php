@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.templateUser')
 @section('content')
 @section('title','Gestionar Datos')
 @csrf
@@ -27,19 +27,19 @@
         <div class="container mt-4">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="VerDatosAgua">Consumo de Agua</a>
+                    <a class="nav-link" aria-current="page" href="VerDatosAguaC">Consumo de Agua</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="VerDatosDiesel">Consumo Diesel</a>
+                    <a class="nav-link" aria-current="page" href="VerDatosDieselC">Consumo Diesel</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="VerDatosEnergia">Consumo Energético</a>
+                    <a class="nav-link" aria-current="page" href="VerDatosEnergiaC">Consumo Energético</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="VerDatosGas">Consumo Gasolina</a>
+                    <a class="nav-link active" aria-current="page" href="VerDatosGasC">Consumo Gasolina</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="VerDatosPapel">Consumo Papel</a>
+                    <a class="nav-link" aria-current="page" href="VerDatosPapelC">Consumo Papel</a>
                 </li>
             </ul>
         </div>

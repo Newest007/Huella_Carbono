@@ -14,11 +14,11 @@ use App\Models\ConsumoPapel;
 use App\Models\Colegio;
 use App\Models\User;
 
-class DatosController extends Controller
+class DatosControllerUser extends Controller
 {
     public function index()
     {
-        return view('GestionarDatos.index');
+        return view('GestionarDatos.indexColegio');
     }
 
     public function create()
@@ -34,7 +34,7 @@ class DatosController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('AñadirDatos')->withErrors($validator)->withInput();
+            return redirect('AñadirDatosC')->withErrors($validator)->withInput();
         }
         else{
             $nombre = session('nombre');
@@ -63,10 +63,10 @@ class DatosController extends Controller
                 $datos->Consumo_m3 = $consumo;
                 $datos->Ton_CO2_m3 = $toneladas;
                 $datos->save();
-                return redirect('AñadirDatos')->with('successAgua','Se ha añadido el registro del consumo de agua correctamente!')->withInput();
+                return redirect('AñadirDatosC')->with('successAgua','Se ha añadido el registro del consumo de agua correctamente!')->withInput();
             }
             else{
-                return redirect('AñadirDatos')->with('errorAgua','Ya existe un registro del consumo de agua para el mes de '. $mes)->withInput();
+                return redirect('AñadirDatosC')->with('errorAgua','Ya existe un registro del consumo de agua para el mes de '. $mes)->withInput();
             }
         }
     }
@@ -80,7 +80,7 @@ class DatosController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('AñadirDatos')->withErrors($validator)->withInput();
+            return redirect('AñadirDatosC')->withErrors($validator)->withInput();
         }
         else{
             $nombre = session('nombre');
@@ -113,10 +113,10 @@ class DatosController extends Controller
                 $datos->Ton_CO2_m3=$Ton_CO2;
                 $datos->kGr_CO2_m3=$Kg_CO2;
                 $datos->save();
-                return redirect('AñadirDatos')->with('successDiesel','Se ha añadido el registro del consumo de diesel correctamente!')->withInput();
+                return redirect('AñadirDatosC')->with('successDiesel','Se ha añadido el registro del consumo de diesel correctamente!')->withInput();
             }
             else{
-                return redirect('AñadirDatos')->with('errorDiesel','Ya existe un registro de la cantidad de diesel para el mes de '. $mes)->withInput();
+                return redirect('AñadirDatosC')->with('errorDiesel','Ya existe un registro de la cantidad de diesel para el mes de '. $mes)->withInput();
             }
         }
     }
@@ -129,7 +129,7 @@ class DatosController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('AñadirDatos')->withErrors($validator)->withInput();
+            return redirect('AñadirDatosC')->withErrors($validator)->withInput();
         }
         else{
             $nombre = session('nombre');
@@ -158,10 +158,10 @@ class DatosController extends Controller
                 $datos->Consumo_kWts = $consumo;
                 $datos->Ton_CO2 = number_format($toneladas, 3, '.', '');
                 $datos->save();
-                return redirect('AñadirDatos')->with('successEnergia','Se ha añadido el registro del consumo de energia correctamente!')->withInput();
+                return redirect('AñadirDatosC')->with('successEnergia','Se ha añadido el registro del consumo de energia correctamente!')->withInput();
             }
             else{
-                return redirect('AñadirDatos')->with('errorEnergia','Ya existe un registro del consumo de energia para el mes de '. $mes)->withInput();
+                return redirect('AñadirDatosC')->with('errorEnergia','Ya existe un registro del consumo de energia para el mes de '. $mes)->withInput();
             }
         }
     }
@@ -175,7 +175,7 @@ class DatosController extends Controller
         ]);
         
         if ($validator->fails()) {
-            return redirect('AñadirDatos')->withErrors($validator)->withInput();
+            return redirect('AñadirDatosC')->withErrors($validator)->withInput();
         }
         else{
             $nombre = session('nombre');
@@ -208,10 +208,10 @@ class DatosController extends Controller
                 $datos->Ton_CO2_m3 = $Ton_CO2;
                 $datos->Km_CO2_m3 = $Kg_CO2;
                 $datos->save();
-                return redirect('AñadirDatos')->with('successGasolina','Se ha añadido el registro del consumo de gasolina correctamente!')->withInput();
+                return redirect('AñadirDatosC')->with('successGasolina','Se ha añadido el registro del consumo de gasolina correctamente!')->withInput();
             }
             else{
-                return redirect('AñadirDatos')->with('errorGasolina','Ya existe un registro de la cantidad de gasolina para el mes de '. $mes)->withInput();
+                return redirect('AñadirDatosC')->with('errorGasolina','Ya existe un registro de la cantidad de gasolina para el mes de '. $mes)->withInput();
             }
         }
     }
@@ -224,7 +224,7 @@ class DatosController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('AñadirDatos')->withErrors($validator)->withInput();
+            return redirect('AñadirDatosC')->withErrors($validator)->withInput();
         }
         else{
             $nombre = session('nombre');
@@ -253,10 +253,10 @@ class DatosController extends Controller
                 $datos->Consumo_m3 = $consumo;
                 $datos->Ton_CO2 = $toneladas;
                 $datos->save();
-                return redirect('AñadirDatos')->with('successPapel','Se ha añadido el registro del consumo de papel correctamente!')->withInput();
+                return redirect('AñadirDatosC')->with('successPapel','Se ha añadido el registro del consumo de papel correctamente!')->withInput();
             }
             else{
-                return redirect('AñadirDatos')->with('errorPapel','Ya existe un registro de la cantidad de papel para el mes de '. $mes)->withInput();
+                return redirect('AñadirDatosC')->with('errorPapel','Ya existe un registro de la cantidad de papel para el mes de '. $mes)->withInput();
             }
         }
     }
@@ -280,7 +280,7 @@ class DatosController extends Controller
         return view('GestionarDatos.verDatos',$viewBag);
     }*/
 
-    public function showAgua()
+    public function showAguaC()
     {
         $nombre = session('nombre');
         $colegio = json_decode(User::where('nombre',$nombre)->get());
@@ -288,11 +288,11 @@ class DatosController extends Controller
         $idColegio = $colegio[0]->id_colegio;
 
         $viewBag = array();
-        $viewBag['consumoAgua'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->get();
-        return view('GestionarDatos.tablaDatos.datosAgua',$viewBag);
+        $viewBag['consumoAgua'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->where('colegio.id_colegio',$idColegio)->get();
+        return view('GestionarDatos.tablaDatosColegio.datosAgua',$viewBag);
     }
 
-    public function showDiesel()
+    public function showDieselC()
     {
         $nombre = session('nombre');
         $colegio = json_decode(User::where('nombre',$nombre)->get());
@@ -300,11 +300,11 @@ class DatosController extends Controller
         $idColegio = $colegio[0]->id_colegio;
 
         $viewBag = array();
-        $viewBag['consumoDiesel'] = DB::table('consumo_diesel')->join('colegio','colegio.id_colegio','=','consumo_diesel.id_colegio')->get();
-        return view('GestionarDatos.tablaDatos.datosDiesel',$viewBag);
+        $viewBag['consumoDiesel'] = DB::table('consumo_diesel')->join('colegio','colegio.id_colegio','=','consumo_diesel.id_colegio')->where('colegio.id_colegio',$idColegio)->get();
+        return view('GestionarDatos.tablaDatosColegio.datosDiesel',$viewBag);
     }
 
-    public function showEnergia()
+    public function showEnergiaC()
     {
         $nombre = session('nombre');
         $colegio = json_decode(User::where('nombre',$nombre)->get());
@@ -312,11 +312,11 @@ class DatosController extends Controller
         $idColegio = $colegio[0]->id_colegio;
 
         $viewBag = array();
-        $viewBag['consumoEnergia'] = DB::table('consumo_energetico')->join('colegio','colegio.id_colegio','=','consumo_energetico.id_colegio')->get();
-        return view('GestionarDatos.tablaDatos.datosEnergia',$viewBag);
+        $viewBag['consumoEnergia'] = DB::table('consumo_energetico')->join('colegio','colegio.id_colegio','=','consumo_energetico.id_colegio')->where('colegio.id_colegio',$idColegio)->get();
+        return view('GestionarDatos.tablaDatosColegio.datosEnergia',$viewBag);
     }
 
-    public function showGas()
+    public function showGasC()
     {
         $nombre = session('nombre');
         $colegio = json_decode(User::where('nombre',$nombre)->get());
@@ -324,11 +324,11 @@ class DatosController extends Controller
         $idColegio = $colegio[0]->id_colegio;
 
         $viewBag = array();
-        $viewBag['consumoGas'] = DB::table('consumo_gasolina')->join('colegio','colegio.id_colegio','=','consumo_gasolina.id_colegio')->get();
-        return view('GestionarDatos.tablaDatos.datosGas',$viewBag);
+        $viewBag['consumoGas'] = DB::table('consumo_gasolina')->join('colegio','colegio.id_colegio','=','consumo_gasolina.id_colegio')->where('colegio.id_colegio',$idColegio)->get();
+        return view('GestionarDatos.tablaDatosColegio.datosGas',$viewBag);
     }
 
-    public function showPapel()
+    public function showPapelC()
     {
         $nombre = session('nombre');
         $colegio = json_decode(User::where('nombre',$nombre)->get());
@@ -336,8 +336,8 @@ class DatosController extends Controller
         $idColegio = $colegio[0]->id_colegio;
 
         $viewBag = array();
-        $viewBag['consumoPapel'] = DB::table('consumo_papel')->join('colegio','colegio.id_colegio','=','consumo_papel.id_colegio')->get();
-        return view('GestionarDatos.tablaDatos.datosPapel',$viewBag);
+        $viewBag['consumoPapel'] = DB::table('consumo_papel')->join('colegio','colegio.id_colegio','=','consumo_papel.id_colegio')->where('colegio.id_colegio',$idColegio)->get();
+        return view('GestionarDatos.tablaDatosColegio.datosPapel',$viewBag);
     }
 
 

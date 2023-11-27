@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.templateUser')
 @section('content')
 @section('title','Gestionar Datos')
 @csrf
@@ -27,53 +27,49 @@
         <div class="container mt-4">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="VerDatosAgua">Consumo de Agua</a>
+                    <a class="nav-link" aria-current="page" href="VerDatosAguaC">Consumo de Agua</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="VerDatosDiesel">Consumo Diesel</a>
+                    <a class="nav-link" aria-current="page" href="VerDatosDieselC">Consumo Diesel</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="VerDatosEnergia">Consumo Energético</a>
+                    <a class="nav-link active" aria-current="page" href="VerDatosEnergiaC">Consumo Energético</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="VerDatosGas">Consumo Gasolina</a>
+                    <a class="nav-link" aria-current="page" href="VerDatosGasC">Consumo Gasolina</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="VerDatosPapel">Consumo Papel</a>
+                    <a class="nav-link" aria-current="page" href="VerDatosPapelC">Consumo Papel</a>
                 </li>
             </ul>
         </div>
 
         <div class="card table-card">
             <div class="card-header">
-                <center><h5>Datos Registrados del Consumo de Gasolina</h5></center>
+                <center><h5>Datos Registrados del Consumo de Energía Eléctrica</h5></center>
             </div>
             <div class="pro-scroll " style=";position:relative;">
                 <div class="card-body p-0">
                     <div class="table-responsive">
-                        @if($consumoGas)
+                        @if($consumoEnergia)
                             <table class="table table-hover m-b-0">
                                 <thead>
                                     <tr>
                                         <th>Colegio Perteneciente</th>
                                         <th>Año</th>
                                         <th>Mes</th>
-                                        <th>Cantidad (Galones)</th>
-                                        <th>Combustible en m3</th>
-                                        <th>Ton de CO2/m3</th>
-                                        <th>Kg de CO2/m3</th>
+                                        <th>Consumo en kWts</th>
+                                        <th>Toneladas de CO2</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($consumoGas as $gas)
+                                    @foreach ($consumoEnergia as $energia)
                                     <tr>
-                                        <td>{{$gas->Nombre}}</td>
-                                        <td>{{$gas->id_Anio}}</td>
-                                        <td>{{$gas->Mes}}</td>
-                                        <td>{{$gas->Cantidad}}</td>
-                                        <td>{{$gas->Combustible_m3}}</td>
-                                        <td>{{$gas->Ton_CO2_m3}}</td>
-                                        <td>{{$gas->Km_CO2_m3}}</td>
+                                        <td>{{$energia->Nombre}}</td>
+                                        <td>{{$energia->id_Anio}}</td>
+                                        <td>{{$energia->Mes}}</td>
+                                        <td>{{$energia->Consumo_kWts}}</td>
+                                        <td>{{$energia->Ton_CO2}}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

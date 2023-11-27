@@ -5,6 +5,7 @@ use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\DatosController;
+use App\Http\Controllers\DatosControllerUser;
 use App\Http\Controllers\Auth;
 
 
@@ -60,14 +61,26 @@ Route::view('AñadirInventario','GestionarInventarios.añadirInventarios')->midd
 //  -------------------- Rol de Admin Colegio --------------------------------
 
 // GESTIONAR DATOS
-Route::view('indexColegio','GestionarDatos.indexColegio')->middleware('auth'); //No permite acceder a la vista hasta que no inicie sesión
-Route::view('VerGraficasColegio','GestionarDatos.indexColegio')->middleware('auth');
-Route::view('VerDatosColegio','GestionarDatos.verDatosColegio')->middleware('auth');
-Route::view('AñadirDatosColegio','GestionarDatos.añadirDatosColegio')->middleware('auth');
+Route::resource('datosC', DatosControllerUser::class)->middleware('auth');
+
+Route::get('VerDatosAguaC',[DatosControllerUser::class,'showAguaC'])->middleware('auth');
+Route::get('VerDatosDieselC',[DatosControllerUser::class,'showDieselC'])->middleware('auth');
+Route::get('VerDatosEnergiaC',[DatosControllerUser::class,'showEnergiaC'])->middleware('auth');
+Route::get('VerDatosGasC',[DatosControllerUser::class,'showGasC'])->middleware('auth');
+Route::get('VerDatosPapelC',[DatosControllerUser::class,'showPapelC'])->middleware('auth');
+
+Route::view('VerGraficasC','GestionarDatos.indexColegio')->middleware('auth');
+Route::view('AñadirDatosC','GestionarDatos.añadirDatosColegio')->middleware('auth');
+
+Route::post('/datosAguaC',[DatosControllerUser::class,'storeAgua'])->name('datosC.storeAgua')->middleware('auth');
+Route::post('/datosDieselC',[DatosControllerUser::class,'storeDiesel'])->name('datosC.storeDiesel')->middleware('auth');
+Route::post('/datosEnergiaC',[DatosControllerUser::class,'storeEnergia'])->name('datosC.storeEnergia')->middleware('auth');
+Route::post('/datosGasolinaC',[DatosControllerUser::class,'storeGasolina'])->name('datosC.storeGasolina')->middleware('auth');
+Route::post('/datosPapelC',[DatosControllerUser::class,'storePapel'])->name('datosC.storePapel')->middleware('auth');
 
 //GESTIONAR INVENTARIO
-Route::view('VerInventarioColegio','GestionarInventarios.verInventariosColegio')->middleware('auth');
-Route::view('AñadirInventarioColegio','GestionarInventarios.añadirInventariosColegio')->middleware('auth');
+Route::view('VerInventarioC','GestionarInventarios.verInventariosColegio')->middleware('auth');
+Route::view('AñadirInventarioC','GestionarInventarios.añadirInventariosColegio')->middleware('auth');
 
 
 Route::view('verDefault','layouts.defaultpage')->middleware('auth');

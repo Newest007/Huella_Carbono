@@ -20,7 +20,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property float|null $kGr_CO2_m3
  * 
  * @property Colegio $colegio
- * @property ConsumoDieselAnual $consumo_diesel_anual
  *
  * @package App\Models
  */
@@ -51,10 +50,5 @@ class ConsumoDiesel extends Model
 	public function colegio()
 	{
 		return $this->belongsTo(Colegio::class, 'id_colegio');
-	}
-
-	public function consumo_diesel_anual()
-	{
-		return $this->belongsTo(ConsumoDieselAnual::class, 'id_Anio');
 	}
 }

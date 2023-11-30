@@ -19,14 +19,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property float|null $kGr_CO2_m3_Anual
  * 
  * @property Colegio|null $colegio
- * @property ConsumoDiesel $consumo_diesel
  *
  * @package App\Models
  */
 class ConsumoDieselAnual extends Model
 {
 	protected $table = 'consumo_diesel_anual';
-	protected $primaryKey = 'id_Anio';
 	public $incrementing = false;
 	public $timestamps = false;
 
@@ -40,6 +38,7 @@ class ConsumoDieselAnual extends Model
 
 	protected $fillable = [
 		'id_colegio',
+		'id_Anio',
 		'Cantidad_Anual',
 		'Combustible_m3_Anual',
 		'Ton_CO2_m3_Anual',
@@ -49,10 +48,5 @@ class ConsumoDieselAnual extends Model
 	public function colegio()
 	{
 		return $this->belongsTo(Colegio::class, 'id_colegio');
-	}
-
-	public function consumo_diesel()
-	{
-		return $this->hasOne(ConsumoDiesel::class, 'id_Anio');
 	}
 }

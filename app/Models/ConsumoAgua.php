@@ -12,13 +12,12 @@ use Illuminate\Database\Eloquent\Model;
  * Class ConsumoAgua
  * 
  * @property string|null $id_colegio
- * @property int|null $id_Anio
+ * @property int $id_Anio
  * @property string|null $Mes
  * @property float|null $Consumo_m3
  * @property float|null $Ton_CO2_m3
  * 
  * @property Colegio|null $colegio
- * @property ConsumoAguaAnual|null $consumo_agua_anual
  *
  * @package App\Models
  */
@@ -45,10 +44,5 @@ class ConsumoAgua extends Model
 	public function colegio()
 	{
 		return $this->belongsTo(Colegio::class, 'id_colegio');
-	}
-
-	public function consumo_agua_anual()
-	{
-		return $this->belongsTo(ConsumoAguaAnual::class, 'id_Anio');
 	}
 }

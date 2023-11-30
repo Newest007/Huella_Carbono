@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use App\Models\ConsumoAgua;
+use App\Models\ConsumoAguaAnual;
 use App\Models\ConsumoDiesel;
 use App\Models\ConsumoEnergetico;
 use App\Models\ConsumoGasolina;
@@ -50,9 +51,9 @@ class DatosController extends Controller
             $toneladas = number_format(($factorEmision * $consumo)/(1000),3,'.','');
 
             $registroExistente = ConsumoAgua::where('id_colegio', $idColegio)
-            ->where('Mes', $mes)
-            ->where('id_anio',$anio)
-            ->exists();
+                ->where('Mes', $mes)
+                ->where('id_anio',$anio)
+                ->exists();
             //var_dump($registroExistente);
             
             if($registroExistente==false){
@@ -63,6 +64,38 @@ class DatosController extends Controller
                 $datos->Consumo_m3 = $consumo;
                 $datos->Ton_CO2_m3 = $toneladas;
                 $datos->save();
+
+                $mesesRegistrados = ConsumoAgua::where('id_colegio', $idColegio)
+                    ->where('id_anio', $anio)
+                    ->count();
+                //var_dump($mesesRegistrados);
+
+                if ($mesesRegistrados == 12) {
+                    ConsumoAguaAnual::where('id_colegio', $idColegio)
+                        ->where('id_anio', $anio)
+                        ->delete();
+                    // Calcular sumatoria y agregar registro a la tabla consumo_agua_anual
+                    $sumatoriaAnualConsumo = ConsumoAgua::where('id_colegio', $idColegio)
+                        ->where('id_anio', $anio)
+                        ->sum('Consumo_m3');
+
+                    $sumatoriaAnualTon = ConsumoAgua::where('id_colegio', $idColegio)
+                        ->where('id_anio', $anio)
+                        ->sum('Ton_CO2_m3');
+
+                    $consumoAnual = new ConsumoAguaAnual();
+                    $consumoAnual->id_colegio = $idColegio;
+                    $consumoAnual->id_Anio = $anio;
+                    $consumoAnual->Consumo_Agua_Anual = $sumatoriaAnualConsumo;
+                    $consumoAnual->Ton_CO2_Anual = $sumatoriaAnualTon;
+                    $consumoAnual->save();
+                }
+                else{
+                    ConsumoAguaAnual::where('id_colegio', $idColegio)
+                        ->where('id_anio', $anio)
+                        ->delete();
+                }
+                
                 return redirect('AñadirDatos')->with('successAgua','Se ha añadido el registro del consumo de agua correctamente!')->withInput();
             }
             else{
@@ -332,11 +365,13 @@ class DatosController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroyAgua(string $id_colegio, string $id_Anio, string $Mes)
     {
-        //
+        DB::table('consumo_agua')
+        ->where('id_colegio', $id_colegio)
+        ->where('id_Anio', $id_Anio)
+        ->where('Mes', $Mes)
+        ->delete();
+        return redirect('VerDatosAgua')->with('successAgua','Se ha eliminado el registro correctamente')->withInput();
     }
 }

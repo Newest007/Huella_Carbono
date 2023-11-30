@@ -12,13 +12,12 @@ use Illuminate\Database\Eloquent\Model;
  * Class ConsumoEnergetico
  * 
  * @property string|null $id_colegio
- * @property int|null $id_Anio
+ * @property int $id_Anio
  * @property string|null $Mes
  * @property float|null $Consumo_kWts
  * @property float|null $Ton_CO2
  * 
  * @property Colegio|null $colegio
- * @property ConsumoEnergeticoAnual|null $consumo_energetico_anual
  *
  * @package App\Models
  */
@@ -45,10 +44,5 @@ class ConsumoEnergetico extends Model
 	public function colegio()
 	{
 		return $this->belongsTo(Colegio::class, 'id_colegio');
-	}
-
-	public function consumo_energetico_anual()
-	{
-		return $this->belongsTo(ConsumoEnergeticoAnual::class, 'id_Anio');
 	}
 }

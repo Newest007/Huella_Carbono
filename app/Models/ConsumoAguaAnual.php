@@ -17,14 +17,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property float|null $Ton_CO2_Anual
  * 
  * @property Colegio|null $colegio
- * @property ConsumoAgua $consumo_agua
  *
  * @package App\Models
  */
 class ConsumoAguaAnual extends Model
 {
 	protected $table = 'consumo_agua_anual';
-	protected $primaryKey = 'id_Anio';
 	public $incrementing = false;
 	public $timestamps = false;
 
@@ -36,6 +34,7 @@ class ConsumoAguaAnual extends Model
 
 	protected $fillable = [
 		'id_colegio',
+		'id_Anio',
 		'Consumo_Agua_Anual',
 		'Ton_CO2_Anual'
 	];
@@ -43,10 +42,5 @@ class ConsumoAguaAnual extends Model
 	public function colegio()
 	{
 		return $this->belongsTo(Colegio::class, 'id_colegio');
-	}
-
-	public function consumo_agua()
-	{
-		return $this->hasOne(ConsumoAgua::class, 'id_Anio');
 	}
 }

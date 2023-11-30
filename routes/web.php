@@ -53,6 +53,10 @@ Route::post('/datosEnergia',[DatosController::class,'storeEnergia'])->name('dato
 Route::post('/datosGasolina',[DatosController::class,'storeGasolina'])->name('datos.storeGasolina')->middleware('auth');
 Route::post('/datosPapel',[DatosController::class,'storePapel'])->name('datos.storePapel')->middleware('auth');
 
+
+Route::delete('/datosAgua/{id_colegio}/{id_Anio}/{Mes}',[DatosController::class,'destroyAgua'])->name('datosAgua.destroy')->middleware('auth');
+
+
 //GESTIONAR INVENTARIO
 Route::view('VerInventario','GestionarInventarios.verInventarios')->middleware('auth');
 Route::view('AñadirInventario','GestionarInventarios.añadirInventarios')->middleware('auth');

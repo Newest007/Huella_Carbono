@@ -16,14 +16,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property float|null $Consumo_m3_Anual
  * @property float|null $Ton_CO2_Anual
  * 
- * @property ConsumoPapel $consumo_papel
+ * @property Colegio|null $colegio
  *
  * @package App\Models
  */
 class ConsumoPapelAnual extends Model
 {
 	protected $table = 'consumo_papel_anual';
-	protected $primaryKey = 'id_Anio';
 	public $incrementing = false;
 	public $timestamps = false;
 
@@ -35,12 +34,13 @@ class ConsumoPapelAnual extends Model
 
 	protected $fillable = [
 		'id_colegio',
+		'id_Anio',
 		'Consumo_m3_Anual',
 		'Ton_CO2_Anual'
 	];
 
-	public function consumo_papel()
+	public function colegio()
 	{
-		return $this->hasOne(ConsumoPapel::class, 'id_Anio');
+		return $this->belongsTo(Colegio::class, 'id_colegio');
 	}
 }

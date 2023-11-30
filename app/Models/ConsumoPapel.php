@@ -12,13 +12,12 @@ use Illuminate\Database\Eloquent\Model;
  * Class ConsumoPapel
  * 
  * @property string|null $id_colegio
- * @property int|null $id_Anio
+ * @property int $id_Anio
  * @property string|null $Mes
  * @property float|null $Consumo_m3
  * @property float|null $Ton_CO2
  * 
  * @property Colegio|null $colegio
- * @property ConsumoPapelAnual|null $consumo_papel_anual
  *
  * @package App\Models
  */
@@ -45,10 +44,5 @@ class ConsumoPapel extends Model
 	public function colegio()
 	{
 		return $this->belongsTo(Colegio::class, 'id_colegio');
-	}
-
-	public function consumo_papel_anual()
-	{
-		return $this->belongsTo(ConsumoPapelAnual::class, 'id_Anio');
 	}
 }

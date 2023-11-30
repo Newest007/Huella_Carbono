@@ -96,8 +96,6 @@ class UsuariosController extends Controller
     public function destroy(string $id_usuario)
     {
         User::destroy($id_usuario);
-        $viewBag = array();
-        $viewBag['usuarios'] = DB::table('user')->join('colegio','colegio.id_colegio','=','user.id_colegio')->where('id_rol','CLG001')->get();
         return redirect('usuarios')->with('success','Se ha eliminado el usuario correctamente');
     }
 }

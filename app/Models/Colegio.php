@@ -17,14 +17,15 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $Ubicacion
  * 
  * @property ConsumoAgua $consumo_agua
- * @property Collection|ConsumoAguaAnual[] $consumo_agua_anuals
+ * @property ConsumoAguaAnual $consumo_agua_anual
  * @property ConsumoDiesel $consumo_diesel
- * @property Collection|ConsumoDieselAnual[] $consumo_diesel_anuals
+ * @property ConsumoDieselAnual $consumo_diesel_anual
  * @property ConsumoEnergetico $consumo_energetico
- * @property Collection|ConsumoEnergeticoAnual[] $consumo_energetico_anuals
+ * @property ConsumoEnergeticoAnual $consumo_energetico_anual
  * @property ConsumoGasolina $consumo_gasolina
- * @property Collection|ConsumoGasolinaAnual[] $consumo_gasolina_anuals
+ * @property ConsumoGasolinaAnual $consumo_gasolina_anual
  * @property ConsumoPapel $consumo_papel
+ * @property ConsumoPapelAnual $consumo_papel_anual
  * @property Inventario $inventario
  * @property Collection|User[] $users
  *
@@ -47,9 +48,9 @@ class Colegio extends Model
 		return $this->hasOne(ConsumoAgua::class, 'id_colegio');
 	}
 
-	public function consumo_agua_anuals()
+	public function consumo_agua_anual()
 	{
-		return $this->hasMany(ConsumoAguaAnual::class, 'id_colegio');
+		return $this->hasOne(ConsumoAguaAnual::class, 'id_colegio');
 	}
 
 	public function consumo_diesel()
@@ -57,9 +58,9 @@ class Colegio extends Model
 		return $this->hasOne(ConsumoDiesel::class, 'id_colegio');
 	}
 
-	public function consumo_diesel_anuals()
+	public function consumo_diesel_anual()
 	{
-		return $this->hasMany(ConsumoDieselAnual::class, 'id_colegio');
+		return $this->hasOne(ConsumoDieselAnual::class, 'id_colegio');
 	}
 
 	public function consumo_energetico()
@@ -67,9 +68,9 @@ class Colegio extends Model
 		return $this->hasOne(ConsumoEnergetico::class, 'id_colegio');
 	}
 
-	public function consumo_energetico_anuals()
+	public function consumo_energetico_anual()
 	{
-		return $this->hasMany(ConsumoEnergeticoAnual::class, 'id_colegio');
+		return $this->hasOne(ConsumoEnergeticoAnual::class, 'id_colegio');
 	}
 
 	public function consumo_gasolina()
@@ -77,14 +78,19 @@ class Colegio extends Model
 		return $this->hasOne(ConsumoGasolina::class, 'id_colegio');
 	}
 
-	public function consumo_gasolina_anuals()
+	public function consumo_gasolina_anual()
 	{
-		return $this->hasMany(ConsumoGasolinaAnual::class, 'id_colegio');
+		return $this->hasOne(ConsumoGasolinaAnual::class, 'id_colegio');
 	}
 
 	public function consumo_papel()
 	{
 		return $this->hasOne(ConsumoPapel::class, 'id_colegio');
+	}
+
+	public function consumo_papel_anual()
+	{
+		return $this->hasOne(ConsumoPapelAnual::class, 'id_colegio');
 	}
 
 	public function inventario()

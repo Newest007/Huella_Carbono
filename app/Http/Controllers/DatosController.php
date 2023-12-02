@@ -365,6 +365,8 @@ class DatosController extends Controller
         //
     }
 
+    //FUNCIONES DE ELIMINACIÓN
+
     public function destroyAgua(string $id_colegio, string $id_Anio, string $Mes)
     {
         DB::table('consumo_agua')
@@ -374,4 +376,45 @@ class DatosController extends Controller
         ->delete();
         return redirect('VerDatosAgua')->with('successAgua','Se ha eliminado el registro correctamente')->withInput();
     }
+
+    public function destroyDiesel(string $id_colegio, string $id_Anio, string $Mes)
+    {
+        DB::table('consumo_diesel')
+        ->where('id_colegio', $id_colegio)
+        ->where('id_Anio', $id_Anio)
+        ->where('Mes', $Mes)
+        ->delete();
+        return redirect('VerDatosDiesel')->with('successDiesel','Se ha eliminado el registro correctamente')->withInput();
+    }
+
+    public function destroyEnergia(string $id_colegio, string $id_Anio, string $Mes)
+    {
+        DB::table('consumo_energetico')
+        ->where('id_colegio', $id_colegio)
+        ->where('id_Anio', $id_Anio)
+        ->where('Mes', $Mes)
+        ->delete();
+        return redirect('VerDatosEnergia')->with('successEnergia','Se ha eliminado el registro correctamente')->withInput();
+    }
+
+    public function destroyGas(string $id_colegio, string $id_Anio, string $Mes)
+    {
+        DB::table('consumo_gasolina')
+        ->where('id_colegio', $id_colegio)
+        ->where('id_Anio', $id_Anio)
+        ->where('Mes', $Mes)
+        ->delete();
+        return redirect('VerDatosGas')->with('successGasolina','Se ha eliminado el registro correctamente')->withInput();
+    }
+
+    public function destroyPapel(string $id_colegio, string $id_Anio, string $Mes)
+    {
+        DB::table('consumo_papel')
+        ->where('id_colegio', $id_colegio)
+        ->where('id_Anio', $id_Anio)
+        ->where('Mes', $Mes)
+        ->delete();
+        return redirect('VerDatosPapel')->with('successPapel','Se ha eliminado el registro correctamente')->withInput();
+    }
+
 }

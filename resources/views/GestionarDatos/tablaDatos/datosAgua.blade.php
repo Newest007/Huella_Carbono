@@ -54,7 +54,7 @@
                 <div class="card-header">
                     <center><h5>Datos Registrados del Consumo de Agua</h5></center>
                 </div>
-                <div class="pro-scroll " style=";position:relative;">
+                <div class="pro-scroll ">
                     <div class="card-body p-0">
                         <div class="table-responsive">
                             @if($consumoAgua)
@@ -66,6 +66,7 @@
                                             <th>Mes</th>
                                             <th>Consumo en m3</th>
                                             <th>Toneladas de CO2 en m3</th>
+                                            <th>Eliminar Dato</th>
                                         </tr>
                                     </thead>
                                     <tbody>

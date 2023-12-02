@@ -53,8 +53,12 @@ Route::post('/datosEnergia',[DatosController::class,'storeEnergia'])->name('dato
 Route::post('/datosGasolina',[DatosController::class,'storeGasolina'])->name('datos.storeGasolina')->middleware('auth');
 Route::post('/datosPapel',[DatosController::class,'storePapel'])->name('datos.storePapel')->middleware('auth');
 
-
+//ELIMINAR REGISTROS
 Route::delete('/datosAgua/{id_colegio}/{id_Anio}/{Mes}',[DatosController::class,'destroyAgua'])->name('datosAgua.destroy')->middleware('auth');
+Route::delete('/datosDiesel/{id_colegio}/{id_Anio}/{Mes}',[DatosController::class,'destroyDiesel'])->name('datosDiesel.destroy')->middleware('auth');
+Route::delete('/datosEnergia/{id_colegio}/{id_Anio}/{Mes}',[DatosController::class,'destroyEnergia'])->name('datosEnergia.destroy')->middleware('auth');
+Route::delete('/datosGas/{id_colegio}/{id_Anio}/{Mes}',[DatosController::class,'destroyGas'])->name('datosGas.destroy')->middleware('auth');
+Route::delete('/datosPapel/{id_colegio}/{id_Anio}/{Mes}',[DatosController::class,'destroyPapel'])->name('datosPapel.destroy')->middleware('auth');
 
 
 //GESTIONAR INVENTARIO

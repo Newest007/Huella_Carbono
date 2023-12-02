@@ -96,7 +96,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary mt-3">Registrar</button>
+                            <button type="submit" class="btn btn-primary mt-3" disabled>Registrar</button>
                         </form>
                     </div>
                 </div>

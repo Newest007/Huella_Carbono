@@ -357,11 +357,55 @@ class DatosControllerUser extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    //FUNCIONES DE ELIMINACIÓN
+
+    public function destroyAgua(string $id_colegio, string $id_Anio, string $Mes)
     {
-        //
+        DB::table('consumo_agua')
+        ->where('id_colegio', $id_colegio)
+        ->where('id_Anio', $id_Anio)
+        ->where('Mes', $Mes)
+        ->delete();
+        return redirect('VerDatosAguaC')->with('successAgua','Se ha eliminado el registro correctamente')->withInput();
+    }
+
+    public function destroyDiesel(string $id_colegio, string $id_Anio, string $Mes)
+    {
+        DB::table('consumo_diesel')
+        ->where('id_colegio', $id_colegio)
+        ->where('id_Anio', $id_Anio)
+        ->where('Mes', $Mes)
+        ->delete();
+        return redirect('VerDatosDieselC')->with('successDiesel','Se ha eliminado el registro correctamente')->withInput();
+    }
+
+    public function destroyEnergia(string $id_colegio, string $id_Anio, string $Mes)
+    {
+        DB::table('consumo_energetico')
+        ->where('id_colegio', $id_colegio)
+        ->where('id_Anio', $id_Anio)
+        ->where('Mes', $Mes)
+        ->delete();
+        return redirect('VerDatosEnergiaC')->with('successEnergia','Se ha eliminado el registro correctamente')->withInput();
+    }
+
+    public function destroyGas(string $id_colegio, string $id_Anio, string $Mes)
+    {
+        DB::table('consumo_gasolina')
+        ->where('id_colegio', $id_colegio)
+        ->where('id_Anio', $id_Anio)
+        ->where('Mes', $Mes)
+        ->delete();
+        return redirect('VerDatosGasC')->with('successGasolina','Se ha eliminado el registro correctamente')->withInput();
+    }
+
+    public function destroyPapel(string $id_colegio, string $id_Anio, string $Mes)
+    {
+        DB::table('consumo_papel')
+        ->where('id_colegio', $id_colegio)
+        ->where('id_Anio', $id_Anio)
+        ->where('Mes', $Mes)
+        ->delete();
+        return redirect('VerDatosPapelC')->with('successPapel','Se ha eliminado el registro correctamente')->withInput();
     }
 }

@@ -24,6 +24,13 @@
 
         <!-- INICIO DE CONTENIDO -->
         
+        @if(session('successAgua'))
+            <div class="alert alert-success mt-3">{{session('successAgua')}}</div>
+        @endif
+        @if(session('errorAgua'))
+            <div class="alert alert-success mt-3">{{session('errorAgua')}}</div>
+        @endif
+
         <div class="container mt-4">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
@@ -47,7 +54,7 @@
                 <div class="card-header">
                     <center><h5>Datos Registrados del Consumo de Agua</h5></center>
                 </div>
-                <div class="pro-scroll " style=";position:relative;">
+                <div class="pro-scroll ">
                     <div class="card-body p-0">
                         <div class="table-responsive">
                             @if($consumoAgua)
@@ -59,6 +66,7 @@
                                             <th>Mes</th>
                                             <th>Consumo en m3</th>
                                             <th>Toneladas de CO2 en m3</th>
+                                            <th>Eliminar Dato</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -69,6 +77,9 @@
                                             <td>{{$agua->Mes}}</td>
                                             <td>{{$agua->Consumo_m3}}</td>
                                             <td>{{$agua->Ton_CO2_m3}}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#eliminar{{$agua->id_colegio}}{{$agua->id_Anio}}{{$agua->Mes}}">Eliminar</button>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -80,6 +91,29 @@
             </div>
         </div>
 
+        @foreach($consumoAgua as $agua)
+        <div class="modal fade" id="eliminar{{$agua->id_colegio}}{{$agua->id_Anio}}{{$agua->Mes}}" tabindex="-1" role="dialog" aria-labelledby="eliminar{{$agua->id_colegio}}{{$agua->id_Anio}}{{$agua->Mes}}Label" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="eliminar{{$agua->id_colegio}}{{$agua->id_Anio}}{{$agua->Mes}}Label">Confirmación de eliminación</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{route('datosAguaC.destroy', ['id_colegio' => $agua->id_colegio, 'id_Anio' => $agua->id_Anio, 'Mes' => $agua->Mes] )}}">
+                        @csrf
+                        @method('DELETE')
+                        <center><h4>Estas por eliminar uno de los registros del colegio {{$agua->Nombre}}, ¿Estas seguro? </h4></center>
+                </div>
+                <div class="modal-footer">
+                        <center><button type="submit" class="btn btn-danger">Si</button></center>
+                    </form>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
         
 
     </div> <!-- NO BORRAR -->

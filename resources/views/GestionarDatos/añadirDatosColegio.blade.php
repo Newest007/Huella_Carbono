@@ -72,6 +72,7 @@
                                         <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">person</i></span>
                                         <select class="form-select" aria-label="Default select example" id="anioAgua" name="anioAgua">
                                             <option selected>2024</option>
+                                            <option>2022</option>
                                             <option>2023</option>
                                             <option>2025</option>
                                         </select>
@@ -145,6 +146,7 @@
                                         <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">person</i></span>
                                         <select id="anioDiesel" name="anioDiesel" class="form-select" aria-label="Default select example">
                                             <option selected>2024</option>
+                                            <option>2022</option>
                                             <option>2023</option>
                                             <option>2025</option>
                                         </select>
@@ -209,6 +211,7 @@
                                         <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">person</i></span>
                                         <select id="anioEnergia" name="anioEnergia" class="form-select" aria-label="Default select example">
                                             <option selected>2024</option>
+                                            <option>2022</option>
                                             <option>2023</option>
                                             <option>2025</option>
                                         </select>
@@ -273,6 +276,7 @@
                                         <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">person</i></span>
                                         <select id="anioGasolina" name="anioGasolina" class="form-select" aria-label="Default select example">
                                             <option selected>2024</option>
+                                            <option>2022</option>
                                             <option>2023</option>
                                             <option>2025</option>
                                         </select>
@@ -338,6 +342,7 @@
                                         <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">person</i></span>
                                         <select id="anioPapel" name="anioPapel" class="form-select" aria-label="Default select example">
                                             <option selected>2024</option>
+                                            <option>2022</option>
                                             <option>2023</option>
                                             <option>2025</option>
                                         </select>

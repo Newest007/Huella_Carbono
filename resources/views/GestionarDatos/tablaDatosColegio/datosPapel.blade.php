@@ -23,6 +23,13 @@
         <!-- fin de breadcrumb -->
 
         <!-- INICIO DE CONTENIDO -->
+
+        @if(session('successPapel'))
+            <div class="alert alert-success mt-3">{{session('successPapel')}}</div>
+        @endif
+        @if(session('errorPapel'))
+            <div class="alert alert-success mt-3">{{session('errorPapel')}}</div>
+        @endif
         
         <div class="container mt-4">
             <ul class="nav nav-tabs">
@@ -60,6 +67,8 @@
                                         <th>Mes</th>
                                         <th>Consumo en m3</th>
                                         <th>Toneladas de CO2</th>
+                                        <th>Eliminar Dato</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -70,6 +79,9 @@
                                         <td>{{$papel->Mes}}</td>
                                         <td>{{$papel->Consumo_m3}}</td>
                                         <td>{{$papel->Ton_CO2}}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#eliminar{{$papel->id_colegio}}{{$papel->id_Anio}}{{$papel->Mes}}">Eliminar</button>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -79,6 +91,31 @@
                 </div>
             </div>
         </div>
+
+        @foreach($consumoPapel as $papel)
+        <div class="modal fade" id="eliminar{{$papel->id_colegio}}{{$papel->id_Anio}}{{$papel->Mes}}" tabindex="-1" role="dialog" aria-labelledby="eliminar{{$papel->id_colegio}}{{$papel->id_Anio}}{{$papel->Mes}}Label" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="eliminar{{$papel->id_colegio}}{{$papel->id_Anio}}{{$papel->Mes}}Label">Confirmación de eliminación</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{route('datosPapelC.destroy', ['id_colegio' => $papel->id_colegio, 'id_Anio' => $papel->id_Anio, 'Mes' => $papel->Mes] )}}">
+                        @csrf
+                        @method('DELETE')
+                        <center><h4>Estas por eliminar uno de los registros del colegio {{$papel->Nombre}}, ¿Estas seguro? </h4></center>
+                </div>
+                <div class="modal-footer">
+                        <center><button type="submit" class="btn btn-danger">Si</button></center>
+                    </form>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+
     </div> <!-- NO BORRAR -->
 
 

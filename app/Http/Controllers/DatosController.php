@@ -9,9 +9,13 @@ use Illuminate\Support\Facades\Mail;
 use App\Models\ConsumoAgua;
 use App\Models\ConsumoAguaAnual;
 use App\Models\ConsumoDiesel;
+use App\Models\ConsumoDieselAnual;
 use App\Models\ConsumoEnergetico;
+use App\Models\ConsumoEnergeticoAnual;
 use App\Models\ConsumoGasolina;
+use App\Models\ConsumoGasolinaAnual;
 use App\Models\ConsumoPapel;
+use App\Models\ConsumoPapelAnual;
 use App\Models\Colegio;
 use App\Models\User;
 
@@ -146,6 +150,48 @@ class DatosController extends Controller
                 $datos->Ton_CO2_m3=$Ton_CO2;
                 $datos->kGr_CO2_m3=$Kg_CO2;
                 $datos->save();
+
+                $mesesRegistrados = ConsumoDiesel::where('id_colegio', $idColegio)
+                    ->where('id_anio', $anio)
+                    ->count();
+                //var_dump($mesesRegistrados);
+
+                if ($mesesRegistrados == 12) {
+                    ConsumoDieselAnual::where('id_colegio', $idColegio)
+                        ->where('id_anio', $anio)
+                        ->delete();
+                    // Calcular sumatoria y agregar registro a la tabla consumo_agua_anual
+                    $sumatoriaAnualCantidad = ConsumoDiesel::where('id_colegio', $idColegio)
+                        ->where('id_anio', $anio)
+                        ->sum('Cantidad_Anual');
+
+                    $sumatoriaAnualCombus = ConsumoDiesel::where('id_colegio', $idColegio)
+                        ->where('id_anio', $anio)
+                        ->sum('Combustible_m3_Anual');
+
+                    $sumatoriaAnualTon = ConsumoDiesel::where('id_colegio', $idColegio)
+                        ->where('id_anio', $anio)
+                        ->sum('Ton_CO2_m3_Anual');
+
+                    $sumatoriaAnualKGr = ConsumoDiesel::where('id_colegio', $idColegio)
+                        ->where('id_anio', $anio)
+                        ->sum('kGr_Co2_m3_Anual');
+
+                    $tablaAnual = new ConsumoDieselAnual();
+                    $tablaAnual->id_colegio = $idColegio;
+                    $tablaAnual->id_Anio = $anio;
+                    $tablaAnual->Cantidad_Anual = $sumatoriaAnualCantidad;
+                    $tablaAnual->Combustible_m3_Anual = $sumatoriaAnualCombus;
+                    $tablaAnual->Ton_CO2_m3_Anual =  $sumatoriaAnualTon;
+                    $tablaAnual->kGr_CO2_m3_Anual =  $sumatoriaAnualKGr;
+                    $tablaAnual->save();
+                }
+                else{
+                    ConsumoDieselAnual::where('id_colegio', $idColegio)
+                        ->where('id_anio', $anio)
+                        ->delete();
+                }
+                
                 return redirect('AñadirDatos')->with('successDiesel','Se ha añadido el registro del consumo de diesel correctamente!')->withInput();
             }
             else{
@@ -191,6 +237,38 @@ class DatosController extends Controller
                 $datos->Consumo_kWts = $consumo;
                 $datos->Ton_CO2 = number_format($toneladas, 3, '.', '');
                 $datos->save();
+ 
+                $mesesRegistrados = ConsumoEnergetico::where('id_colegio', $idColegio)
+                    ->where('id_anio', $anio)
+                    ->count();
+                //var_dump($mesesRegistrados);
+
+                if ($mesesRegistrados == 12) {
+                    ConsumoEnergeticoAnual::where('id_colegio', $idColegio)
+                        ->where('id_anio', $anio)
+                        ->delete();
+                    // Calcular sumatoria y agregar registro a la tabla consumo_agua_anual
+                    $sumatoriaAnualConsumo = ConsumoEnergetico::where('id_colegio', $idColegio)
+                        ->where('id_anio', $anio)
+                        ->sum('Consumo_kWts_Anual');
+
+                    $sumatoriaAnualTon = ConsumoEnergetico::where('id_colegio', $idColegio)
+                        ->where('id_anio', $anio)
+                        ->sum('Ton_CO2_Anual');
+
+                    $tablaAnual = new ConsumoEnergeticoAnual();
+                    $tablaAnual->id_colegio = $idColegio;
+                    $tablaAnual->id_Anio = $anio;
+                    $tablaAnual->Consumo_kWts_Anual = $sumatoriaAnualConsumo;
+                    $tablaAnual->Ton_CO2_Anual = $sumatoriaAnualTon;
+                    $tablaAnual->save();
+                }
+                else{
+                    ConsumoEnergeticoAnual::where('id_colegio', $idColegio)
+                        ->where('id_anio', $anio)
+                        ->delete();
+                }
+
                 return redirect('AñadirDatos')->with('successEnergia','Se ha añadido el registro del consumo de energia correctamente!')->withInput();
             }
             else{
@@ -241,6 +319,48 @@ class DatosController extends Controller
                 $datos->Ton_CO2_m3 = $Ton_CO2;
                 $datos->Km_CO2_m3 = $Kg_CO2;
                 $datos->save();
+                
+                $mesesRegistrados = ConsumoGasolina::where('id_colegio', $idColegio)
+                    ->where('id_anio', $anio)
+                    ->count();
+                //var_dump($mesesRegistrados);
+
+                if ($mesesRegistrados == 12) {
+                    ConsumoGasolinaAnual::where('id_colegio', $idColegio)
+                        ->where('id_anio', $anio)
+                        ->delete();
+                    // Calcular sumatoria y agregar registro a la tabla consumo_agua_anual
+                    $sumatoriaAnualCantidad = ConsumoGasolina::where('id_colegio', $idColegio)
+                        ->where('id_anio', $anio)
+                        ->sum('Cantidad');
+
+                    $sumatoriaAnualComb = ConsumoGasolina::where('id_colegio', $idColegio)
+                        ->where('id_anio', $anio)
+                        ->sum('Combustible_m3');
+
+                    $sumatoriaAnualTon = ConsumoGasolina::where('id_colegio', $idColegio)
+                        ->where('id_anio', $anio)
+                        ->sum('Ton_CO2_m3');
+
+                    $sumatoriaAnualKm = ConsumoGasolina::where('id_colegio', $idColegio)
+                        ->where('id_anio', $anio)
+                        ->sum('Km_CO2_m3');
+
+                    $tablaAnual = new ConsumoGasolinaAnual();
+                    $tablaAnual->id_colegio = $idColegio;
+                    $tablaAnual->id_Anio = $anio;
+                    $tablaAnual->Cantidad_Anual = $sumatoriaAnualCantidad;
+                    $tablaAnual->Combustible_m3_Anual = $sumatoriaAnualComb;
+                    $tablaAnual->Ton_CO2_m3_Anual = $sumatoriaAnualTon;
+                    $tablaAnual->Km_CO2_m3_Anual = $sumatoriaAnualKm;
+                    $tablaAnual->save();
+                }
+                else{
+                    ConsumoGasolinaAnual::where('id_colegio', $idColegio)
+                        ->where('id_anio', $anio)
+                        ->delete();
+                }
+
                 return redirect('AñadirDatos')->with('successGasolina','Se ha añadido el registro del consumo de gasolina correctamente!')->withInput();
             }
             else{
@@ -286,6 +406,38 @@ class DatosController extends Controller
                 $datos->Consumo_m3 = $consumo;
                 $datos->Ton_CO2 = $toneladas;
                 $datos->save();
+
+                $mesesRegistrados = ConsumoPapel::where('id_colegio', $idColegio)
+                    ->where('id_anio', $anio)
+                    ->count();
+                //var_dump($mesesRegistrados);
+
+                if ($mesesRegistrados == 12) {
+                    ConsumoPapelAnual::where('id_colegio', $idColegio)
+                        ->where('id_anio', $anio)
+                        ->delete();
+                    // Calcular sumatoria y agregar registro a la tabla consumo_agua_anual
+                    $sumatoriaAnualConsumo = ConsumoPapel::where('id_colegio', $idColegio)
+                        ->where('id_anio', $anio)
+                        ->sum('Consumo_m3');
+
+                    $sumatoriaAnualTon = ConsumoPapel::where('id_colegio', $idColegio)
+                        ->where('id_anio', $anio)
+                        ->sum('Ton_CO2');
+
+                    $tablaAnual = new ConsumoPapelAnual();
+                    $tablaAnual->id_colegio = $idColegio;
+                    $tablaAnual->id_Anio = $anio;
+                    $tablaAnual->Consumo_m3_Anual = $sumatoriaAnualConsumo;
+                    $tablaAnual->Ton_CO2_Anual = $sumatoriaAnualTon;
+                    $tablaAnual->save();
+                }
+                else{
+                    ConsumoPapelAnual::where('id_colegio', $idColegio)
+                        ->where('id_anio', $anio)
+                        ->delete();
+                }
+
                 return redirect('AñadirDatos')->with('successPapel','Se ha añadido el registro del consumo de papel correctamente!')->withInput();
             }
             else{
@@ -374,6 +526,9 @@ class DatosController extends Controller
         ->where('id_Anio', $id_Anio)
         ->where('Mes', $Mes)
         ->delete();
+        ConsumoAguaAnual::where('id_colegio', $id_colegio)
+                ->where('id_anio', $id_Anio)
+                ->delete();
         return redirect('VerDatosAgua')->with('successAgua','Se ha eliminado el registro correctamente')->withInput();
     }
 
@@ -384,6 +539,9 @@ class DatosController extends Controller
         ->where('id_Anio', $id_Anio)
         ->where('Mes', $Mes)
         ->delete();
+        ConsumoDieselAnual::where('id_colegio', $id_colegio)
+                ->where('id_anio', $id_Anio)
+                ->delete();
         return redirect('VerDatosDiesel')->with('successDiesel','Se ha eliminado el registro correctamente')->withInput();
     }
 
@@ -394,6 +552,9 @@ class DatosController extends Controller
         ->where('id_Anio', $id_Anio)
         ->where('Mes', $Mes)
         ->delete();
+        ConsumoEnergeticoAnual::where('id_colegio', $id_colegio)
+                ->where('id_anio', $id_Anio)
+                ->delete();
         return redirect('VerDatosEnergia')->with('successEnergia','Se ha eliminado el registro correctamente')->withInput();
     }
 
@@ -404,6 +565,9 @@ class DatosController extends Controller
         ->where('id_Anio', $id_Anio)
         ->where('Mes', $Mes)
         ->delete();
+        ConsumoGasolinaAnual::where('id_colegio', $id_colegio)
+                ->where('id_anio', $id_Anio)
+                ->delete();
         return redirect('VerDatosGas')->with('successGasolina','Se ha eliminado el registro correctamente')->withInput();
     }
 
@@ -414,6 +578,9 @@ class DatosController extends Controller
         ->where('id_Anio', $id_Anio)
         ->where('Mes', $Mes)
         ->delete();
+        ConsumoPapelAnual::where('id_colegio', $id_colegio)
+                ->where('id_anio', $id_Anio)
+                ->delete();
         return redirect('VerDatosPapel')->with('successPapel','Se ha eliminado el registro correctamente')->withInput();
     }
 

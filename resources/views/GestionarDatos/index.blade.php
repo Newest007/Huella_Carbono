@@ -23,7 +23,10 @@
         <!-- fin de breadcrumb -->
 
         <!-- INICIO DE CONTENIDO -->
-
+        <script>
+            var meses = @json($meses);
+            var consumo = @json($consumo);
+        </script>
         <div class="mt-3">
             <div class="row mb-4">
                 <div class="col-4"></div>
@@ -123,12 +126,10 @@
                                 </div>
                             </div>
                             <div id="support-chart1"></div>
+                            <div id="chart"></div>
                         </div>
                     </div>
                 </div>
-
-
-
         </div>
 
 

@@ -73,19 +73,17 @@ function floatchart() {
                 }
             },
             series: [{
-                data: [25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54, 44, 12, 36, 9, 54, 25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 25, 44, 12, 36, 9, 54]
+                data: consumo
             }],
             xaxis: {
-                crosshairs: {
-                    width: 1
-                },
+                categories: meses
             },
             tooltip: {
                 fixed: {
                     enabled: false
                 },
                 x: {
-                    show: false
+                    show: true
                 },
                 y: {
                     title: {
@@ -95,7 +93,7 @@ function floatchart() {
                     }
                 },
                 marker: {
-                    show: false
+                    show: true
                 }
             }
         }
@@ -108,12 +106,8 @@ function floatchart() {
             var options = {
                 chart: {
                     height: 350,
-                    type: 'line',
+                    type: 'bar',
                     stacked: false,
-                },
-                stroke: {
-                    width: [0, 3],
-                    curve: 'smooth'
                 },
                 plotOptions: {
                     bar: {
@@ -122,23 +116,19 @@ function floatchart() {
                 },
                 colors: ['#7267EF', '#c7d9ff'],
                 series: [{
-                    name: 'Total Sales',
+                    name: 'Consumo Total',
                     type: 'column',
-                    data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30]
-                }, {
-                    name: 'Average',
-                    type: 'line',
-                    data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39]
+                    data: consumo
                 }],
                 fill: {
                     opacity: [0.85, 1],
                 },
-                labels: ['01/01/2003', '02/01/2003', '03/01/2003', '04/01/2003', '05/01/2003', '06/01/2003', '07/01/2003', '08/01/2003', '09/01/2003', '10/01/2003', '11/01/2003'],
                 markers: {
                     size: 0
                 },
                 xaxis: {
-                    type: 'datetime'
+                    categories: meses
+                    //type: 'datetime'
                 },
                 yaxis: {
                     min: 0
@@ -149,7 +139,7 @@ function floatchart() {
                     y: {
                         formatter: function(y) {
                             if (typeof y !== "undefined") {
-                                return "$ " +y.toFixed(0);
+                                return "" +y.toFixed(0);
                             }
                             return y;
 
@@ -223,4 +213,25 @@ function floatchart() {
         chart.render();
     });
     // [ satisfaction-chart ] end
+    $(function() {
+        var options = {
+            series: [{
+            name: 'Series 1',
+            data: consumo,
+          }],
+            chart: {
+            height: 350,
+            type: 'radar',
+          },
+          title: {
+            text: 'Basic Radar Chart'
+          },
+          xaxis: {
+            categories: meses
+          }
+          };
+  
+          var chart = new ApexCharts(document.querySelector("#chart"), options);
+          chart.render();
+    });
 }

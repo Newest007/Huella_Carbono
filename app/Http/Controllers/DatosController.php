@@ -23,7 +23,20 @@ class DatosController extends Controller
 {
     public function index()
     {
-        return view('GestionarDatos.index');
+        $nombre = session('nombre');
+        $colegio = User::where('nombre',$nombre)->get();
+        $idColegio = $colegio[0]->id_colegio;
+        $datosConsumo = ConsumoAgua::where('id_colegio', $idColegio)->where('id_Anio','2024')->get();
+
+        $meses = $datosConsumo->pluck('Mes');
+        $consumo = $datosConsumo->pluck('Consumo_m3');
+        
+        // Pasar datos a la vista
+        return view('GestionarDatos.index', [
+            'meses' => $meses,
+            'consumo' => $consumo,
+        ]);
+        //return view('GestionarDatos.index', compact('datosConsumo'));
     }
 
     public function create()

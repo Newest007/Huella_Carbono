@@ -70,7 +70,7 @@
                                 <div class="col-xxl-4 col-sm-12">
                                     <label for="year" class="form-label">Año</label>
                                     <div class="input-group flex-nowrap">
-                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">person</i></span>
+                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">calendar_today</i></span>
                                         <select class="form-select" aria-label="Default select example" id="anioAgua" name="anioAgua">
                                             <option selected>2024</option>
                                             <option>2022</option>
@@ -82,7 +82,7 @@
                                 <div class="col-xxl-4 col-sm-12">
                                     <label for="userName" class="form-label">Mes</label>
                                     <div class="input-group flex-nowrap">
-                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">person</i></span>
+                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">calendar_today</i></span>
                                         <select id="mesAgua" name="mesAgua" class="form-select" aria-label="Default select example">
                                             <option selected>Enero</option>
                                             <option>Febrero</option>
@@ -102,7 +102,7 @@
                                 <div class="col-xxl-4 col-sm-12">
                                     <label for="userLastName" class="form-label">Consumo (Metros cúbicos) Ej: 600</label>
                                     <div class="input-group flex-nowrap">
-                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">group</i></span>
+                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">add</i></span>
                                         <input type="number" class="form-control" id="consumoAgua" name="consumoAgua" value="{{old('consumoAgua')}}">
                                     </div>
                                 </div>
@@ -143,7 +143,7 @@
                                 <div class="col-xxl-4 col-sm-12">
                                     <label for="year" class="form-label">Año</label>
                                     <div class="input-group flex-nowrap">
-                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">person</i></span>
+                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">calendar_today</i></span>
                                         <select id="anioDiesel" name="anioDiesel" class="form-select" aria-label="Default select example">
                                             <option selected>2024</option>
                                             <option>2022</option>
@@ -155,7 +155,7 @@
                                 <div class="col-xxl-4 col-sm-12">
                                     <label for="userName" class="form-label">Mes</label>
                                     <div class="input-group flex-nowrap">
-                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">person</i></span>
+                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">calendar_today</i></span>
                                         <select id="mesDiesel" name="mesDiesel" class="form-select" aria-label="Default select example">
                                             <option selected>Enero</option>
                                             <option>Febrero</option>
@@ -175,7 +175,7 @@
                                 <div class="col-xxl-4 col-sm-12">
                                     <label for="userLastName" class="form-label">Cantidad (Galones) Ej: 50</label>
                                     <div class="input-group flex-nowrap">
-                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">group</i></span>
+                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">add</i></span>
                                         <input type="number" class="form-control" id="consumoDiesel" name="consumoDiesel" value="{{old('consumoDiesel')}}">
                                     </div>
                                 </div>
@@ -208,7 +208,7 @@
                                 <div class="col-xxl-4 col-sm-12">
                                     <label for="year" class="form-label">Año</label>
                                     <div class="input-group flex-nowrap">
-                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">person</i></span>
+                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">calendar_today</i></span>
                                         <select id="anioEnergia" name="anioEnergia" class="form-select" aria-label="Default select example">
                                             <option selected>2024</option>
                                             <option>2022</option>
@@ -220,7 +220,7 @@
                                 <div class="col-xxl-4 col-sm-12">
                                     <label for="userName" class="form-label">Mes</label>
                                     <div class="input-group flex-nowrap">
-                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">person</i></span>
+                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">calendar_today</i></span>
                                         <select id="mesEnergia" name="mesEnergia" class="form-select" aria-label="Default select example">
                                             <option selected>Enero</option>
                                             <option>Febrero</option>
@@ -240,7 +240,7 @@
                                 <div class="col-xxl-4 col-sm-12">
                                     <label for="userLastName" class="form-label">Consumo (Kw/h) Ej: 300.50</label>
                                     <div class="input-group flex-nowrap">
-                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">group</i></span>
+                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">add</i></span>
                                         <input type="decimal" class="form-control" id="consumoEnergia" name="consumoEnergia" value="{{old('consumoEnergia')}}">
                                     </div>
                                 </div>
@@ -273,7 +273,7 @@
                                 <div class="col-xxl-4 col-sm-12">
                                     <label for="year" class="form-label">Año</label>
                                     <div class="input-group flex-nowrap">
-                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">person</i></span>
+                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">calendar_today</i></span>
                                         <select id="anioGasolina" name="anioGasolina" class="form-select" aria-label="Default select example">
                                             <option selected>2024</option>
                                             <option>2022</option>
@@ -285,7 +285,7 @@
                                 <div class="col-xxl-4 col-sm-12">
                                     <label for="userName" class="form-label">Mes</label>
                                     <div class="input-group flex-nowrap">
-                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">person</i></span>
+                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">calendar_today</i></span>
                                         <select id="mesGasolina" name="mesGasolina" class="form-select" aria-label="Default select example">
                                             <option selected>Enero</option>
                                             <option>Febrero</option>
@@ -305,7 +305,7 @@
                                 <div class="col-xxl-4 col-sm-12">
                                     <label for="userLastName" class="form-label">Cantidad (Galones) Ej: 85</label>
                                     <div class="input-group flex-nowrap">
-                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">group</i></span>
+                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">add</i></span>
                                         <input type="number" class="form-control" id="consumoGasolina" name="consumoGasolina" value="{{old('consumoGasolina')}}">
                                     </div>
                                 </div>
@@ -339,7 +339,7 @@
                                 <div class="col-xxl-4 col-sm-12">
                                     <label for="year" class="form-label">Año</label>
                                     <div class="input-group flex-nowrap">
-                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">person</i></span>
+                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">calendar_today</i></span>
                                         <select id="anioPapel" name="anioPapel" class="form-select" aria-label="Default select example">
                                             <option selected>2024</option>
                                             <option>2022</option>
@@ -351,7 +351,7 @@
                                 <div class="col-xxl-4 col-sm-12">
                                     <label for="mesPapel" class="form-label">Mes</label>
                                     <div class="input-group flex-nowrap">
-                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">person</i></span>
+                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">calendar_today</i></span>
                                         <select id="mesPapel" name="mesPapel" class="form-select" aria-label="Default select example">
                                             <option selected>Enero</option>
                                             <option>Febrero</option>
@@ -371,7 +371,7 @@
                                 <div class="col-xxl-4 col-sm-12">
                                     <label for="consumoPapel" class="form-label">Consumo (Toneladas) Ej: 50</label>
                                     <div class="input-group flex-nowrap">
-                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">group</i></span>
+                                        <span class="input-group-text" id="addon-wrapping"><i class="material-icons-two-tone">add</i></span>
                                         <input type="number" class="form-control" id="consumoPapel" name="consumoPapel" value="{{old('consumoPapel')}}">
                                     </div>
                                 </div>

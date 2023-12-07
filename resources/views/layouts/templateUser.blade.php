@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{asset('fonts/feather.css')}}">
     <link rel="stylesheet" href="{{asset('fonts/fontawesome.css')}}">
     <link rel="stylesheet" href="{{asset('fonts/material.css')}}">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     
     <!-- vendor css -->
     <link rel="stylesheet" href="{{asset('css/style.css')}}" id="main-style-link">
@@ -80,6 +81,9 @@
 					</li>
 					<li class="pc-item">
 						<a href="VerDatosAguaC" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Ver datos</span></a>
+					</li>
+					<li class="pc-item">
+						<a href="GenerarReporteDosC" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">note_add</i></span><span class="pc-mtext">Generar reporte</span></a>
 					</li>
 					<li class="pc-item pc-caption">
 						<label>Gestionar Inventario</label>

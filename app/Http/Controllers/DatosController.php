@@ -29,7 +29,7 @@ class DatosController extends Controller
         $datosConsumo = ConsumoAgua::where('id_colegio', $idColegio)->where('id_Anio','2024')->get();
 
         $meses = $datosConsumo->pluck('Mes');
-        $consumo = $datosConsumo->pluck('Consumo_m3');
+        $consumo = $datosConsumo->pluck('Consumo_m3'); 
         
         // Pasar datos a la vista
         return view('GestionarDatos.index', [
@@ -512,6 +512,29 @@ class DatosController extends Controller
         $viewBag['consumoPapel'] = DB::table('consumo_papel')->join('colegio','colegio.id_colegio','=','consumo_papel.id_colegio')->get();
         return view('GestionarDatos.tablaDatos.datosPapel',$viewBag);
     }
+
+    public function showReporte22()
+    {
+        $viewBag = array();
+        $viewBag['consumoPapel'] = DB::table('consumo_papel')->join('colegio','colegio.id_colegio','=','consumo_papel.id_colegio')->get();
+        return view('GestionarDatos.reportes.reportes22',$viewBag);
+    }
+
+    public function showReporte23()
+    {
+        return view('GestionarDatos.reportes.reportes23');
+    }
+
+    public function showReporte24()
+    {
+        return view('GestionarDatos.reportes.reportes24');
+    }
+
+    public function showReporte25()
+    {
+        return view('GestionarDatos.reportes.reportes25');
+    }
+
 
 
     /**

@@ -44,6 +44,12 @@ Route::get('VerDatosEnergia',[DatosController::class,'showEnergia'])->middleware
 Route::get('VerDatosGas',[DatosController::class,'showGas'])->middleware('auth');
 Route::get('VerDatosPapel',[DatosController::class,'showPapel'])->middleware('auth');
 
+Route::view('GenerarReporteDos','GestionarDatos.reportes.reportes22')->middleware('auth');
+Route::view('GenerarReporteTres','GestionarDatos.reportes.reportes23')->middleware('auth');
+Route::view('GenerarReporteCuatro','GestionarDatos.reportes.reportes24')->middleware('auth');
+Route::view('GenerarReporteCinco','GestionarDatos.reportes.reportes25')->middleware('auth');
+
+
 Route::view('VerGraficas','GestionarDatos.index')->middleware('auth');
 Route::view('AñadirDatos','GestionarDatos.añadirDatos')->middleware('auth');
 
@@ -86,6 +92,11 @@ Route::post('/datosEnergiaC',[DatosControllerUser::class,'storeEnergia'])->name(
 Route::post('/datosGasolinaC',[DatosControllerUser::class,'storeGasolina'])->name('datosC.storeGasolina')->middleware('auth');
 Route::post('/datosPapelC',[DatosControllerUser::class,'storePapel'])->name('datosC.storePapel')->middleware('auth');
 
+Route::view('GenerarReporteDosC','GestionarDatos.reportes.reportes22C')->middleware('auth');
+Route::view('GenerarReporteTresC','GestionarDatos.reportes.reportes23C')->middleware('auth');
+Route::view('GenerarReporteCuatroC','GestionarDatos.reportes.reportes24C')->middleware('auth');
+Route::view('GenerarReporteCincoC','GestionarDatos.reportes.reportes25C')->middleware('auth');
+
 
 //ELIMINAR REGISTROS
 Route::delete('/datosAguaC/{id_colegio}/{id_Anio}/{Mes}',[DatosControllerUser::class,'destroyAgua'])->name('datosAguaC.destroy')->middleware('auth');
@@ -102,6 +113,8 @@ Route::view('AñadirInventarioC','GestionarInventarios.añadirInventariosColegio
 
 Route::view('verDefault','layouts.defaultpage')->middleware('auth');
 Route::view('verColegio','GestionarDatos.indexColegio')->middleware('auth');
+
+//GENERAR REPORTE
 
 
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');

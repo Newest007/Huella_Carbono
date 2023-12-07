@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{asset('fonts/feather.css')}}">
     <link rel="stylesheet" href="{{asset('fonts/fontawesome.css')}}">
     <link rel="stylesheet" href="{{asset('fonts/material.css')}}">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     
     <!-- vendor css -->
     <link rel="stylesheet" href="{{asset('css/style.css')}}" id="main-style-link">
@@ -63,7 +64,7 @@
 	<nav class="pc-sidebar ">
 		<div class="navbar-wrapper">
 			<div class="m-header">
-				<a href="index" class="b-brand" style="color:white">
+				<a href="datos" class="b-brand" style="color:white">
 					<img src="{{asset('assets/dbga logo square.png')}}"width="40" height="40">  Don Bosco Green Alliance
 				</a>
 			</div>
@@ -79,18 +80,23 @@
 						<a href="VerUsuarios" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">person_search</i></span><span class="pc-mtext">Visualizar</span></a>
 					</li>
 					<li class="pc-item pc-caption">
-						<label>Gestionar datos</label>
+						<label>Gestionar datos /</label>
+						<label>Generación de reporte </label>
 					</li>
 					<li class="pc-item">
-						<a href="datos" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">dashboard</i></span><span class="pc-mtext">Graficas</span></a>
+						<a href="datos" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">leaderboard</i></span><span class="pc-mtext">Graficas</span></a>
 					</li>
 					<li class="pc-item">
-						<a href="AñadirDatos" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Registrar datos</span></a>
+						<a href="AñadirDatos" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">add</i></span><span class="pc-mtext">Registrar datos</span></a>
 					</li>
 					<li class="pc-item">
-						<a href="VerDatosAgua" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Ver datos</span></a>
+						<a href="VerDatosAgua" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">table_chart</i></span><span class="pc-mtext">Ver datos</span></a>
 					</li>
-					<li class="pc-item pc-caption"> 
+					<li class="pc-item">
+						<a href="GenerarReporteDos" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">note_add</i></span><span class="pc-mtext">Generar reporte</span></a>
+					</li>
+
+					<li class="pc-item pc-caption">
 						<label>Gestionar Inventario</label>
 					</li>
 					<li class="pc-item">

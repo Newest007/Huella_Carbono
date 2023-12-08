@@ -53,6 +53,13 @@ Route::view('GenerarReporteCinco','GestionarDatos.reportes.reportes25')->middlew
 Route::view('VerGraficas','GestionarDatos.index')->middleware('auth');
 Route::view('AñadirDatos','GestionarDatos.añadirDatos')->middleware('auth');
 
+Route::view('GraficaDB','GestionarDatos.graficas.GColegioDB')->middleware('auth');
+Route::view('GraficaSC','GestionarDatos.graficas.GColegioSC')->middleware('auth');
+Route::view('GraficaSJ','GestionarDatos.graficas.GColegioSJ')->middleware('auth');
+Route::view('GraficaMA','GestionarDatos.graficas.GColegioMA')->middleware('auth');
+
+
+
 Route::post('/datosAgua',[DatosController::class,'storeAgua'])->name('datos.storeAgua')->middleware('auth');
 Route::post('/datosDiesel',[DatosController::class,'storeDiesel'])->name('datos.storeDiesel')->middleware('auth');
 Route::post('/datosEnergia',[DatosController::class,'storeEnergia'])->name('datos.storeEnergia')->middleware('auth');

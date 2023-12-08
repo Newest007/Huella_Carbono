@@ -23,27 +23,32 @@
         <!-- fin de breadcrumb -->
 
         <!-- INICIO DE CONTENIDO -->
-        <script>
-            var meses = @json($meses);
-            var consumo = @json($consumo);
-        </script>
         <div class="mt-3">
             <div class="row mb-4">
-                <div class="col-4"></div>
-                <div class="col-3">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Selecciones un año</option>
-                        <option>2022</option>
-                        <option>2023</option>
-                        <option>2023</option>
-                    </select>
-                </div>
+            <form method="POST" action="{{route('datos.mostrarGrafica')}}">
+                @csrf
+                    <div class="col-4"></div>
+                        <div class="col-3">
+                            <select id="colegio" name="colegio" class="form-select">
+                                <option selected>Seleccione un colegio</option>
+                                @foreach($colegios as $colegio)
+                                    <option value="{{$colegio->Nombre}}">{{$colegio->Nombre}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    <button type="submit" class="btn btn-primary mt-3">Ver Gráfica</button>
+                </form>
             </div>
+            @if($meses !== null)
+            <script>
+                var meses = @json($meses);
+                var consumo = @json($consumo);
+            </script>
             <div class="row ">
                 <div class="col-xl-6 col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <center><h5>GRAFICA DE MUESTRAAAA</h5></center>
+                            <center><h5>Graficas de {{$colegioSeleccionado}}</h5></center>
                         </div>
                         <div class="card-body">
                             <div class="row pb-2">
@@ -130,6 +135,7 @@
                         </div>
                     </div>
                 </div>
+            @endif
         </div>
 
 

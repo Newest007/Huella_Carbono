@@ -23,25 +23,55 @@ class DatosController extends Controller
 {
     public function index()
     {
-        $nombre = session('nombre');
-        $colegio = User::where('nombre',$nombre)->get();
-        $idColegio = $colegio[0]->id_colegio;
-        $datosConsumo = ConsumoAgua::where('id_colegio', $idColegio)->where('id_Anio','2024')->get();
-
-        $meses = $datosConsumo->pluck('Mes');
-        $consumo = $datosConsumo->pluck('Consumo_m3'); 
-        
-        // Pasar datos a la vista
-        return view('GestionarDatos.index', [
-            'meses' => $meses,
-            'consumo' => $consumo,
-        ]);
-        //return view('GestionarDatos.index', compact('datosConsumo'));
+        $viewBag = array();
+        $viewBag['meses']=null;
+        $viewBag['colegios'] = Colegio::get();
+        return view('GestionarDatos.index', $viewBag);
     }
 
-    public function create()
+    public function mostrarGrafica(Request $request)
     {
-        
+        if($request->input('colegio') != 'Seleccione un colegio'){
+
+            $viewBag = array();
+            $viewBag['colegios'] = Colegio::get();
+            $viewBag['colegioSeleccionado'] = $request->input('colegio');
+            $colegioSeleccionado = $request->input('colegio');
+            $colegio = json_decode(Colegio::where('Nombre',$colegioSeleccionado)->get());
+            $idColegio = $colegio[0]->id_colegio;
+            $datosConsumo = ConsumoAgua::where('id_colegio', $idColegio)->where('id_Anio','2024')->get();
+
+            $ordenMeses = [
+                'enero' => 1,
+                'febrero' => 2,
+                'marzo' => 3,
+                'abril' => 4,
+                'mayo' => 5,
+                'junio' => 6,
+                'julio' => 7,
+                'agosto' => 8,
+                'septiembre' => 9,
+                'octubre' => 10,
+                'noviembre' => 11,
+                'diciembre' => 12,
+            ];
+
+            $datosConsumo = $datosConsumo->sortBy(function ($registro) use ($ordenMeses) {
+                return $ordenMeses[strtolower($registro->Mes)];
+            });
+
+            $meses = $datosConsumo->pluck('Mes');
+            $consumo = $datosConsumo->pluck('Consumo_m3');
+            
+            return view('GestionarDatos.index', [
+                'meses' => $meses,
+                'consumo' => $consumo,
+            ], $viewBag);
+
+        }
+        else{
+            return redirect('datos');
+        }
     }
 
     public function storeAgua(Request $request)

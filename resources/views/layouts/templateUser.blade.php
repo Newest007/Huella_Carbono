@@ -82,6 +82,9 @@
 					<li class="pc-item">
 						<a href="VerDatosAguaC" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Ver datos</span></a>
 					</li>
+					<li class="pc-item pc-caption">
+						<label>Generación de reporte </label>
+					</li>
 					<li class="pc-item">
 						<a href="GenerarReporteDosC" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">note_add</i></span><span class="pc-mtext">Generar reporte</span></a>
 					</li>

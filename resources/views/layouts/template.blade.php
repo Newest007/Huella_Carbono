@@ -80,8 +80,7 @@
 						<a href="VerUsuarios" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">person_search</i></span><span class="pc-mtext">Visualizar</span></a>
 					</li>
 					<li class="pc-item pc-caption">
-						<label>Gestionar datos /</label>
-						<label>Generación de reporte </label>
+						<label>Gestionar datos</label>
 					</li>
 					<li class="pc-item">
 						<a href="datos" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">leaderboard</i></span><span class="pc-mtext">Graficas</span></a>
@@ -91,6 +90,9 @@
 					</li>
 					<li class="pc-item">
 						<a href="VerDatosAgua" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">table_chart</i></span><span class="pc-mtext">Ver datos</span></a>
+					</li>
+					<li class="pc-item pc-caption">
+						<label>Generación de reporte </label>
 					</li>
 					<li class="pc-item">
 						<a href="GenerarReporteDos" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">note_add</i></span><span class="pc-mtext">Generar reporte</span></a>

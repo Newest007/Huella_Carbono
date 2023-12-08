@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.templateUser')
 @section('content')
 @section('title','Gestionar Datos')
 @csrf

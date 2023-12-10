@@ -83,7 +83,7 @@
 						<label>Gestionar datos</label>
 					</li>
 					<li class="pc-item">
-						<a href="GraficaDB" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">leaderboard</i></span><span class="pc-mtext">Graficas</span></a>
+						<a href="datos" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">leaderboard</i></span><span class="pc-mtext">Graficas</span></a>
 					</li>
 					<li class="pc-item">
 						<a href="AñadirDatos" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">add</i></span><span class="pc-mtext">Registrar datos</span></a>

@@ -24,23 +24,15 @@ class DatosController extends Controller
     public function index()
     {
         $viewBag = array();
-        $viewBag['meses']=null;
-        $viewBag['colegios'] = Colegio::get();
-        return view('GestionarDatos.index', $viewBag);
+        $viewBag['anioSeleccionado']=null;
+        return view('GestionarDatos.graficas.GColegioDB', $viewBag);
     }
 
-    public function mostrarGrafica(Request $request)
+    public function mostrarGraficaDB(Request $request)
     {
-        if($request->input('colegio') != 'Seleccione un colegio'){
+        if($request->input('anio') != 'Seleccione un año'){
 
-            $viewBag = array();
-            $viewBag['colegios'] = Colegio::get();
-            $viewBag['colegioSeleccionado'] = $request->input('colegio');
-            $colegioSeleccionado = $request->input('colegio');
-            $colegio = json_decode(Colegio::where('Nombre',$colegioSeleccionado)->get());
-            $idColegio = $colegio[0]->id_colegio;
-            $datosConsumo = ConsumoAgua::where('id_colegio', $idColegio)->where('id_Anio','2024')->get();
-
+            $anio = $request->input('anio');
             $ordenMeses = [
                 'enero' => 1,
                 'febrero' => 2,
@@ -55,18 +47,63 @@ class DatosController extends Controller
                 'noviembre' => 11,
                 'diciembre' => 12,
             ];
-
-            $datosConsumo = $datosConsumo->sortBy(function ($registro) use ($ordenMeses) {
+            
+            //Consumo Agua
+            $datosConsumoAgua = ConsumoAgua::where('id_colegio', 'CDB002')->where('id_Anio',$anio)->get();
+            $datosConsumoAgua = $datosConsumoAgua->sortBy(function ($registro) use ($ordenMeses) {
                 return $ordenMeses[strtolower($registro->Mes)];
             });
+            $mesesAgua = $datosConsumoAgua->pluck('Mes');
+            $consumoAgua = $datosConsumoAgua->pluck('Consumo_m3');
 
-            $meses = $datosConsumo->pluck('Mes');
-            $consumo = $datosConsumo->pluck('Consumo_m3');
+            //Consumo Diesel
+            $datosConsumoDiesel = ConsumoDiesel::where('id_colegio', 'CDB002')->where('id_Anio',$anio)->get();
+            $datosConsumoDiesel = $datosConsumoDiesel->sortBy(function ($registro) use ($ordenMeses) {
+                return $ordenMeses[strtolower($registro->Mes)];
+            });
+            $mesesDiesel = $datosConsumoDiesel->pluck('Mes');
+            $consumoDiesel = $datosConsumoDiesel->pluck('Cantidad');
+
+            //Consumo Energetico
+            $datosConsumoEner = ConsumoEnergetico::where('id_colegio', 'CDB002')->where('id_Anio',$anio)->get();
+            $datosConsumoEner = $datosConsumoEner->sortBy(function ($registro) use ($ordenMeses) {
+                return $ordenMeses[strtolower($registro->Mes)];
+            });
+            $mesesEner = $datosConsumoEner->pluck('Mes');
+            $consumoEner = $datosConsumoEner->pluck('Consumo_kWts');
             
-            return view('GestionarDatos.index', [
-                'meses' => $meses,
-                'consumo' => $consumo,
-            ], $viewBag);
+            //Consumo Gas
+            $datosConsumoGas = ConsumoGasolina::where('id_colegio', 'CDB002')->where('id_Anio',$anio)->get();
+            $datosConsumoGas = $datosConsumoGas->sortBy(function ($registro) use ($ordenMeses) {
+                return $ordenMeses[strtolower($registro->Mes)];
+            });
+            $mesesGas = $datosConsumoGas->pluck('Mes');
+            $consumoGas = $datosConsumoGas->pluck('Cantidad');
+
+            //Consumo Papel
+            $datosConsumoPapel = ConsumoPapel::where('id_colegio', 'CDB002')->where('id_Anio',$anio)->get();
+            $datosConsumoPapel = $datosConsumoPapel->sortBy(function ($registro) use ($ordenMeses) {
+                return $ordenMeses[strtolower($registro->Mes)];
+            });
+            $mesesPapel = $datosConsumoPapel->pluck('Mes');
+            $consumoPapel = $datosConsumoPapel->pluck('Consumo_m3');
+
+
+            
+            
+            return view('GestionarDatos.graficas.GColegioDB', [
+                'anioSeleccionado' =>$anio,
+                'mesesAgua' => $mesesAgua,
+                'consumoAgua' => $consumoAgua,
+                'mesesDiesel' => $mesesDiesel,
+                'consumoDiesel' => $consumoDiesel,
+                'mesesEner' => $mesesEner,
+                'consumoEner' => $consumoEner,
+                'mesesGas' => $mesesGas,
+                'consumoGas' => $consumoGas,
+                'mesesPapel' => $mesesPapel,
+                'consumoPapel' => $consumoPapel,
+            ]);
 
         }
         else{

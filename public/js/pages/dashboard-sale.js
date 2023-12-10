@@ -100,7 +100,7 @@ function floatchart() {
         new ApexCharts(document.querySelector("#support-chart1"), options2).render();
     });
     // [ support-chart ] end
-    // [ account-chart ] start
+    // [ Consumo de Agua ] start
     $(function() {
         $(function() {
             var options = {
@@ -118,7 +118,7 @@ function floatchart() {
                 series: [{
                     name: 'Consumo Total',
                     type: 'column',
-                    data: consumo
+                    data: consumoAgua
                 }],
                 fill: {
                     opacity: [0.85, 1],
@@ -127,7 +127,7 @@ function floatchart() {
                     size: 0
                 },
                 xaxis: {
-                    categories: meses
+                    categories: mesesAgua
                     //type: 'datetime'
                 },
                 yaxis: {
@@ -163,13 +163,364 @@ function floatchart() {
                 }
             }
             var chart = new ApexCharts(
-                document.querySelector("#account-chart"),
+                document.querySelector("#consumo-agua"),
                 options
             );
             chart.render();
         });
     });
-    // [ account-chart ] end
+    // [ Consumo de Agua ] end
+
+    // [ Consumo de Diesel ] start
+    $(function() {
+        $(function() {
+            var options = {
+                chart: {
+                    height: 350,
+                    type: 'bar',
+                    stacked: false,
+                },
+                plotOptions: {
+                    bar: {
+                        columnWidth: '50%'
+                    }
+                },
+                colors: ['#7267EF', '#c7d9ff'],
+                series: [{
+                    name: 'Consumo Total',
+                    type: 'column',
+                    data: consumoDiesel
+                }],
+                fill: {
+                    opacity: [0.85, 1],
+                },
+                markers: {
+                    size: 0
+                },
+                xaxis: {
+                    categories: mesesDiesel
+                    //type: 'datetime'
+                },
+                yaxis: {
+                    min: 0
+                },
+                tooltip: {
+                    shared: true,
+                    intersect: false,
+                    y: {
+                        formatter: function(y) {
+                            if (typeof y !== "undefined") {
+                                return "" +y.toFixed(0);
+                            }
+                            return y;
+
+                        }
+                    }
+                },
+                legend: {
+                    labels: {
+                        useSeriesColors: true
+                    },
+                    markers: {
+                        customHTML: [
+                            function() {
+                                return ''
+                            },
+                            function() {
+                                return ''
+                            }
+                        ]
+                    }
+                }
+            }
+            var chart = new ApexCharts(
+                document.querySelector("#consumo-diesel"),
+                options
+            );
+            chart.render();
+        });
+    });
+    // [ Consumo de Diesel ] end
+
+    // [ Consumo de Energia ] start
+    $(function() {
+        $(function() {
+            var options = {
+                chart: {
+                    height: 350,
+                    type: 'bar',
+                    stacked: false,
+                },
+                plotOptions: {
+                    bar: {
+                        columnWidth: '50%'
+                    }
+                },
+                colors: ['#7267EF', '#c7d9ff'],
+                series: [{
+                    name: 'Consumo Total',
+                    type: 'column',
+                    data: consumoEner
+                }],
+                fill: {
+                    opacity: [0.85, 1],
+                },
+                markers: {
+                    size: 0
+                },
+                xaxis: {
+                    categories: mesesEner
+                    //type: 'datetime'
+                },
+                yaxis: {
+                    min: 0
+                },
+                tooltip: {
+                    shared: true,
+                    intersect: false,
+                    y: {
+                        formatter: function(y) {
+                            if (typeof y !== "undefined") {
+                                return "" +y.toFixed(0);
+                            }
+                            return y;
+
+                        }
+                    }
+                },
+                legend: {
+                    labels: {
+                        useSeriesColors: true
+                    },
+                    markers: {
+                        customHTML: [
+                            function() {
+                                return ''
+                            },
+                            function() {
+                                return ''
+                            }
+                        ]
+                    }
+                }
+            }
+            var chart = new ApexCharts(
+                document.querySelector("#consumo-ener"),
+                options
+            );
+            chart.render();
+        });
+    });
+    // [ Consumo de Energia ] end
+
+    
+    // [ Consumo de Gas ] start
+    $(function() {
+        $(function() {
+            var options = {
+                chart: {
+                    height: 350,
+                    type: 'bar',
+                    stacked: false,
+                },
+                plotOptions: {
+                    bar: {
+                        columnWidth: '50%'
+                    }
+                },
+                colors: ['#7267EF', '#c7d9ff'],
+                series: [{
+                    name: 'Consumo Total',
+                    type: 'column',
+                    data: consumoGas
+                }],
+                fill: {
+                    opacity: [0.85, 1],
+                },
+                markers: {
+                    size: 0
+                },
+                xaxis: {
+                    categories: mesesGas
+                    //type: 'datetime'
+                },
+                yaxis: {
+                    min: 0
+                },
+                tooltip: {
+                    shared: true,
+                    intersect: false,
+                    y: {
+                        formatter: function(y) {
+                            if (typeof y !== "undefined") {
+                                return "" +y.toFixed(0);
+                            }
+                            return y;
+
+                        }
+                    }
+                },
+                legend: {
+                    labels: {
+                        useSeriesColors: true
+                    },
+                    markers: {
+                        customHTML: [
+                            function() {
+                                return ''
+                            },
+                            function() {
+                                return ''
+                            }
+                        ]
+                    }
+                }
+            }
+            var chart = new ApexCharts(
+                document.querySelector("#consumo-gas"),
+                options
+            );
+            chart.render();
+        });
+    });
+    // [ Consumo de Gas ] end
+    
+    // [ Consumo de Papel ] start
+    $(function() {
+        $(function() {
+            var options = {
+                chart: {
+                    height: 350,
+                    type: 'bar',
+                    stacked: false,
+                },
+                plotOptions: {
+                    bar: {
+                        columnWidth: '50%'
+                    }
+                },
+                colors: ['#7267EF', '#c7d9ff'],
+                series: [{
+                    name: 'Consumo Total',
+                    type: 'column',
+                    data: consumoPapel
+                }],
+                fill: {
+                    opacity: [0.85, 1],
+                },
+                markers: {
+                    size: 0
+                },
+                xaxis: {
+                    categories: mesesPapel
+                    //type: 'datetime'
+                },
+                yaxis: {
+                    min: 0
+                },
+                tooltip: {
+                    shared: true,
+                    intersect: false,
+                    y: {
+                        formatter: function(y) {
+                            if (typeof y !== "undefined") {
+                                return "" +y.toFixed(0);
+                            }
+                            return y;
+
+                        }
+                    }
+                },
+                legend: {
+                    labels: {
+                        useSeriesColors: true
+                    },
+                    markers: {
+                        customHTML: [
+                            function() {
+                                return ''
+                            },
+                            function() {
+                                return ''
+                            }
+                        ]
+                    }
+                }
+            }
+            var chart = new ApexCharts(
+                document.querySelector("#consumo-papel"),
+                options
+            );
+            chart.render();
+        });
+    });
+    // [ Consumo de Energia ] end
+    // [ Consumo Anual ] start
+    $(function() {
+        $(function() {
+            var options = {
+                series: [{
+                name: 'Consumo Agua',
+                data: consumoAgua
+              }, {
+                name: 'Consumo Diesel',
+                data: consumoDiesel
+              }, {
+                name: 'Consumo Energia',
+                data: consumoEner
+              }, {
+                name: 'Consumo Gasolina',
+                data: consumoGas
+              }, {
+                name: 'Consumo Papel',
+                data: consumoPapel
+              }
+            ],
+                chart: {
+                type: 'bar',
+                height: 350
+              },
+              plotOptions: {
+                bar: {
+                  horizontal: false,
+                  columnWidth: '55%',
+                  //endingShape: 'rounded'
+                },
+              },
+              dataLabels: {
+                enabled: false
+              },
+              stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+              },
+              xaxis: {
+                categories: mesesAgua,
+              },
+              yaxis: {
+                title: {
+                  text: 'Consumo por año'
+                }
+              },
+              fill: {
+                opacity: 1
+              },
+              tooltip: {
+                y: {
+                  formatter: function (val) {
+                    return "Consumo Total:" + val + ""
+                  }
+                }
+              }
+              };
+      
+            var chart = new ApexCharts(document.querySelector("#chart"), options);
+            chart.render();
+            
+        });
+    });
+    // [ Consumo Anual ] end
     // [ satisfaction-chart ] start
     $(function() {
         var options = {

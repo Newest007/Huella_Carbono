@@ -26,7 +26,7 @@
         <div class="container mt-4">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="GraficaDB">Colegio Don Bosco</a>
+                    <a class="nav-link active" aria-current="page" href="datos">Colegio Don Bosco</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="GraficaSC">Colegio Santa Cecilia</a>
@@ -42,23 +42,107 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
+                        <form method="POST" action="{{route('datos.mostrarGraficaDB')}}">
+                        @csrf
+                        <div class="row mb-4">
+                            <div class="col-4"></div>
+                            <div class="col-3">
+                                <select id="anio" name="anio" class="form-select">
+                                    <option selected>Seleccione un año</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025">2025</option>
+                                </select>
+                                <center><button type="submit" class="btn btn-primary mt-3">Ver Gráfica</button></center>
+                            </div>
+                        </div>
+                        </form>
+                        @if($anioSeleccionado !== null)
+                        <center><h5>Graficas del año: {{$anioSeleccionado}}</h5></center>
+                        <script>
+                            var mesesAgua = @json($mesesAgua);
+                            var consumoAgua = @json($consumoAgua);
+                            var mesesDiesel = @json($mesesDiesel);
+                            var consumoDiesel = @json($consumoDiesel);
+                            var mesesEner = @json($mesesEner);
+                            var consumoEner = @json($consumoEner);
+                            var mesesGas = @json($mesesGas);
+                            var consumoGas = @json($consumoGas);
+                            var mesesPapel = @json($mesesPapel);
+                            var consumoPapel = @json($consumoPapel);
+                        </script>
+
                         <div class="row">
-                            <div class="col-6">
-                                <h6>Customer Satisfaction</h6>
-                                <span>It takes continuous effort to maintain high customer satisfaction levels Internal and external.</span>
+                            <div class="col-6 mt-4">
+                                <h3>Consumo de agua</h3>
                                 <div class="row d-flex justify-content-center align-items-center">
                                     <div class="col">
-                                        <div id="satisfaction-chart"></div>
+                                        @if($mesesAgua->count() == 0)
+                                        <center><h5>No hay datos que mostrar</h5></center>
+                                        @else
+                                        <div id="consumo-agua"></div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <h2 class="m-0">53.94%</h2>
-                                <span class="text-primary">Conversion Rate</span>
-                                <p class="mb-3 mt-3">Number of conversions divided by the total visitors. </p>
-                                <div id="support-chart"></div>
+                            <div class="col-6 mt-4">
+                                <h3>Consumo de Diesel</h3>
+                                <div class="row d-flex justify-content-center align-items-center">
+                                    <div class="col">
+                                        @if($mesesDiesel->count() == 0)
+                                        <center><h5>No hay datos que mostrar</h5></center>
+                                        @else
+                                        <div id="consumo-diesel"></div>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-6 mt-4">
+                                <h3>Consumo de Energía</h3>
+                                <div class="row d-flex justify-content-center align-items-center">
+                                    <div class="col">
+                                        @if($mesesEner->count() == 0)
+                                        <center><h5>No hay datos que mostrar</h5></center>
+                                        @else
+                                        <div id="consumo-ener"></div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 mt-4">
+                                <h3>Consumo de Gasolina</h3>
+                                <div class="row d-flex justify-content-center align-items-center">
+                                    <div class="col">
+                                        @if($mesesGas->count() == 0)
+                                        <center><h5>No hay datos que mostrar</h5></center>
+                                        @else
+                                        <div id="consumo-gas"></div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 mt-4">
+                                <h3>Consumo de Papel</h3>
+                                <div class="row d-flex justify-content-center align-items-center">
+                                    <div class="col">
+                                        @if($mesesPapel->count() == 0)
+                                        <center><h5>No hay datos que mostrar</h5></center>
+                                        @else
+                                        <div id="consumo-papel"></div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -85,11 +169,12 @@
                             </div>
                         </div>
                     </div>
-                    <div id="support-chart1"></div>
+                    <div class="mb-3" id="chart"></div>
                 </div>
             </div>
+            @endif
         </div>
-    </div> <!-- NO BORRAR -->
+    </div>
 
 
 @endsection

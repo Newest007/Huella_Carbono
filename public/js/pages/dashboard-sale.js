@@ -116,8 +116,7 @@ function floatchart() {
                 },
                 colors: ['#7267EF', '#c7d9ff'],
                 series: [{
-                    name: 'Consumo Total',
-                    type: 'column',
+                    name: 'Consumo Agua',
                     data: consumoAgua
                 }],
                 fill: {
@@ -164,6 +163,76 @@ function floatchart() {
             }
             var chart = new ApexCharts(
                 document.querySelector("#consumo-agua"),
+                options
+            );
+            chart.render();
+        });
+    });
+    // [ Consumo de Agua ] end
+
+    // [ Consumo de Agua CO2 ] start
+    $(function() {
+        $(function() {
+            var options = {
+                chart: {
+                    height: 350,
+                    type: 'bar',
+                    stacked: false,
+                },
+                plotOptions: {
+                    bar: {
+                        columnWidth: '50%'
+                    }
+                },
+                colors: ['#7267EF', '#c7d9ff'],
+                series: [{
+                    name: 'Toneladas de CO2 de Agua',
+                    data: co2Agua
+                }],
+                fill: {
+                    opacity: [0.85, 1],
+                },
+                markers: {
+                    size: 0
+                },
+                xaxis: {
+                    categories: mesesAgua
+                    //type: 'datetime'
+                },
+                yaxis: {
+                    min: 0
+                },
+                tooltip: {
+                    shared: true,
+                    intersect: false,
+                    y: {
+                        formatter: function(y) {
+                            if (typeof y !== "undefined") {
+                                return "" +y.toFixed(0);
+                            }
+                            return y;
+
+                        }
+                    }
+                },
+                legend: {
+                    labels: {
+                        useSeriesColors: true
+                    },
+                    markers: {
+                        customHTML: [
+                            function() {
+                                return ''
+                            },
+                            function() {
+                                return ''
+                            }
+                        ]
+                    }
+                }
+            }
+            var chart = new ApexCharts(
+                document.querySelector("#consumo-agua-co2"),
                 options
             );
             chart.render();
@@ -242,6 +311,77 @@ function floatchart() {
     });
     // [ Consumo de Diesel ] end
 
+    // [ Consumo de Diesel CO2] start
+    $(function() {
+        $(function() {
+            var options = {
+                chart: {
+                    height: 350,
+                    type: 'bar',
+                    stacked: false,
+                },
+                plotOptions: {
+                    bar: {
+                        columnWidth: '50%'
+                    }
+                },
+                colors: ['#7267EF', '#c7d9ff'],
+                series: [{
+                    name: 'Consumo Total',
+                    type: 'column',
+                    data: co2Diesel
+                }],
+                fill: {
+                    opacity: [0.85, 1],
+                },
+                markers: {
+                    size: 0
+                },
+                xaxis: {
+                    categories: mesesDiesel
+                    //type: 'datetime'
+                },
+                yaxis: {
+                    min: 0
+                },
+                tooltip: {
+                    shared: true,
+                    intersect: false,
+                    y: {
+                        formatter: function(y) {
+                            if (typeof y !== "undefined") {
+                                return "" +y.toFixed(0);
+                            }
+                            return y;
+
+                        }
+                    }
+                },
+                legend: {
+                    labels: {
+                        useSeriesColors: true
+                    },
+                    markers: {
+                        customHTML: [
+                            function() {
+                                return ''
+                            },
+                            function() {
+                                return ''
+                            }
+                        ]
+                    }
+                }
+            }
+            var chart = new ApexCharts(
+                document.querySelector("#consumo-diesel-co2"),
+                options
+            );
+            chart.render();
+        });
+    });
+    // [ Consumo de Diesel ] end
+
     // [ Consumo de Energia ] start
     $(function() {
         $(function() {
@@ -313,7 +453,77 @@ function floatchart() {
     });
     // [ Consumo de Energia ] end
 
-    
+    // [ Consumo de Energia CO2 ] start
+    $(function() {
+        $(function() {
+            var options = {
+                chart: {
+                    height: 350,
+                    type: 'bar',
+                    stacked: false,
+                },
+                plotOptions: {
+                    bar: {
+                        columnWidth: '50%'
+                    }
+                },
+                colors: ['#7267EF', '#c7d9ff'],
+                series: [{
+                    name: 'Consumo Total',
+                    type: 'column',
+                    data: co2Ener
+                }],
+                fill: {
+                    opacity: [0.85, 1],
+                },
+                markers: {
+                    size: 0
+                },
+                xaxis: {
+                    categories: mesesEner
+                    //type: 'datetime'
+                },
+                yaxis: {
+                    min: 0
+                },
+                tooltip: {
+                    shared: true,
+                    intersect: false,
+                    y: {
+                        formatter: function(y) {
+                            if (typeof y !== "undefined") {
+                                return "" +y.toFixed(0);
+                            }
+                            return y;
+
+                        }
+                    }
+                },
+                legend: {
+                    labels: {
+                        useSeriesColors: true
+                    },
+                    markers: {
+                        customHTML: [
+                            function() {
+                                return ''
+                            },
+                            function() {
+                                return ''
+                            }
+                        ]
+                    }
+                }
+            }
+            var chart = new ApexCharts(
+                document.querySelector("#consumo-ener-co2"),
+                options
+            );
+            chart.render();
+        });
+    });
+    // [ Consumo de Energia CO2 ] end
+
     // [ Consumo de Gas ] start
     $(function() {
         $(function() {
@@ -384,6 +594,77 @@ function floatchart() {
         });
     });
     // [ Consumo de Gas ] end
+
+    // [ Consumo de Gas CO2 ] start
+    $(function() {
+        $(function() {
+            var options = {
+                chart: {
+                    height: 350,
+                    type: 'bar',
+                    stacked: false,
+                },
+                plotOptions: {
+                    bar: {
+                        columnWidth: '50%'
+                    }
+                },
+                colors: ['#7267EF', '#c7d9ff'],
+                series: [{
+                    name: 'Consumo Total',
+                    type: 'column',
+                    data: co2Gas
+                }],
+                fill: {
+                    opacity: [0.85, 1],
+                },
+                markers: {
+                    size: 0
+                },
+                xaxis: {
+                    categories: mesesGas
+                    //type: 'datetime'
+                },
+                yaxis: {
+                    min: 0
+                },
+                tooltip: {
+                    shared: true,
+                    intersect: false,
+                    y: {
+                        formatter: function(y) {
+                            if (typeof y !== "undefined") {
+                                return "" +y.toFixed(0);
+                            }
+                            return y;
+
+                        }
+                    }
+                },
+                legend: {
+                    labels: {
+                        useSeriesColors: true
+                    },
+                    markers: {
+                        customHTML: [
+                            function() {
+                                return ''
+                            },
+                            function() {
+                                return ''
+                            }
+                        ]
+                    }
+                }
+            }
+            var chart = new ApexCharts(
+                document.querySelector("#consumo-gas-co2"),
+                options
+            );
+            chart.render();
+        });
+    });
+    // [ Consumo de Gas CO2 ] end
     
     // [ Consumo de Papel ] start
     $(function() {
@@ -454,7 +735,78 @@ function floatchart() {
             chart.render();
         });
     });
-    // [ Consumo de Energia ] end
+    // [ Consumo de Papel ] end
+    // [ Consumo de Papel CO2 ] start
+    $(function() {
+        $(function() {
+            var options = {
+                chart: {
+                    height: 350,
+                    type: 'bar',
+                    stacked: false,
+                },
+                plotOptions: {
+                    bar: {
+                        columnWidth: '50%'
+                    }
+                },
+                colors: ['#7267EF', '#c7d9ff'],
+                series: [{
+                    name: 'Consumo Total',
+                    type: 'column',
+                    data: co2Papel
+                }],
+                fill: {
+                    opacity: [0.85, 1],
+                },
+                markers: {
+                    size: 0
+                },
+                xaxis: {
+                    categories: mesesPapel
+                    //type: 'datetime'
+                },
+                yaxis: {
+                    min: 0
+                },
+                tooltip: {
+                    shared: true,
+                    intersect: false,
+                    y: {
+                        formatter: function(y) {
+                            if (typeof y !== "undefined") {
+                                return "" +y.toFixed(0);
+                            }
+                            return y;
+
+                        }
+                    }
+                },
+                legend: {
+                    labels: {
+                        useSeriesColors: true
+                    },
+                    markers: {
+                        customHTML: [
+                            function() {
+                                return ''
+                            },
+                            function() {
+                                return ''
+                            }
+                        ]
+                    }
+                }
+            }
+            var chart = new ApexCharts(
+                document.querySelector("#consumo-papel-co2"),
+                options
+            );
+            chart.render();
+        });
+    });
+    // [ Consumo de Energia CO2 ] end
+
     // [ Consumo Anual ] start
     $(function() {
         $(function() {
@@ -500,6 +852,73 @@ function floatchart() {
               },
               yaxis: {
                 title: {
+                  text: 'Consumo del año'
+                }
+              },
+              fill: {
+                opacity: 1
+              },
+              tooltip: {
+                y: {
+                  formatter: function (val) {
+                    return "" + val + ""
+                  }
+                }
+              }
+              };
+      
+            var chart = new ApexCharts(document.querySelector("#chart"), options);
+            chart.render();
+            
+        });
+    });
+    // [ Consumo Anual ] end
+
+    // [ Tabla anual ] start
+    $(function() {
+        $(function() {
+            var options = {
+                series: [{
+                name: 'Consumo Agua',
+                data: consumoAguaAnual
+              }, {
+                name: 'Consumo Diesel',
+                data: consumoDieselAnual
+              }, {
+                name: 'Consumo Energia',
+                data: consumoEnergiaAnual
+              }, {
+                name: 'Consumo Gasolina',
+                data: consumoGasAnual
+              }, {
+                name: 'Consumo Papel',
+                data: consumoPapelAnual
+              }
+            ],
+                chart: {
+                type: 'bar',
+                height: 350
+              },
+              plotOptions: {
+                bar: {
+                  horizontal: false,
+                  columnWidth: '55%',
+                  //endingShape: 'rounded'
+                },
+              },
+              dataLabels: {
+                enabled: false
+              },
+              stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+              },
+              xaxis: {
+                categories: anioAnual
+              },
+              yaxis: {
+                title: {
                   text: 'Consumo por año'
                 }
               },
@@ -509,13 +928,13 @@ function floatchart() {
               tooltip: {
                 y: {
                   formatter: function (val) {
-                    return "Consumo Total:" + val + ""
+                    return "" + val + ""
                   }
                 }
               }
               };
       
-            var chart = new ApexCharts(document.querySelector("#chart"), options);
+            var chart = new ApexCharts(document.querySelector("#consumo-anual"), options);
             chart.render();
             
         });

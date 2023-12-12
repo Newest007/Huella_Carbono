@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 22-11-2023 a las 20:16:35
+-- Tiempo de generación: 12-12-2023 a las 02:14:48
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.2.0
 
@@ -66,8 +66,6 @@ CREATE TABLE IF NOT EXISTS `consumo_agua` (
 --
 
 INSERT INTO `consumo_agua` (`id_colegio`, `id_Anio`, `Mes`, `Consumo_m3`, `Ton_CO2_m3`) VALUES
-('CSJ003', 2022, 'Enero', 500, 0.39),
-('CSJ003', 2022, 'Febrero', 500, 0.39),
 ('CSJ003', 2022, 'Marzo', 500, 0.39),
 ('CSJ003', 2022, 'Abril', 500, 0.39),
 ('CSJ003', 2022, 'Mayo', 500, 0.39),
@@ -77,7 +75,21 @@ INSERT INTO `consumo_agua` (`id_colegio`, `id_Anio`, `Mes`, `Consumo_m3`, `Ton_C
 ('CSJ003', 2022, 'Septiembre', 500, 0.39),
 ('CSJ003', 2022, 'Octubre', 500, 0.39),
 ('CSJ003', 2022, 'Noviembre', 1121, 0.88),
-('CSJ003', 2022, 'Diciembre', 1269, 1);
+('CSJ003', 2022, 'Diciembre', 1269, 1),
+('CDB002', 2024, 'Febrero', 500, 0.394),
+('CDB002', 2024, 'Marzo', 500, 0.394),
+('CDB002', 2024, 'Abril', 500, 0.394),
+('CDB002', 2024, 'Mayo', 500, 0.394),
+('CDB002', 2024, 'Junio', 500, 0.394),
+('CDB002', 2024, 'Julio', 500, 0.394),
+('CDB002', 2024, 'Agosto', 500, 0.394),
+('CDB002', 2024, 'Septiembre', 500, 0.394),
+('CDB002', 2024, 'Octubre', 500, 0.394),
+('CDB002', 2024, 'Noviembre', 1121, 0.883),
+('CDB002', 2024, 'Diciembre', 500, 0.394),
+('CSJ003', 2022, 'Enero', 500, 0.394),
+('CSJ003', 2022, 'Febrero', 500, 0.394),
+('CDB002', 2024, 'Enero', 500, 0.394);
 
 -- --------------------------------------------------------
 
@@ -99,7 +111,8 @@ CREATE TABLE IF NOT EXISTS `consumo_agua_anual` (
 --
 
 INSERT INTO `consumo_agua_anual` (`id_colegio`, `id_Anio`, `Consumo_Agua_Anual`, `Ton_CO2_Anual`) VALUES
-('CSJ003', 2022, 7390, 5.82);
+('CSJ003', 2022, 7390, 5.82),
+('CDB002', 2024, 6621, 5.217);
 
 -- --------------------------------------------------------
 
@@ -135,7 +148,19 @@ INSERT INTO `consumo_diesel` (`id_colegio`, `id_Anio`, `Mes`, `Cantidad`, `Combu
 ('CSJ003', 2022, 'Septiembre', 95, 0.35704895, 0.000097689, 0.097688593),
 ('CSJ003', 2022, 'Octubre', 35, 0.13154435, 0.000035991, 0.035990534),
 ('CSJ003', 2022, 'Noviembre', 89, 0.33449849, 0.000091519, 0.091518787),
-('CSJ003', 2022, 'Diciembre', 89, 0.33449849, 0.000091519, 0.091518787);
+('CSJ003', 2022, 'Diciembre', 89, 0.33449849, 0.000091519, 0.091518787),
+('CDB002', 2024, 'Enero', 60, 0.2255046, 0.60642697032, 606.42697032),
+('CDB002', 2024, 'Febrero', 70, 0.2630887, 0.70749813204, 707.49813204),
+('CDB002', 2024, 'Marzo', 80, 0.3006728, 0.80856929376, 808.56929376),
+('CDB002', 2024, 'Abril', 70, 0.2630887, 0.70749813204, 707.49813204),
+('CDB002', 2024, 'Mayo', 70, 0.2630887, 0.70749813204, 707.49813204),
+('CDB002', 2024, 'Junio', 40, 0.1503364, 0.40428464688, 404.28464688),
+('CDB002', 2024, 'Julio', 40, 0.1503364, 0.40428464688, 404.28464688),
+('CDB002', 2024, 'Agosto', 70, 0.2630887, 0.70749813204, 707.49813204),
+('CDB002', 2024, 'Septiembre', 80, 0.3006728, 0.80856929376, 808.56929376),
+('CDB002', 2024, 'Octubre', 20, 0.0751682, 0.20214232344, 202.14232344),
+('CDB002', 2024, 'Noviembre', 80, 0.3006728, 0.80856929376, 808.56929376),
+('CDB002', 2024, 'Diciembre', 55, 0.20671255, 0.55589138946, 555.89138946);
 
 -- --------------------------------------------------------
 
@@ -159,7 +184,8 @@ CREATE TABLE IF NOT EXISTS `consumo_diesel_anual` (
 --
 
 INSERT INTO `consumo_diesel_anual` (`id_colegio`, `id_Anio`, `Cantidad_Anual`, `Combustible_m3_Anual`, `Ton_CO2_m3_Anual`, `kGr_CO2_m3_Anual`) VALUES
-('CSJ003', 2022, 1164, 4.37478924, 0.001196942, 1.196942336);
+('CSJ003', 2022, 1164, 4.37478924, 0.001196942, 1.196942336),
+('CDB002', 2024, 735, 2.76243135, 7.42873038642, 7428.73038642);
 
 -- --------------------------------------------------------
 
@@ -193,7 +219,19 @@ INSERT INTO `consumo_energetico` (`id_colegio`, `id_Anio`, `Mes`, `Consumo_kWts`
 ('CSJ003', 2022, 'Septiembre', 8609.55, 5.85),
 ('CSJ003', 2022, 'Octubre', 12557, 8.54),
 ('CSJ003', 2022, 'Noviembre', 10396.74, 7.07),
-('CSJ003', 2022, 'Diciembre', 14981.24, 10.18);
+('CSJ003', 2022, 'Diciembre', 14981.24, 10.18),
+('CDB002', 2024, 'Enero', 400, 0.272),
+('CDB002', 2024, 'Febrero', 500, 0.34),
+('CDB002', 2024, 'Marzo', 450, 0.306),
+('CDB002', 2024, 'Abril', 550, 0.374),
+('CDB002', 2024, 'Mayo', 700, 0.476),
+('CDB002', 2024, 'Junio', 700, 0.476),
+('CDB002', 2024, 'Julio', 500, 0.34),
+('CDB002', 2024, 'Agosto', 500, 0.34),
+('CDB002', 2024, 'Septiembre', 500, 0.34),
+('CDB002', 2024, 'Octubre', 500, 0.34),
+('CDB002', 2024, 'Noviembre', 500, 0.34),
+('CDB002', 2024, 'Diciembre', 500, 0.34);
 
 -- --------------------------------------------------------
 
@@ -215,7 +253,8 @@ CREATE TABLE IF NOT EXISTS `consumo_energetico_anual` (
 --
 
 INSERT INTO `consumo_energetico_anual` (`id_colegio`, `id_Anio`, `Consumo_kWts_Anual`, `Ton_CO2_Anual`) VALUES
-('CSJ003', 2022, 116472.23, 79.18);
+('CSJ003', 2022, 116472.23, 79.18),
+('CDB002', 2024, 6300, 4.284);
 
 -- --------------------------------------------------------
 
@@ -235,6 +274,24 @@ CREATE TABLE IF NOT EXISTS `consumo_gasolina` (
   KEY `id_colegio` (`id_colegio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Volcado de datos para la tabla `consumo_gasolina`
+--
+
+INSERT INTO `consumo_gasolina` (`id_colegio`, `id_Anio`, `Mes`, `Cantidad`, `Combustible_m3`, `Ton_CO2_m3`, `Km_CO2_m3`) VALUES
+('CDB002', 2024, 'Enero', 81, 0.30443121, 0.714682708596, 714.682708596),
+('CDB002', 2024, 'Febrero', 85, 0.31946485, 0.74997568186, 749.97568186),
+('CDB002', 2024, 'Marzo', 85, 0.31946485, 0.74997568186, 749.97568186),
+('CDB002', 2024, 'Abril', 85, 0.31946485, 0.74997568186, 749.97568186),
+('CDB002', 2024, 'Mayo', 85, 0.31946485, 0.74997568186, 749.97568186),
+('CDB002', 2024, 'Junio', 85, 0.31946485, 0.74997568186, 749.97568186),
+('CDB002', 2024, 'Julio', 85, 0.31946485, 0.74997568186, 749.97568186),
+('CDB002', 2024, 'Agosto', 85, 0.31946485, 0.74997568186, 749.97568186),
+('CDB002', 2024, 'Septiembre', 85, 0.31946485, 0.74997568186, 749.97568186),
+('CDB002', 2024, 'Octubre', 85, 0.31946485, 0.74997568186, 749.97568186),
+('CDB002', 2024, 'Noviembre', 85, 0.31946485, 0.74997568186, 749.97568186),
+('CDB002', 2024, 'Diciembre', 85, 0.31946485, 0.74997568186, 749.97568186);
+
 -- --------------------------------------------------------
 
 --
@@ -252,6 +309,13 @@ CREATE TABLE IF NOT EXISTS `consumo_gasolina_anual` (
   KEY `id_colegio` (`id_colegio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Volcado de datos para la tabla `consumo_gasolina_anual`
+--
+
+INSERT INTO `consumo_gasolina_anual` (`id_colegio`, `id_Anio`, `Cantidad_Anual`, `Combustible_m3_Anual`, `Ton_CO2_m3_Anual`, `Km_CO2_m3_Anual`) VALUES
+('CDB002', 2024, 1016, 3.81854456, 8.964415209056, 8964.415209056);
+
 -- --------------------------------------------------------
 
 --
@@ -268,6 +332,24 @@ CREATE TABLE IF NOT EXISTS `consumo_papel` (
   KEY `id_colegio` (`id_colegio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Volcado de datos para la tabla `consumo_papel`
+--
+
+INSERT INTO `consumo_papel` (`id_colegio`, `id_Anio`, `Mes`, `Consumo_m3`, `Ton_CO2`) VALUES
+('CDB002', 2024, 'Enero', 80, 0.054384),
+('CDB002', 2024, 'Febrero', 60, 0.040788),
+('CDB002', 2024, 'Marzo', 60, 0.040788),
+('CDB002', 2024, 'Abril', 60, 0.040788),
+('CDB002', 2024, 'Mayo', 60, 0.040788),
+('CDB002', 2024, 'Junio', 60, 0.040788),
+('CDB002', 2024, 'Julio', 60, 0.040788),
+('CDB002', 2024, 'Agosto', 60, 0.040788),
+('CDB002', 2024, 'Septiembre', 60, 0.040788),
+('CDB002', 2024, 'Octubre', 60, 0.040788),
+('CDB002', 2024, 'Noviembre', 60, 0.040788),
+('CDB002', 2024, 'Diciembre', 60, 0.040788);
+
 -- --------------------------------------------------------
 
 --
@@ -282,6 +364,13 @@ CREATE TABLE IF NOT EXISTS `consumo_papel_anual` (
   `Ton_CO2_Anual` double DEFAULT NULL,
   KEY `id_colegio` (`id_colegio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `consumo_papel_anual`
+--
+
+INSERT INTO `consumo_papel_anual` (`id_colegio`, `id_Anio`, `Consumo_m3_Anual`, `Ton_CO2_Anual`) VALUES
+('CDB002', 2024, 740, 0.503052);
 
 -- --------------------------------------------------------
 
@@ -612,8 +701,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id_usuario`, `id_colegio`, `id_rol`, `nombre`, `email`, `password`, `remember_token`) VALUES
 ('AN5667', 'CDB002', 'CLG001', 'Antonio Martinez', 'andersonmelendez73@gmail.com', '$2y$10$jn/sUY7BYf0fAm3ElUofaO0PfvceSJ6nYtMpu9t4YKiabtpQAxJ.i', NULL),
-('AR8138', 'CDB002', 'CLG001', 'Arian Montes', 'adilsonarian@outlook.com', '$2y$10$bwChTyd17qRGneWA8VPjmeRwfuybXqhNZdrEfmSCu3yqNZWa8EqFS', NULL),
-('MR1543', 'CDB002', 'ADM001', 'Monica Rivera', 'rivera6577@gmail.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'MMXJ81MEeX8THL0eUKXm7x8h1kwE6B0Bbli3iwBsyeD3mE5NJH8aqh2RE9Cr');
+('AR2790', 'CSJ003', 'ADM001', 'Arian Montes', 'adilsonarian@outlook.com', '$2y$10$QehfYrhiaB.niGXemwkYpOOdRQcq7LQpUP..Ho6sJBaygDc3uh/ay', NULL),
+('MR1543', 'CDB002', 'ADM001', 'Monica Rivera', 'rivera6577@gmail.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '2xWBr2cuE9Mz0dl6Mk6mmCRx7TJ1hlEVUEtV7l055NUrOVPabMRX5UvnWl8i');
 
 --
 -- Restricciones para tablas volcadas
@@ -673,6 +762,7 @@ ALTER TABLE `consumo_gasolina_anual`
 ALTER TABLE `consumo_papel`
   ADD CONSTRAINT `consumo_papel_ibfk_1` FOREIGN KEY (`id_colegio`) REFERENCES `colegio` (`id_colegio`) ON DELETE CASCADE ON UPDATE CASCADE;
 
+--
 -- Filtros para la tabla `consumo_papel_anual`
 --
 ALTER TABLE `consumo_papel_anual`

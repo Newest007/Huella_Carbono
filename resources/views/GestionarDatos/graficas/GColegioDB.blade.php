@@ -29,19 +29,28 @@
                     <a class="nav-link active" aria-current="page" href="datos">Colegio Don Bosco</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="GraficaSC">Colegio Santa Cecilia</a>
+                    <a class="nav-link" aria-current="page" href="datosSC">Colegio Santa Cecilia</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="GraficaSJ">Colegio San José</a>
+                    <a class="nav-link" aria-current="page" href="datosSJ">Colegio San José</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="GraficaMA">Casa María Auxiliadora</a>
+                    <a class="nav-link" aria-current="page" href="datosMA">Casa María Auxiliadora</a>
                 </li>
             </ul>
 
             <div class="col-12">
                 <div class="card">
+                        <script>
+                            var anioAnual = @json($anioAnual);
+                            var consumoAguaAnual = @json($consumoAguaAnual);
+                            var consumoDieselAnual = @json($consumoDieselAnual);
+                            var consumoEnergiaAnual = @json($consumoEnergiaAnual);
+                            var consumoGasAnual = @json($consumoGasAnual);
+                            var consumoPapelAnual = @json($consumoPapelAnual);
+                        </script>
                     <div class="card-body">
+                    <div class="mb-3" id="consumo-anual"></div>
                         <form method="POST" action="{{route('datos.mostrarGraficaDB')}}">
                         @csrf
                         <div class="row mb-4">
@@ -63,14 +72,24 @@
                         <script>
                             var mesesAgua = @json($mesesAgua);
                             var consumoAgua = @json($consumoAgua);
+                            var co2Agua = @json($co2Agua);
+
                             var mesesDiesel = @json($mesesDiesel);
                             var consumoDiesel = @json($consumoDiesel);
+                            var co2Diesel = @json($co2Diesel);
+
                             var mesesEner = @json($mesesEner);
                             var consumoEner = @json($consumoEner);
+                            var co2Ener = @json($co2Ener);
+
                             var mesesGas = @json($mesesGas);
                             var consumoGas = @json($consumoGas);
+                            var co2Gas = @json($co2Gas);
+
                             var mesesPapel = @json($mesesPapel);
                             var consumoPapel = @json($consumoPapel);
+                            var co2Papel = @json($co2Papel);
+
                         </script>
 
                         <div class="row">
@@ -87,6 +106,21 @@
                                 </div>
                             </div>
                             <div class="col-6 mt-4">
+                                <h3>Toneladas de CO2 de agua</h3>
+                                <div class="row d-flex justify-content-center align-items-center">
+                                    <div class="col">
+                                        @if($mesesAgua->count() == 0)
+                                        <center><h5>No hay datos que mostrar</h5></center>
+                                        @else
+                                        <div id="consumo-agua-co2"></div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6 mt-4">
                                 <h3>Consumo de Diesel</h3>
                                 <div class="row d-flex justify-content-center align-items-center">
                                     <div class="col">
@@ -98,11 +132,23 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-6 mt-4">
+                                <h3>Toneladas de CO2 de Diesel</h3>
+                                <div class="row d-flex justify-content-center align-items-center">
+                                    <div class="col">
+                                        @if($mesesDiesel->count() == 0)
+                                        <center><h5>No hay datos que mostrar</h5></center>
+                                        @else
+                                        <div id="consumo-diesel-co2"></div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="row">
                             <div class="col-6 mt-4">
-                                <h3>Consumo de Energía</h3>
+                                <h3>Consumo de Energia</h3>
                                 <div class="row d-flex justify-content-center align-items-center">
                                     <div class="col">
                                         @if($mesesEner->count() == 0)
@@ -113,6 +159,21 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-6 mt-4">
+                                <h3>Toneladas de CO2 de Energia</h3>
+                                <div class="row d-flex justify-content-center align-items-center">
+                                    <div class="col">
+                                        @if($mesesEner->count() == 0)
+                                        <center><h5>No hay datos que mostrar</h5></center>
+                                        @else
+                                        <div id="consumo-ener-co2"></div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
                             <div class="col-6 mt-4">
                                 <h3>Consumo de Gasolina</h3>
                                 <div class="row d-flex justify-content-center align-items-center">
@@ -125,7 +186,20 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-6 mt-4">
+                                <h3>Toneladas de CO2 de Gasolina</h3>
+                                <div class="row d-flex justify-content-center align-items-center">
+                                    <div class="col">
+                                        @if($mesesGas->count() == 0)
+                                        <center><h5>No hay datos que mostrar</h5></center>
+                                        @else
+                                        <div id="consumo-gas-co2"></div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="row">
                             <div class="col-6 mt-4">
                                 <h3>Consumo de Papel</h3>
@@ -139,9 +213,19 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="col-6 mt-4">
+                                <h3>Toneladas de CO2 de Papel</h3>
+                                <div class="row d-flex justify-content-center align-items-center">
+                                    <div class="col">
+                                        @if($mesesPapel->count() == 0)
+                                        <center><h5>No hay datos que mostrar</h5></center>
+                                        @else
+                                        <div id="consumo-papel-co2"></div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
 
                     </div>
                 </div>

@@ -38,6 +38,8 @@ Route::delete('/usuarios/{id_usuario}',[UsuariosController::class,'destroy'])->n
 //GESTIONAR DATOS
 Route::resource('datos', DatosController::class)->middleware('auth');
 
+Route::view('AñadirDatos','GestionarDatos.añadirDatos')->middleware('auth');
+
 Route::get('VerDatosAgua',[DatosController::class,'showAgua'])->middleware('auth');
 Route::get('VerDatosDiesel',[DatosController::class,'showDiesel'])->middleware('auth');
 Route::get('VerDatosEnergia',[DatosController::class,'showEnergia'])->middleware('auth');
@@ -49,11 +51,8 @@ Route::view('GenerarReporteTres','GestionarDatos.reportes.reportes23')->middlewa
 Route::view('GenerarReporteCuatro','GestionarDatos.reportes.reportes24')->middleware('auth');
 Route::view('GenerarReporteCinco','GestionarDatos.reportes.reportes25')->middleware('auth');
 
-//Route::view('VerGraficas','GestionarDatos.index')->middleware('auth');
-//Route::view('AñadirDatos','GestionarDatos.añadirDatos')->middleware('auth');
-
 //Route::view('GraficaDB','GestionarDatos.graficas.GColegioDB')->middleware('auth');
-Route::view('GraficaSC','GestionarDatos.graficas.GColegioSC')->middleware('auth');
+//Route::view('GraficaSC','GestionarDatos.graficas.GColegioSC')->middleware('auth');
 Route::view('GraficaSJ','GestionarDatos.graficas.GColegioSJ')->middleware('auth');
 Route::view('GraficaMA','GestionarDatos.graficas.GColegioMA')->middleware('auth');
 
@@ -63,7 +62,11 @@ Route::post('/datosEnergia',[DatosController::class,'storeEnergia'])->name('dato
 Route::post('/datosGasolina',[DatosController::class,'storeGasolina'])->name('datos.storeGasolina')->middleware('auth');
 Route::post('/datosPapel',[DatosController::class,'storePapel'])->name('datos.storePapel')->middleware('auth');
 
-//Muestreo de gráficas
+//Dos rutas por colegio
+Route::get('datosSC',[DatosController::class,'indexSC'])->middleware('auth');
+Route::get('datosSJ',[DatosController::class,'indexSJ'])->middleware('auth');
+Route::get('datosMA',[DatosController::class,'indexMA'])->middleware('auth');
+
 Route::post('/mostrarGraficaDB',[DatosController::class,'mostrarGraficaDB'])->name('datos.mostrarGraficaDB')->middleware('auth');
 
 //ELIMINAR REGISTROS

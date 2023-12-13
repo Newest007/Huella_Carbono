@@ -96,7 +96,8 @@ Route::get('VerDatosEnergiaC',[DatosControllerUser::class,'showEnergiaC'])->midd
 Route::get('VerDatosGasC',[DatosControllerUser::class,'showGasC'])->middleware('auth');
 Route::get('VerDatosPapelC',[DatosControllerUser::class,'showPapelC'])->middleware('auth');
 
-Route::view('VerGraficasC','GestionarDatos.indexColegio')->middleware('auth');
+//Route::view('VerGraficasC','GestionarDatos.indexColegio')->middleware('auth');
+Route::post('/mostrarGrafica',[DatosControllerUser::class,'mostrarGrafica'])->name('datosC.mostrarGrafica')->middleware('auth');
 Route::view('AñadirDatosC','GestionarDatos.añadirDatosColegio')->middleware('auth');
 
 Route::post('/datosAguaC',[DatosControllerUser::class,'storeAgua'])->name('datosC.storeAgua')->middleware('auth');

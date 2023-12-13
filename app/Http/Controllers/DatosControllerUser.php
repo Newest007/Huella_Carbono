@@ -7,10 +7,15 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use App\Models\ConsumoAgua;
+use App\Models\ConsumoAguaAnual;
 use App\Models\ConsumoDiesel;
+use App\Models\ConsumoDieselAnual;
 use App\Models\ConsumoEnergetico;
+use App\Models\ConsumoEnergeticoAnual;
 use App\Models\ConsumoGasolina;
+use App\Models\ConsumoGasolinaAnual;
 use App\Models\ConsumoPapel;
+use App\Models\ConsumoPapelAnual;
 use App\Models\Colegio;
 use App\Models\User;
 
@@ -18,12 +23,214 @@ class DatosControllerUser extends Controller
 {
     public function index()
     {
-        return view('GestionarDatos.indexColegio');
+        $nombre = session('nombre');
+        $colegio = json_decode(User::where('nombre',$nombre)->get());
+        $idColegio = $colegio[0]->id_colegio;
+
+        $viewBag = array();
+        $viewBag['anioSeleccionado']=null;
+
+        $ordenAño = [
+            '2022' => 1,
+            '2023' => 2,
+            '2024' => 3,
+            '2025' => 4
+        ];
+
+        //Consumo Agua
+        $datosAgua = ConsumoAguaAnual::where('id_colegio', $idColegio)->get();
+        $datosAgua = $datosAgua->sortBy(function ($registro) use ($ordenAño) {
+            return $ordenAño[strtolower($registro->id_Anio)];
+        });
+        $anioAnual = $datosAgua->pluck('id_Anio');
+        $consumoAguaAnual = $datosAgua->pluck('Consumo_Agua_Anual');
+
+        //Consumo Diesel
+        $datosDiesel = ConsumoDieselAnual::where('id_colegio', $idColegio)->get();
+        $datosDiesel = $datosDiesel->sortBy(function ($registro) use ($ordenAño) {
+            return $ordenAño[strtolower($registro->id_Anio)];
+        });
+        $consumoDieselAnual = $datosDiesel->pluck('Cantidad_Anual');
+
+        //Consumo Energetico
+        $datosEnergia = ConsumoEnergeticoAnual::where('id_colegio', $idColegio)->get();
+        $datosEnergia = $datosEnergia->sortBy(function ($registro) use ($ordenAño) {
+            return $ordenAño[strtolower($registro->id_Anio)];
+        });
+        $consumoEnergiaAnual = $datosEnergia->pluck('Consumo_kWts_Anual');
+
+        //Consumo Gasolina
+        $datosGasolina = ConsumoGasolinaAnual::where('id_colegio', $idColegio)->get();
+        $datosGasolina = $datosGasolina->sortBy(function ($registro) use ($ordenAño) {
+            return $ordenAño[strtolower($registro->id_Anio)];
+        });
+        $consumoGasAnual = $datosGasolina->pluck('Cantidad_Anual');
+
+        //Consumo Papel
+        $datosPapel = ConsumoPapelAnual::where('id_colegio', $idColegio)->get();
+        $datosPapel = $datosPapel->sortBy(function ($registro) use ($ordenAño) {
+            return $ordenAño[strtolower($registro->id_Anio)];
+        });
+        $consumoPapelAnual = $datosPapel->pluck('Consumo_m3_Anual');
+
+        return view('GestionarDatos.indexColegio',[
+        'anioAnual' =>$anioAnual,
+        'consumoAguaAnual' => $consumoAguaAnual,
+        'consumoDieselAnual' => $consumoDieselAnual,
+        'consumoEnergiaAnual' => $consumoEnergiaAnual,
+        'consumoGasAnual' => $consumoGasAnual,
+        'consumoPapelAnual' => $consumoPapelAnual], $viewBag);
     }
 
-    public function create()
+    public function mostrarGrafica(Request $request)
     {
-        
+        $nombre = session('nombre');
+        $colegio = json_decode(User::where('nombre',$nombre)->get());
+        $idColegio = $colegio[0]->id_colegio;
+
+        if($request->input('anio') != 'Seleccione un año'){
+
+            $anio = $request->input('anio');
+            $ordenMeses = [
+                'enero' => 1,
+                'febrero' => 2,
+                'marzo' => 3,
+                'abril' => 4,
+                'mayo' => 5,
+                'junio' => 6,
+                'julio' => 7,
+                'agosto' => 8,
+                'septiembre' => 9,
+                'octubre' => 10,
+                'noviembre' => 11,
+                'diciembre' => 12,
+            ];
+            $ordenAño = [
+                '2022' => 1,
+                '2023' => 2,
+                '2024' => 3,
+                '2025' => 4
+            ];
+            
+            //Consumo Agua
+            $datosConsumoAgua = ConsumoAgua::where('id_colegio', $idColegio)->where('id_Anio',$anio)->get();
+            $datosConsumoAgua = $datosConsumoAgua->sortBy(function ($registro) use ($ordenMeses) {
+                return $ordenMeses[strtolower($registro->Mes)];
+            });
+            $mesesAgua = $datosConsumoAgua->pluck('Mes');
+            $consumoAgua = $datosConsumoAgua->pluck('Consumo_m3');
+            $co2Agua = $datosConsumoAgua->pluck('Ton_CO2_m3');
+
+            //Consumo Diesel
+            $datosConsumoDiesel = ConsumoDiesel::where('id_colegio', $idColegio)->where('id_Anio',$anio)->get();
+            $datosConsumoDiesel = $datosConsumoDiesel->sortBy(function ($registro) use ($ordenMeses) {
+                return $ordenMeses[strtolower($registro->Mes)];
+            });
+            $mesesDiesel = $datosConsumoDiesel->pluck('Mes');
+            $consumoDiesel = $datosConsumoDiesel->pluck('Cantidad');
+            $co2Diesel = $datosConsumoDiesel->pluck('Ton_CO2_m3');
+
+            //Consumo Energetico
+            $datosConsumoEner = ConsumoEnergetico::where('id_colegio', $idColegio)->where('id_Anio',$anio)->get();
+            $datosConsumoEner = $datosConsumoEner->sortBy(function ($registro) use ($ordenMeses) {
+                return $ordenMeses[strtolower($registro->Mes)];
+            });
+            $mesesEner = $datosConsumoEner->pluck('Mes');
+            $consumoEner = $datosConsumoEner->pluck('Consumo_kWts');
+            $co2Ener = $datosConsumoEner->pluck('Ton_CO2');
+            
+            //Consumo Gas
+            $datosConsumoGas = ConsumoGasolina::where('id_colegio', $idColegio)->where('id_Anio',$anio)->get();
+            $datosConsumoGas = $datosConsumoGas->sortBy(function ($registro) use ($ordenMeses) {
+                return $ordenMeses[strtolower($registro->Mes)];
+            });
+            $mesesGas = $datosConsumoGas->pluck('Mes');
+            $consumoGas = $datosConsumoGas->pluck('Cantidad');
+            $co2Gas = $datosConsumoGas->pluck('Ton_CO2_m3');
+
+            //Consumo Papel
+            $datosConsumoPapel = ConsumoPapel::where('id_colegio', $idColegio)->where('id_Anio',$anio)->get();
+            $datosConsumoPapel = $datosConsumoPapel->sortBy(function ($registro) use ($ordenMeses) {
+                return $ordenMeses[strtolower($registro->Mes)];
+            });
+            $mesesPapel = $datosConsumoPapel->pluck('Mes');
+            $consumoPapel = $datosConsumoPapel->pluck('Consumo_m3');
+            $co2Papel = $datosConsumoPapel->pluck('Ton_CO2');
+
+
+            //Consumo Agua
+            $datosAgua = ConsumoAguaAnual::where('id_colegio', $idColegio)->get();
+            $datosAgua = $datosAgua->sortBy(function ($registro) use ($ordenAño) {
+                return $ordenAño[strtolower($registro->id_Anio)];
+            });
+            $anioAnual = $datosAgua->pluck('id_Anio');
+            $consumoAguaAnual = $datosAgua->pluck('Consumo_Agua_Anual');
+    
+            //Consumo Diesel
+            $datosDiesel = ConsumoDieselAnual::where('id_colegio', $idColegio)->get();
+            $datosDiesel = $datosDiesel->sortBy(function ($registro) use ($ordenAño) {
+                return $ordenAño[strtolower($registro->id_Anio)];
+            });
+            $consumoDieselAnual = $datosDiesel->pluck('Cantidad_Anual');
+    
+            //Consumo Energetico
+            $datosEnergia = ConsumoEnergeticoAnual::where('id_colegio', $idColegio)->get();
+            $datosEnergia = $datosEnergia->sortBy(function ($registro) use ($ordenAño) {
+                return $ordenAño[strtolower($registro->id_Anio)];
+            });
+            $consumoEnergiaAnual = $datosEnergia->pluck('Consumo_kWts_Anual');
+    
+            //Consumo Gasolina
+            $datosGasolina = ConsumoGasolinaAnual::where('id_colegio', $idColegio)->get();
+            $datosGasolina = $datosGasolina->sortBy(function ($registro) use ($ordenAño) {
+                return $ordenAño[strtolower($registro->id_Anio)];
+            });
+            $consumoGasAnual = $datosGasolina->pluck('Cantidad_Anual');
+    
+            //Consumo Papel
+            $datosPapel = ConsumoPapelAnual::where('id_colegio', $idColegio)->get();
+            $datosPapel = $datosPapel->sortBy(function ($registro) use ($ordenAño) {
+                return $ordenAño[strtolower($registro->id_Anio)];
+            });
+            $consumoPapelAnual = $datosPapel->pluck('Consumo_m3_Anual');
+            
+            return view('GestionarDatos.indexColegio', [
+                'anioSeleccionado' =>$anio,
+
+                'mesesAgua' => $mesesAgua,
+                'consumoAgua' => $consumoAgua,
+                'co2Agua' => $co2Agua,
+
+                'mesesDiesel' => $mesesDiesel,
+                'consumoDiesel' => $consumoDiesel,
+                'co2Diesel' => $co2Diesel,
+
+                'mesesEner' => $mesesEner,
+                'consumoEner' => $consumoEner,
+                'co2Ener' => $co2Ener,
+
+                'mesesGas' => $mesesGas,
+                'consumoGas' => $consumoGas,
+                'co2Gas' => $co2Gas,
+
+                'mesesPapel' => $mesesPapel,
+                'consumoPapel' => $consumoPapel,
+                'co2Papel' => $co2Papel,
+
+
+                'anioAnual' =>$anioAnual,
+                'consumoAguaAnual' => $consumoAguaAnual,
+                'consumoDieselAnual' => $consumoDieselAnual,
+                'consumoEnergiaAnual' => $consumoEnergiaAnual,
+                'consumoGasAnual' => $consumoGasAnual,
+                'consumoPapelAnual' => $consumoPapelAnual,
+            ]);
+
+        }
+        else{
+            //retorna  ala vista del colegio
+            return redirect('datosSC');
+        }
     }
 
     public function storeAgua(Request $request)

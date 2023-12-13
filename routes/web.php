@@ -62,12 +62,15 @@ Route::post('/datosEnergia',[DatosController::class,'storeEnergia'])->name('dato
 Route::post('/datosGasolina',[DatosController::class,'storeGasolina'])->name('datos.storeGasolina')->middleware('auth');
 Route::post('/datosPapel',[DatosController::class,'storePapel'])->name('datos.storePapel')->middleware('auth');
 
-//Dos rutas por colegio
 Route::get('datosSC',[DatosController::class,'indexSC'])->middleware('auth');
 Route::get('datosSJ',[DatosController::class,'indexSJ'])->middleware('auth');
 Route::get('datosMA',[DatosController::class,'indexMA'])->middleware('auth');
 
 Route::post('/mostrarGraficaDB',[DatosController::class,'mostrarGraficaDB'])->name('datos.mostrarGraficaDB')->middleware('auth');
+Route::post('/mostrarGraficaSC',[DatosController::class,'mostrarGraficaSC'])->name('datos.mostrarGraficaSC')->middleware('auth');
+Route::post('/mostrarGraficaSJ',[DatosController::class,'mostrarGraficaSJ'])->name('datos.mostrarGraficaSJ')->middleware('auth');
+Route::post('/mostrarGraficaMA',[DatosController::class,'mostrarGraficaMA'])->name('datos.mostrarGraficaMA')->middleware('auth');
+
 
 //ELIMINAR REGISTROS
 Route::delete('/datosAgua/{id_colegio}/{id_Anio}/{Mes}',[DatosController::class,'destroyAgua'])->name('datosAgua.destroy')->middleware('auth');

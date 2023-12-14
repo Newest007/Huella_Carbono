@@ -74,7 +74,7 @@
 						<label>Gestionar datos</label>
 					</li>
 					<li class="pc-item">
-						<a href="VerGraficasC" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">dashboard</i></span><span class="pc-mtext">Graficas</span></a>
+						<a href="datosC" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">dashboard</i></span><span class="pc-mtext">Graficas</span></a>
 					</li>
 					<li class="pc-item">
 						<a href="AñadirDatosC" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Registrar datos</span></a>

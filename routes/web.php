@@ -56,8 +56,8 @@ Route::view('GenerarReporteCinco','GestionarDatos.reportes.reportes25')->middlew
 
 //Route::view('GraficaDB','GestionarDatos.graficas.GColegioDB')->middleware('auth');
 //Route::view('GraficaSC','GestionarDatos.graficas.GColegioSC')->middleware('auth');
-Route::view('GraficaSJ','GestionarDatos.graficas.GColegioSJ')->middleware('auth');
-Route::view('GraficaMA','GestionarDatos.graficas.GColegioMA')->middleware('auth');
+//Route::view('GraficaSJ','GestionarDatos.graficas.GColegioSJ')->middleware('auth');
+//Route::view('GraficaMA','GestionarDatos.graficas.GColegioMA')->middleware('auth');
 
 Route::post('/datosAgua',[DatosController::class,'storeAgua'])->name('datos.storeAgua')->middleware('auth');
 Route::post('/datosDiesel',[DatosController::class,'storeDiesel'])->name('datos.storeDiesel')->middleware('auth');
@@ -102,7 +102,8 @@ Route::get('VerDatosEnergiaC',[DatosControllerUser::class,'showEnergiaC'])->midd
 Route::get('VerDatosGasC',[DatosControllerUser::class,'showGasC'])->middleware('auth');
 Route::get('VerDatosPapelC',[DatosControllerUser::class,'showPapelC'])->middleware('auth');
 
-Route::view('VerGraficasC','GestionarDatos.indexColegio')->middleware('auth');
+//Route::view('VerGraficasC','GestionarDatos.indexColegio')->middleware('auth');
+Route::post('/mostrarGrafica',[DatosControllerUser::class,'mostrarGrafica'])->name('datosC.mostrarGrafica')->middleware('auth');
 Route::view('AñadirDatosC','GestionarDatos.añadirDatosColegio')->middleware('auth');
 
 Route::post('/datosAguaC',[DatosControllerUser::class,'storeAgua'])->name('datosC.storeAgua')->middleware('auth');

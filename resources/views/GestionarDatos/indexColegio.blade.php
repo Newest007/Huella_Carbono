@@ -25,110 +25,260 @@
         <!-- INICIO DE CONTENIDO -->
 
         <div class="mt-3">
-            <div class="row mb-4">
-                <div class="col-4"></div>
-                <div class="col-3">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Selecciones un año</option>
-                        <option>2022</option>
-                        <option>2023</option>
-                        <option>2023</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row ">
-                <div class="col-xl-6 col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <center><h5>GRAFICA DE MUESTRAAAA</h5></center>
-                        </div>
-                        <div class="card-body">
-                            <div class="row pb-2">
-                                <div class="col-auto m-b-10">
-                                    <h3 class="mb-1">$21,356.46</h3>
-                                    <span>Total Sales</span>
-                                </div>
-                                <div class="col-auto m-b-10">
-                                    <h3 class="mb-1">$1935.6</h3>
-                                    <span>Average</span>
-                                </div>
-                            </div>
-                            <div id="account-chart"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xl-6 col-md-12">
+        <div class="col-12">
                 <div class="card">
+                    <script>
+                        var anioAnual = @json($anioAnual);
+                        var consumoAguaAnual = @json($consumoAguaAnual);
+                        var consumoDieselAnual = @json($consumoDieselAnual);
+                        var consumoEnergiaAnual = @json($consumoEnergiaAnual);
+                        var consumoGasAnual = @json($consumoGasAnual);
+                        var consumoPapelAnual = @json($consumoPapelAnual);
+                    </script>
+                    <center><h4 class="my-4">Consumo por año</h4></center>
+                    <div class="m-4" id="consumo-anual"></div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card mt-3">
                     <div class="card-body">
-                        <h6>Customer Satisfaction</h6>
-                        <span>It takes continuous effort to maintain high customer satisfaction levels Internal and external.</span>
-                        <div class="row d-flex justify-content-center align-items-center">
-                            <div class="col">
-                                <div id="satisfaction-chart"></div>
+                        <form method="POST" action="{{route('datosC.mostrarGrafica')}}">
+                        @csrf
+                        <div class="row mb-4">
+                            <center><h4 class="mb">Graficas mensuales</h4></center>
+                            <div class="col-4"></div>
+                            <div class="col-4">
+                                <label for="año" class="form-label">Seleccione el año:</label>
+                                <select id="anio" name="anio" class="form-select">
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025">2025</option>
+                                </select>
+                                <center><button type="submit" class="btn btn-primary mt-3">Ver Gráfica</button></center>
+                            </div>
+                        </div>
+                        </form>
+                        @if($anioSeleccionado !== null)
+                        <center><h5>Graficas del año: {{$anioSeleccionado}}</h5></center>
+                        <script>
+                            var mesesAgua = @json($mesesAgua);
+                            var consumoAgua = @json($consumoAgua);
+                            var co2Agua = @json($co2Agua);
+
+                            var mesesDiesel = @json($mesesDiesel);
+                            var consumoDiesel = @json($consumoDiesel);
+                            var co2Diesel = @json($co2Diesel);
+
+                            var mesesEner = @json($mesesEner);
+                            var consumoEner = @json($consumoEner);
+                            var co2Ener = @json($co2Ener);
+
+                            var mesesGas = @json($mesesGas);
+                            var consumoGas = @json($consumoGas);
+                            var co2Gas = @json($co2Gas);
+
+                            var mesesPapel = @json($mesesPapel);
+                            var consumoPapel = @json($consumoPapel);
+                            var co2Papel = @json($co2Papel);
+
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card text-white bg-dark mt-3">
+                    <div class="card-body">
+                        <center><a class="h1">AGUA</a></center>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <center><h4>Consumo de agua (m3)</h4></center>
+                            <div class="row d-flex justify-content-center align-items-center">
+                                <div class="col">
+                                    @if($mesesAgua->count() == 0)
+                                    <center><h5>No hay datos que mostrar</h5></center>
+                                    @else
+                                    <div id="consumo-agua" class="mb-4"></div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                        <center><h4>Toneladas de CO2 de agua</h4></center>
+                            <div class="row d-flex justify-content-center align-items-center">
+                                <div class="col">
+                                    @if($mesesAgua->count() == 0)
+                                    <center><h5>No hay datos que mostrar</h5></center>
+                                    @else
+                                    <div id="consumo-agua-co2"></div>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="row">
-                    <div class="col-md-6">
-                        <div class="card support-bar overflow-hidden">
-                            <div class="card-body pb-0">
-                                <h2 class="m-0">53.94%</h2>
-                                <span class="text-primary">Conversion Rate</span>
-                                <p class="mb-3 mt-3">Number of conversions divided by the total visitors. </p>
-                            </div>
-                            <div id="support-chart"></div>
-                            <div class="card-footer border-0 bg-primary text-white background-pattern-white">
-                                <div class="row text-center">
-                                    <div class="col">
-                                        <h4 class="m-0 text-white">10</h4>
-                                        <span>2018</span>
-                                    </div>
-                                    <div class="col">
-                                        <h4 class="m-0 text-white">15</h4>
-                                        <span>2017</span>
-                                    </div>
-                                    <div class="col">
-                                        <h4 class="m-0 text-white">13</h4>
-                                        <span>2016</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <div class="col-12">
+                <div class="card text-white bg-dark mt-3">
+                    <div class="card-body">
+                        <center><a class="h1">Diesel</a></center>
                     </div>
-                    <div class="col-md-6">
-                        <div class="card support-bar overflow-hidden">
-                            <div class="card-body pb-0">
-                                <h2 class="m-0">1432</h2>
-                                <span class="text-primary">Order delivered</span>
-                                <p class="mb-3 mt-3">Total number of order delivered in this month.</p>
-                            </div>
-                            <div class="card-footer border-0">
-                                <div class="row text-center">
-                                    <div class="col">
-                                        <h4 class="m-0">130</h4>
-                                        <span>May</span>
-                                    </div>
-                                    <div class="col">
-                                        <h4 class="m-0">251</h4>
-                                        <span>June</span>
-                                    </div>
-                                    <div class="col">
-                                        <h4 class="m-0 ">235</h4>
-                                        <span>July</span>
-                                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <center><h4>Consumo de Diesel (m3)</h4></center>
+                            <div class="row d-flex justify-content-center align-items-center">
+                                <div class="col">
+                                    @if($mesesDiesel->count() == 0)
+                                    <center><h5>No hay datos que mostrar</h5></center>
+                                    @else
+                                    <div id="consumo-diesel" class="mb-4"></div>
+                                    @endif
                                 </div>
                             </div>
-                            <div id="support-chart1"></div>
+                            <center><h4>Toneladas de CO2 de Diesel</h4></center>
+                            <div class="row d-flex justify-content-center align-items-center">
+                                <div class="col">
+                                    @if($mesesDiesel->count() == 0)
+                                    <center><h5>No hay datos que mostrar</h5></center>
+                                    @else
+                                    <div id="consumo-diesel-co2"></div>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-
-
+            </div>
+            <div class="col-12">
+                <div class="card text-white bg-dark mt-3">
+                    <div class="card-body">
+                        <center><a class="h1">Energía Eléctrica</a></center>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <center><h3>Consumo de Energia (kWts)</h3></center>
+                                <div class="row d-flex justify-content-center align-items-center">
+                                    <div class="col">
+                                        @if($mesesEner->count() == 0)
+                                        <center><h5>No hay datos que mostrar</h5></center>
+                                        @else
+                                        <div id="consumo-ener"></div>
+                                        @endif
+                                    </div>
+                                </div>
+                                <hr>
+                                <center><h3>Toneladas de CO2 de Energia</h3></center>
+                                <div class="row d-flex justify-content-center align-items-center">
+                                    <div class="col">
+                                        @if($mesesEner->count() == 0)
+                                        <center><h5>No hay datos que mostrar</h5></center>
+                                        @else
+                                        <div id="consumo-ener-co2"></div>
+                                        @endif
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card text-white bg-dark mt-3">
+                    <div class="card-body">
+                        <center><a class="h1">Gasolina</a></center>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <center><h3>Consumo de Gasolina (m3)</h3></center>
+                                <div class="row d-flex justify-content-center align-items-center">
+                                    <div class="col">
+                                        @if($mesesGas->count() == 0)
+                                        <center><h5>No hay datos que mostrar</h5></center>
+                                        @else
+                                        <div id="consumo-gas"></div>
+                                        @endif
+                                    </div>
+                                </div>
+                                <center><h3>Toneladas de CO2 de Gasolina</h3></center>
+                                <div class="row d-flex justify-content-center align-items-center">
+                                    <div class="col">
+                                        @if($mesesGas->count() == 0)
+                                        <center><h5>No hay datos que mostrar</h5></center>
+                                        @else
+                                        <div id="consumo-gas-co2"></div>
+                                        @endif
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card text-white bg-dark mt-3">
+                    <div class="card-body">
+                        <center><a class="h1">Papel</a></center>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <div class="row">
+                                <center><h3>Consumo de Papel (m3)</h3></center>
+                                <div class="row d-flex justify-content-center align-items-center">
+                                    <div class="col">
+                                        @if($mesesPapel->count() == 0)
+                                        <center><h5>No hay datos que mostrar</h5></center>
+                                        @else
+                                        <div id="consumo-papel"></div>
+                                        @endif
+                                    </div>
+                                </div>
+                                <center><h3>Toneladas de CO2 de Papel</h3></center>
+                                <div class="row d-flex justify-content-center align-items-center">
+                                    <div class="col">
+                                        @if($mesesPapel->count() == 0)
+                                        <center><h5>No hay datos que mostrar</h5></center>
+                                        @else
+                                        <div id="consumo-papel-co2"></div>
+                                        @endif
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card text-white bg-dark mt-3">
+                    <div class="card-body">
+                        <center><a class="h2">Cosumo General por Mes</a></center>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <div class="mb-3" id="chart"></div>
+                    </div>
+                </div>
+            </div>
+            @endif
         </div>
 
 

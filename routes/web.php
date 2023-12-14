@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\DatosController;
 use App\Http\Controllers\DatosControllerUser;
+use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\Auth;
 
 
@@ -46,6 +47,8 @@ Route::get('VerDatosEnergia',[DatosController::class,'showEnergia'])->middleware
 Route::get('VerDatosGas',[DatosController::class,'showGas'])->middleware('auth');
 Route::get('VerDatosPapel',[DatosController::class,'showPapel'])->middleware('auth');
 
+
+
 Route::view('GenerarReporteDos','GestionarDatos.reportes.reportes22')->middleware('auth');
 Route::view('GenerarReporteTres','GestionarDatos.reportes.reportes23')->middleware('auth');
 Route::view('GenerarReporteCuatro','GestionarDatos.reportes.reportes24')->middleware('auth');
@@ -70,6 +73,9 @@ Route::post('/mostrarGraficaDB',[DatosController::class,'mostrarGraficaDB'])->na
 Route::post('/mostrarGraficaSC',[DatosController::class,'mostrarGraficaSC'])->name('datos.mostrarGraficaSC')->middleware('auth');
 Route::post('/mostrarGraficaSJ',[DatosController::class,'mostrarGraficaSJ'])->name('datos.mostrarGraficaSJ')->middleware('auth');
 Route::post('/mostrarGraficaMA',[DatosController::class,'mostrarGraficaMA'])->name('datos.mostrarGraficaMA')->middleware('auth');
+
+//PDF
+Route::post('pdf_anio',[ReporteController::class,'pdf_anio_mes'])->middleware('auth');
 
 
 //ELIMINAR REGISTROS

@@ -49,7 +49,7 @@ Route::get('VerDatosPapel',[DatosController::class,'showPapel'])->middleware('au
 
 
 
-Route::view('GenerarReporteDos','GestionarDatos.reportes.reportes22')->middleware('auth');
+Route::get('GenerarReporteDos',[ReporteController::class,'index'])->middleware('auth');
 Route::view('GenerarReporteTres','GestionarDatos.reportes.reportes23')->middleware('auth');
 Route::view('GenerarReporteCuatro','GestionarDatos.reportes.reportes24')->middleware('auth');
 Route::view('GenerarReporteCinco','GestionarDatos.reportes.reportes25')->middleware('auth');

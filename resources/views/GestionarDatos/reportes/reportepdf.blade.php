@@ -27,16 +27,13 @@
 <body>
     <h3 class="centrado">RESULTADO NACIONAL DE ESTUDIO DE ECOEFICIENCIA Y HUELLA DE CARBONO AIS</h3>
     <br>
-    @if($colegio)
-        @foreach ($colegio as $paper)
+        @if($colegio)
         <div style="text-align: center;">
-            <h3 style="font-family: 'Arial', sans-serif; color: #333; display: inline-block; margin-left: -10px;">{{$paper->Nombre}} - </h3>
-            <h3 style="font-family: 'Arial', sans-serif; color: #333; display: inline-block;">{{$paper->id_Anio}} - </h3>
-            <h3 style="font-family: 'Arial', sans-serif; color: #333; display: inline-block; ">{{$paper->Mes}}</h3>
+            <h3 style="font-family: 'Arial', sans-serif; color: #333; display: inline-block; margin-left: -10px;">{{$colegio}} - </h3>
+            <h3 style="font-family: 'Arial', sans-serif; color: #333; display: inline-block;">{{$anio}} - </h3>
+            <h3 style="font-family: 'Arial', sans-serif; color: #333; display: inline-block; ">{{$mes}}</h3>
         </div>
-        @endforeach
-    @endif
-
+        @endif
 
 
     <table>

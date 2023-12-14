@@ -6,6 +6,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
+use App\Models\Colegio;
 
 class ReporteController extends Controller
 {
@@ -14,7 +15,9 @@ class ReporteController extends Controller
      */
     public function index()
     {
-        //
+        $viewBag=array();
+        $viewBag['colegios'] = Colegio::get();
+        return view('GestionarDatos.reportes.reportes22', $viewBag);
     }
 
     public function pdf_anio(){
@@ -36,16 +39,18 @@ class ReporteController extends Controller
         }
         
     
-        
-
-
 
         public function pdf_anio_mes(Request $request){
-            $nombre = session('nombre');
-            $colegio = json_decode(User::where('nombre',$nombre)->get());
-            //var_dump($colegio[0]->id_colegio); //Obteniendo el id del colegio
+            $colegioSeleccionado = $request->input('colegio');
+            $colegio = json_decode(Colegio::where('Nombre',$colegioSeleccionado)->get());
             $idColegio = $colegio[0]->id_colegio;
 
+            //$nombre = session('nombre');
+            //$colegio = json_decode(User::where('nombre',$nombre)->get());
+            //var_dump($colegio[0]->id_colegio); //Obteniendo el id del colegio
+            //$idColegio = $colegio[0]->id_colegio;
+            //$colegioNombre = json_decode(Colegio::where('id_colegio',$idColegio)->get());
+            //var_dump($colegioNombre[0]->Nombre);
 
             $mes = $request->input('mes');
             $anio = $request->input('anio');
@@ -89,12 +94,12 @@ class ReporteController extends Controller
             ->get();
 
             //Solo para el nombre
-        $colegio = DB::table('consumo_energetico')
+            /*$colegio = DB::table('consumo_energetico')
             ->where('colegio.id_colegio', $idColegio)
             ->join('colegio', 'colegio.id_colegio', '=', 'consumo_energetico.id_colegio')
             ->where('consumo_energetico.id_Anio', '=', $anio)
             ->where('consumo_energetico.Mes', '=', $mes)           
-            ->get();
+            ->get();*/
 
             $viewBag = array();
             $viewBag['consumopapel']=$consumopapel;
@@ -103,7 +108,10 @@ class ReporteController extends Controller
             $viewBag['consumoagua']=$consumoagua;
             $viewBag['consumoenergetico']=$consumoenergetico;
             //Solo para el nombre
-            $viewBag['colegio']=$colegio;
+            //$viewBag['colegio']=$colegioNombre[0]->Nombre;
+            $viewBag['colegio']=$colegioSeleccionado;
+            $viewBag['mes']=$mes;
+            $viewBag['anio']=$anio;
 
             $pdf = Pdf::loadView('GestionarDatos.reportes.reportepdf', $viewBag);
             return $pdf->stream();

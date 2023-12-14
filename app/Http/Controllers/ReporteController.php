@@ -20,23 +20,61 @@ class ReporteController extends Controller
         return view('GestionarDatos.reportes.reportes22', $viewBag);
     }
 
-    public function pdf_anio(){
-            $idColegio = "CSJ003"; 
+    public function pdf_anio(Request $request){
+        $colegioSeleccionado = $request->input('colegio');
+        $colegio = json_decode(Colegio::where('Nombre',$colegioSeleccionado)->get());
+        $idColegio = $colegio[0]->id_colegio;
 
-            $consumoanual = DB::table('colegio')
-            
-                ->select('colegio.Nombre AS Nombre', 'consumo_papel_anual.id_Anio AS Año', 'consumo_papel_anual.Consumo_m3_Anual AS ConsumoPapelm3', 'consumo_gasolina_anual.Combustible_m3_Anual AS ConsumoGasolinam3', 'consumo_diesel_anual.Combustible_m3_Anual AS ConsumoDieselm3', 'consumo_energetico_anual.Consumo_kWts_Anual AS ConsumoEnergenitoKw', 'consumo_agua_anual.Consumo_Agua_Anual AS ConsumoAguam3')
-                ->join('consumo_papel_anual', 'colegio.id_colegio', '=', 'consumo_papel_anual.id_colegio')
-                ->join('consumo_gasolina_anual', 'colegio.id_colegio', '=', 'consumo_gasolina_anual.id_colegio')
-                ->join('consumo_energetico_anual', 'colegio.id_colegio', '=', 'consumo_energetico_anual.id_colegio')
-                ->join('consumo_diesel_anual', 'colegio.id_colegio', '=', 'consumo_diesel_anual.id_colegio')
-                ->join('consumo_agua_anual', 'colegio.id_colegio', '=', 'consumo_agua_anual.id_colegio')
-                ->where('colegio.id_colegio', '=', $idColegio)        
-                ->get();
+        $anio = $request->input('anio');
+
+
+         $consumopapel = DB::table('consumo_papel_anual')        
+            ->join('colegio', 'colegio.id_colegio', '=', 'consumo_papel_anual.id_colegio') 
+            ->where('colegio.id_colegio', $idColegio)           
+            ->where('consumo_papel_anual.id_Anio', '=', $anio)            
+            ->get();
+
+        $consumogasolina = DB::table('consumo_gasolina_anual')
+            ->join('colegio', 'colegio.id_colegio', '=', 'consumo_gasolina_anual.id_colegio')
+            ->where('colegio.id_colegio', $idColegio)
+            ->where('consumo_gasolina_anual.id_Anio','=', $anio)
+            ->get();
         
-            $pdf = Pdf::loadView('GestionarDatos.reportes.reportepdf', compact('consumoanual'));
+        $consumodiesel = DB::table('consumo_diesel_anual')
+            ->join('colegio', 'colegio.id_colegio', '=', 'consumo_diesel_anual.id_colegio')
+            ->where('colegio.id_colegio', $idColegio)
+            ->where('consumo_diesel_anual.Id_Anio','=', $anio)
+            ->get();
+        
+        $consumoagua = DB::table('consumo_agua_anual')
+            ->join('colegio', 'colegio.id_colegio', '=', 'consumo_agua_anual.id_colegio')
+            ->where('colegio.id_colegio', $idColegio)
+            ->where('consumo_agua_anual.id_Anio','=', $anio)
+            ->get();
+        
+        
+        
+        $consumoenergetico = DB::table('consumo_energetico_anual')
+            ->where('colegio.id_colegio', $idColegio)
+            ->join('colegio', 'colegio.id_colegio', '=', 'consumo_energetico_anual.id_colegio')
+            ->where('consumo_energetico_anual.id_Anio', '=', $anio)            
+            ->get();
+
+            $viewBag = array();
+            $viewBag['consumopapel']=$consumopapel;
+            $viewBag['consumogasolina']=$consumogasolina;
+            $viewBag['consumodiesel']=$consumodiesel;
+            $viewBag['consumoagua']=$consumoagua;
+            $viewBag['consumoenergetico']=$consumoenergetico;
+
+            $viewBag['colegio']=$colegioSeleccionado;
+            $viewBag['anio']=$anio;
+
+            $pdf = Pdf::loadView('GestionarDatos.reportes.reporte_anio', $viewBag);
             return $pdf->stream();
-        }
+        
+
+    }
         
     
 

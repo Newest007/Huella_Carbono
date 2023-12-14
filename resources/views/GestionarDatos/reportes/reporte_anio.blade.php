@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reporte Mensual</title>
+    <title>Reporte Anual</title>
     <style>
         .centrado {
             text-align: center;
@@ -26,13 +26,11 @@
 </head>
 <body>
     <h3 class="centrado">RESULTADO NACIONAL DE ESTUDIO DE ECOEFICIENCIA Y HUELLA DE CARBONO AIS</h3>
-    <h3 class="centrado" style="text-decoration: underline;">Reporte Mensual</h3>
     <br>
         @if($colegio)
         <div style="text-align: center;">
             <h3 style="font-family: 'Arial', sans-serif; color: #333; display: inline-block; margin-left: -10px;">{{$colegio}} - </h3>
             <h3 style="font-family: 'Arial', sans-serif; color: #333; display: inline-block;">{{$anio}} - </h3>
-            <h3 style="font-family: 'Arial', sans-serif; color: #333; display: inline-block; ">{{$mes}}</h3>
         </div>
         @endif
 
@@ -51,8 +49,8 @@
         <tbody>
             <tr>
                 <td>&nbsp;</td>
-                <td>{{$gasofa->Combustible_m3}}</td>
-                <td>{{$gasofa->Ton_CO2_m3}}</td>
+                <td>{{$gasofa->Combustible_m3_Anual}}</td>
+                <td>{{$gasofa->Ton_CO2_m3_Anual}}</td>
             </tr>
         </tbody>
     @endforeach
@@ -85,8 +83,8 @@
         <tbody>
             <tr>
                 <td>&nbsp;</td>
-                <td>{{$diesel->Combustible_m3}}</td>
-                <td>{{$diesel->Ton_CO2_m3}}</td>
+                <td>{{$diesel->Combustible_m3_Anual}}</td>
+                <td>{{$diesel->Ton_CO2_m3_Anual}}</td>
                 
             </tr>
         </tbody>
@@ -120,8 +118,8 @@
         <tbody>
             <tr>
                 <td>&nbsp;</td>
-                <td>{{$agua->Consumo_m3}}</td>
-                <td>{{$agua->Ton_CO2_m3}}</td>
+                <td>{{$agua->Consumo_Agua_Anual}}</td>
+                <td>{{$agua->Ton_CO2_Anual}}</td>
             </tr>
         </tbody>
         @endforeach
@@ -154,8 +152,8 @@
         <tbody>
             <tr>
                 <td>&nbsp;</td>
-                <td>{{$energia->Consumo_kWts}}</td>
-                <td>{{$energia->Ton_CO2}}</td>
+                <td>{{$energia->Consumo_kWts_Anual}}</td>
+                <td>{{$energia->Ton_CO2_Anual}}</td>
             </tr>
         </tbody>
         @endforeach
@@ -188,8 +186,8 @@
         <tbody>
             <tr>
                 <td>&nbsp;</td>
-                <td>{{$papel->Consumo_m3}}</td>
-                <td>{{$papel->Ton_CO2}}</td>
+                <td>{{$papel->Consumo_m3_Anual}}</td>
+                <td>{{$papel->Ton_CO2_Anual}}</td>
             </tr>
         </tbody>
         @endforeach

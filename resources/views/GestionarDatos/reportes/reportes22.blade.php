@@ -41,14 +41,14 @@
 
             <div class="card table-card">
                 
-                <div class="row m-4">
+                <div class="row m-3">
                     <div class="card-group">
                         <div class="col-6">
                             <div class="card border text-center">
                                 <div class="card-body p-4">
                                     <h5 class="card-title m-4">Reporte Mensual</h5>
                                     <hr>
-                                    <form action="pdf_anio" method="post" target="_blank">
+                                    <form action="pdf_mes" method="post" target="_blank">
                                         @csrf
                                         <div class="mb-2">
                                             <label for="mes" class="form-label">Seleccione el mes</label>
@@ -64,26 +64,30 @@
                                                 <option value="Septiembre">Septiembre</option>
                                                 <option value="Octubre">Octubre</option>
                                                 <option value="Noviembre">Noviembre</option>
-                                                <option value="Diciembre">Diciembre</option>                                                
+                                                <option value="Diciembre">Diciembre</option>
                                             </select>
                                         </div>
-                                        <button type="submit" class="btn btn-primary" >Generar Reporte</button>
+                                        
                                         <div class="mb-2">
                                             <label for="anio" class="form-label">Seleccione el año</label>
                                             <select name="anio" class="form-select">
                                                 <option value="2022">2022</option>
                                                 <option value="2023">2023</option>
                                                 <option value="2024">2024</option>
-                                                <option value="2025">2025</option>                                                
+                                                <option value="2025">2025</option>
                                             </select>
-                                            
+                                        </div>
+
+                                        <div class="mb-2">
                                             <label for="anio" class="form-label">Seleccione el colegio</label>
                                             <select class="form-select" id="colegio" name="colegio">
-                                            @foreach($colegios as $colegio)
-                                            <option value="{{$colegio->Nombre}}">{{$colegio->Nombre}}</option>
-                                            @endforeach
+                                                @foreach($colegios as $colegio)
+                                                    <option value="{{$colegio->Nombre}}">{{$colegio->Nombre}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
-                                        
+
+                                        <button type="submit" class="btn btn-primary">Generar Reporte</button>
                                     </form>
 
                                 </div>  
@@ -94,10 +98,28 @@
                                 <div class="card-body p-4">
                                     <h5 class="card-title m-4">Reporte Anual</h5>
                                     <hr>
-                                    <form>
-                                        <br><br>
-                                        <a type="submit" class="btn btn-primary mt-1" href="pdf_anio" target="_blank">Generar Reporte</a>
-                                        <br><br><br>
+                                    <form action="pdf_anio" method="post" target="_blank">
+                                        @csrf                                                                                
+                                        <div class="mb-2">
+                                            <label for="anio" class="form-label">Seleccione el año</label>
+                                            <select name="anio" class="form-select">
+                                                <option value="2022">2022</option>
+                                                <option value="2023">2023</option>
+                                                <option value="2024">2024</option>
+                                                <option value="2025">2025</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="mb-2">
+                                            <label for="anio" class="form-label">Seleccione el colegio</label>
+                                            <select class="form-select" id="colegio" name="colegio">
+                                                @foreach($colegios as $colegio)
+                                                    <option value="{{$colegio->Nombre}}">{{$colegio->Nombre}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary">Generar Reporte</button>
                                     </form>
                                 </div>
                             </div>

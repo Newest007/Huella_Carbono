@@ -75,7 +75,9 @@ Route::post('/mostrarGraficaSJ',[DatosController::class,'mostrarGraficaSJ'])->na
 Route::post('/mostrarGraficaMA',[DatosController::class,'mostrarGraficaMA'])->name('datos.mostrarGraficaMA')->middleware('auth');
 
 //PDF
-Route::post('pdf_anio',[ReporteController::class,'pdf_anio_mes'])->middleware('auth');
+Route::post('pdf_mes',[ReporteController::class,'pdf_anio_mes'])->middleware('auth');
+
+Route::post('pdf_anio',[ReporteController::class,'pdf_anio'])->middleware('auth');
 
 
 //ELIMINAR REGISTROS

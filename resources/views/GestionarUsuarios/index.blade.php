@@ -18,10 +18,9 @@
                 </div>
             </div>
         </div>
-        <div class="container mt-4">
+        <div class="container">
             <div class="row justify-content-center">
-                <div class="row mt-5 mb-4"></div>
-                <div class="card mt-5">
+                <div class="card mt-3">
                     <div class="card-header mt-3">
                         <center><h2 class="card-title">Añadir nuevo usuario</h2></center>
                     </div>

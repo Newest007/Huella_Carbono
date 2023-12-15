@@ -11,12 +11,6 @@ use App\Http\Controllers\Cole_ReporteController;
 
 use App\Http\Controllers\Auth;
 
-
-/*
-Route::get('/', function () {
-    return view('login');
-});*/
-
 Route::get('/prueba', function () {
     return view('layouts.defaultPage');
 });
@@ -50,16 +44,7 @@ Route::get('VerDatosGas',[DatosController::class,'showGas'])->middleware('auth')
 Route::get('VerDatosPapel',[DatosController::class,'showPapel'])->middleware('auth');
 
 
-
-Route::get('GenerarReporteDos',[ReporteController::class,'index'])->middleware('auth');
-Route::view('GenerarReporteTres','GestionarDatos.reportes.reportes23')->middleware('auth');
-Route::view('GenerarReporteCuatro','GestionarDatos.reportes.reportes24')->middleware('auth');
-Route::view('GenerarReporteCinco','GestionarDatos.reportes.reportes25')->middleware('auth');
-
-//Route::view('GraficaDB','GestionarDatos.graficas.GColegioDB')->middleware('auth');
-//Route::view('GraficaSC','GestionarDatos.graficas.GColegioSC')->middleware('auth');
-//Route::view('GraficaSJ','GestionarDatos.graficas.GColegioSJ')->middleware('auth');
-//Route::view('GraficaMA','GestionarDatos.graficas.GColegioMA')->middleware('auth');
+Route::get('GenerarReporte',[ReporteController::class,'index'])->middleware('auth');
 
 Route::post('/datosAgua',[DatosController::class,'storeAgua'])->name('datos.storeAgua')->middleware('auth');
 Route::post('/datosDiesel',[DatosController::class,'storeDiesel'])->name('datos.storeDiesel')->middleware('auth');
@@ -79,9 +64,6 @@ Route::post('/mostrarGraficaMA',[DatosController::class,'mostrarGraficaMA'])->na
 //PDF → ADMIN GENERAL
 Route::post('pdf_mes',[ReporteController::class,'pdf_anio_mes'])->middleware('auth');
 Route::post('pdf_anio',[ReporteController::class,'pdf_anio'])->middleware('auth');
-
-
-
 
 //ELIMINAR REGISTROS
 Route::delete('/datosAgua/{id_colegio}/{id_Anio}/{Mes}',[DatosController::class,'destroyAgua'])->name('datosAgua.destroy')->middleware('auth');
@@ -117,7 +99,7 @@ Route::post('/datosEnergiaC',[DatosControllerUser::class,'storeEnergia'])->name(
 Route::post('/datosGasolinaC',[DatosControllerUser::class,'storeGasolina'])->name('datosC.storeGasolina')->middleware('auth');
 Route::post('/datosPapelC',[DatosControllerUser::class,'storePapel'])->name('datosC.storePapel')->middleware('auth');
 
-Route::view('GenerarReporteDosC','GestionarDatos.reportes.reportes22C')->middleware('auth');
+Route::view('GenerarReporteC','GestionarDatos.reportes.reportes22C')->middleware('auth');
 Route::view('GenerarReporteTresC','GestionarDatos.reportes.reportes23C')->middleware('auth');
 Route::view('GenerarReporteCuatroC','GestionarDatos.reportes.reportes24C')->middleware('auth');
 Route::view('GenerarReporteCincoC','GestionarDatos.reportes.reportes25C')->middleware('auth');
@@ -135,16 +117,9 @@ Route::delete('/datosPapelC/{id_colegio}/{id_Anio}/{Mes}',[DatosControllerUser::
 Route::view('VerInventarioC','GestionarInventarios.verInventariosColegio')->middleware('auth');
 Route::view('AñadirInventarioC','GestionarInventarios.añadirInventariosColegio')->middleware('auth');
 
-
-Route::view('verDefault','layouts.defaultpage')->middleware('auth');
-Route::view('verColegio','GestionarDatos.indexColegio')->middleware('auth');
-
 //GENERAR REPORTE
 //PDF → ADMIN Cole
 Route::post('pdf_mes',[Cole_ReporteController::class,'pdf_anio_mes'])->middleware('auth');
 Route::post('pdf_anio',[Cole_ReporteController::class,'pdf_anio'])->middleware('auth');
-
-
-
 
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');

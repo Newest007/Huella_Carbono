@@ -52,7 +52,6 @@
 
         <div class="container">
             <div class="row justify-content-center">
-                
                 <div class="card mt-4">
                     <div class="card-header mt-3">
                         <center><h2 class="card-title">Añadir Cosumo de agua </h2></center>

@@ -3,12 +3,6 @@
 
 <head>
     <title>@yield('title')</title>
-    <!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 11]>
-    	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    	<![endif]-->
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -38,8 +32,8 @@
 	<!-- [ Pre-loader ] End -->
 	<!-- [ Mobile header ] start -->
 	<div class="pc-mob-header pc-header">
-		<div class="pcm-logo" style="color:white">
-			<img src="https://lh4.googleusercontent.com/WBI2lI_TsmehP23LZTSCd7UYQpBTsvNdUylx8XvLse4Xou8I3UPGDVLXifmN74tiyT8SIc55RBYrKdTOYi5btFs=w16383"width="40" height="40">  Don Bosco Green Alliance
+		<div class="pcm-logo mt-2" style="color:white">
+			<p> Don Bosco Green Alliance</p>
 		</div>
 		<div class="pcm-toolbar">
 			<a href="#!" class="pc-head-link" id="mobile-collapse">
@@ -49,10 +43,6 @@
 					</div>
 				</div>
 			</a>
-			<!--
-			<a href="#!" class="pc-head-link" id="headerdrp-collapse">
-				<i data-feather="align-right"></i>
-			</a>-->
 			<a href="#!" class="pc-head-link" id="header-collapse">
 				<i data-feather="more-vertical"></i>
 			</a>
@@ -64,7 +54,7 @@
 	<nav class="pc-sidebar ">
 		<div class="navbar-wrapper">
 			<div class="m-header">
-				<a href="VerGraficasC" class="b-brand" style="color:white">
+				<a href="VerDatosAguaC" class="b-brand" style="color:white">
 					<img src="{{asset('assets/dbga logo square.png')}}"width="40" height="40">  Don Bosco Green Alliance
 				</a>
 			</div>
@@ -86,8 +76,9 @@
 						<label>Generación de reporte </label>
 					</li>
 					<li class="pc-item">
-						<a href="GenerarReporteDosC" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">note_add</i></span><span class="pc-mtext">Generar reporte</span></a>
+						<a href="GenerarReporteC" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">note_add</i></span><span class="pc-mtext">Generar reporte</span></a>
 					</li>
+					<!--  		GESTION DE INVENTARIO 
 					<li class="pc-item pc-caption">
 						<label>Gestionar Inventario</label>
 					</li>
@@ -103,7 +94,7 @@
 					<li class="pc-item">
 						<a href="/verDefault" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">group_add</i></span><span class="pc-mtext">Pagina Muestra</span></a>
 					</li>
-					
+					-->
 				</ul>
 			</div>
 		</div>
@@ -120,62 +111,6 @@
 					Sea Bienvenido!
 					</a>
 					</li>
-					<!--<li class="dropdown pc-h-item">
-						<a class="pc-head-link active dropdown-toggle arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-							Opciones de cuenta
-						</a>
-						<div class="dropdown-menu pc-h-dropdown">
-							<a href="#!" class="dropdown-item">
-								<i class="material-icons-two-tone">account_circle</i>
-								<span>My Account</span>
-							</a>
-							<div class="pc-level-menu">
-								<a href="#!" class="dropdown-item">
-									<i class="material-icons-two-tone">list_alt</i>
-									<span class="float-right"><i data-feather="chevron-right" class="mr-0"></i></span>
-									<span>Level2.1</span>
-								</a>
-								<div class="dropdown-menu pc-h-dropdown">
-									<a href="#!" class="dropdown-item">
-										<i class="fas fa-circle"></i>
-										<span>My Account</span>
-									</a>
-									<a href="#!" class="dropdown-item">
-										<i class="fas fa-circle"></i>
-										<span>Settings</span>
-									</a>
-									<a href="#!" class="dropdown-item">
-										<i class="fas fa-circle"></i>
-										<span>Support</span>
-									</a>
-									<a href="#!" class="dropdown-item">
-										<i class="fas fa-circle"></i>
-										<span>Lock Screen</span>
-									</a>
-									<a href="#!" class="dropdown-item">
-										<i class="fas fa-circle"></i>
-										<span>Logout</span>
-									</a>
-								</div>
-							</div>
-							<a href="#!" class="dropdown-item">
-								<i class="material-icons-two-tone">settings</i>
-								<span>Settings</span>
-							</a>
-							<a href="#!" class="dropdown-item">
-								<i class="material-icons-two-tone">support</i>
-								<span>Support</span>
-							</a>
-							<a href="#!" class="dropdown-item">
-								<i class="material-icons-two-tone">https</i>
-								<span>Lock Screen</span>
-							</a>
-							<a href="#!" class="dropdown-item">
-								<i class="material-icons-two-tone">chrome_reader_mode</i>
-								<span>Logout</span>
-							</a>
-						</div>
-					</li>-->
 				</ul>
 			</div>
 			<div class="ml-auto">
@@ -208,67 +143,15 @@
         @yield('content')
     </div>
 </div>
-<!-- [ Main Content ] end -->
-    <!-- Warning Section start -->
-    <!-- Older IE warning message -->
-    <!--[if lt IE 11]>
-        <div class="ie-warning">
-            <h1>Warning!!</h1>
-            <p>You are using an outdated version of Internet Explorer, please upgrade
-               <br/>to any of the following web browsers to access this website.
-            </p>
-            <div class="iew-container">
-                <ul class="iew-download">
-                    <li>
-                        <a href="http://www.google.com/chrome/">
-                            <img src="assets/images/browser/chrome.png" alt="Chrome">
-                            <div>Chrome</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.mozilla.org/en-US/firefox/new/">
-                            <img src="assets/images/browser/firefox.png" alt="Firefox">
-                            <div>Firefox</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://www.opera.com">
-                            <img src="assets/images/browser/opera.png" alt="Opera">
-                            <div>Opera</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.apple.com/safari/">
-                            <img src="assets/images/browser/safari.png" alt="Safari">
-                            <div>Safari</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                            <img src="assets/images/browser/ie.png" alt="">
-                            <div>IE (11 & above)</div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <p>Sorry for the inconvenience!</p>
-        </div>
-    <![endif]-->
     <!-- Warning Section Ends -->
     <!-- Required Js -->
     <script src="{{asset('js/vendor-all.min.js')}}"></script>
     <script src="{{asset('js/plugins/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/plugins/feather.min.js')}}"></script>
     <script src="{{asset('js/pcoded.min.js')}}"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script> -->
-    <!-- <script src="assets/js/plugins/clipboard.min.js"></script> -->
-    <!-- <script src="assets/js/uikit.min.js"></script> -->
 
 <!-- Apex Chart -->
 <script src="{{asset('js/plugins/apexcharts.min.js')}}"></script>
-<!--<script>
-    $("body").append('<div class="fixed-button active"><a href="https://gumroad.com/dashboardkit" target="_blank" class="btn btn-md btn-success"><i class="material-icons-two-tone text-white">shopping_cart</i> Upgrade To Pro</a> </div>');
-</script>-->
 
 <!-- custom-chart js -->
 <script src="{{asset('js/pages/dashboard-sale.js')}}"></script>

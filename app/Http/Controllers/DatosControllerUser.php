@@ -44,6 +44,9 @@ class DatosControllerUser extends Controller
         });
         $anioAnual = $datosAgua->pluck('id_Anio');
         $consumoAguaAnual = $datosAgua->pluck('Consumo_Agua_Anual');
+        $consumoAguaTon = $datosAgua->pluck('Ton_CO2_Anual')->map(function($value){
+            return number_format($value,3);
+        });
 
         //Consumo Diesel
         $datosDiesel = ConsumoDieselAnual::where('id_colegio', $idColegio)->get();
@@ -51,6 +54,9 @@ class DatosControllerUser extends Controller
             return $ordenAño[strtolower($registro->id_Anio)];
         });
         $consumoDieselAnual = $datosDiesel->pluck('Cantidad_Anual');
+        $consumoDieselTon = $datosDiesel->pluck('Ton_CO2_m3_Anual')->map(function($value){
+            return number_format($value,3);
+        });
 
         //Consumo Energetico
         $datosEnergia = ConsumoEnergeticoAnual::where('id_colegio', $idColegio)->get();
@@ -58,6 +64,9 @@ class DatosControllerUser extends Controller
             return $ordenAño[strtolower($registro->id_Anio)];
         });
         $consumoEnergiaAnual = $datosEnergia->pluck('Consumo_kWts_Anual');
+        $consumoEnergiaTon = $datosEnergia->pluck('Ton_CO2_Anual')->map(function($value){
+            return number_format($value,3);
+        });
 
         //Consumo Gasolina
         $datosGasolina = ConsumoGasolinaAnual::where('id_colegio', $idColegio)->get();
@@ -65,6 +74,9 @@ class DatosControllerUser extends Controller
             return $ordenAño[strtolower($registro->id_Anio)];
         });
         $consumoGasAnual = $datosGasolina->pluck('Cantidad_Anual');
+        $consumoGasTon = $datosGasolina->pluck('Ton_CO2_m3_Anual')->map(function($value){
+            return number_format($value,3);
+        });
 
         //Consumo Papel
         $datosPapel = ConsumoPapelAnual::where('id_colegio', $idColegio)->get();
@@ -72,14 +84,22 @@ class DatosControllerUser extends Controller
             return $ordenAño[strtolower($registro->id_Anio)];
         });
         $consumoPapelAnual = $datosPapel->pluck('Consumo_m3_Anual');
+        $consumoPapelTon = $datosPapel->pluck('Ton_CO2_Anual')->map(function($value){
+            return number_format($value,3);
+        });
 
         return view('GestionarDatos.indexColegio',[
-        'anioAnual' =>$anioAnual,
-        'consumoAguaAnual' => $consumoAguaAnual,
-        'consumoDieselAnual' => $consumoDieselAnual,
-        'consumoEnergiaAnual' => $consumoEnergiaAnual,
-        'consumoGasAnual' => $consumoGasAnual,
-        'consumoPapelAnual' => $consumoPapelAnual], $viewBag);
+            'anioAnual' =>$anioAnual,
+            'consumoAguaAnual' => $consumoAguaAnual,
+            'consumoAguaTon' => $consumoAguaTon,
+            'consumoDieselAnual' => $consumoDieselAnual,
+            'consumoDieselTon' => $consumoDieselTon,
+            'consumoEnergiaAnual' => $consumoEnergiaAnual,
+            'consumoEnergiaTon' => $consumoEnergiaTon,
+            'consumoGasAnual' => $consumoGasAnual,
+            'consumoGasTon' => $consumoGasTon,
+            'consumoPapelAnual' => $consumoPapelAnual,
+            'consumoPapelTon' => $consumoPapelTon],$viewBag);
     }
 
     public function mostrarGrafica(Request $request)
@@ -119,7 +139,9 @@ class DatosControllerUser extends Controller
             });
             $mesesAgua = $datosConsumoAgua->pluck('Mes');
             $consumoAgua = $datosConsumoAgua->pluck('Consumo_m3');
-            $co2Agua = $datosConsumoAgua->pluck('Ton_CO2_m3');
+            $co2Agua = $datosConsumoAgua->pluck('Ton_CO2_m3')->map(function($value){
+                return number_format($value,3);
+            });
 
             //Consumo Diesel
             $datosConsumoDiesel = ConsumoDiesel::where('id_colegio', $idColegio)->where('id_Anio',$anio)->get();
@@ -128,7 +150,9 @@ class DatosControllerUser extends Controller
             });
             $mesesDiesel = $datosConsumoDiesel->pluck('Mes');
             $consumoDiesel = $datosConsumoDiesel->pluck('Cantidad');
-            $co2Diesel = $datosConsumoDiesel->pluck('Ton_CO2_m3');
+            $co2Diesel = $datosConsumoDiesel->pluck('Ton_CO2_m3')->map(function($value){
+                return number_format($value,5);
+            });
 
             //Consumo Energetico
             $datosConsumoEner = ConsumoEnergetico::where('id_colegio', $idColegio)->where('id_Anio',$anio)->get();
@@ -137,7 +161,9 @@ class DatosControllerUser extends Controller
             });
             $mesesEner = $datosConsumoEner->pluck('Mes');
             $consumoEner = $datosConsumoEner->pluck('Consumo_kWts');
-            $co2Ener = $datosConsumoEner->pluck('Ton_CO2');
+            $co2Ener = $datosConsumoEner->pluck('Ton_CO2')->map(function($value){
+                return number_format($value,3);
+            });
             
             //Consumo Gas
             $datosConsumoGas = ConsumoGasolina::where('id_colegio', $idColegio)->where('id_Anio',$anio)->get();
@@ -146,7 +172,9 @@ class DatosControllerUser extends Controller
             });
             $mesesGas = $datosConsumoGas->pluck('Mes');
             $consumoGas = $datosConsumoGas->pluck('Cantidad');
-            $co2Gas = $datosConsumoGas->pluck('Ton_CO2_m3');
+            $co2Gas = $datosConsumoGas->pluck('Ton_CO2_m3')->map(function($value){
+                return number_format($value,3);
+            });
 
             //Consumo Papel
             $datosConsumoPapel = ConsumoPapel::where('id_colegio', $idColegio)->where('id_Anio',$anio)->get();
@@ -155,7 +183,9 @@ class DatosControllerUser extends Controller
             });
             $mesesPapel = $datosConsumoPapel->pluck('Mes');
             $consumoPapel = $datosConsumoPapel->pluck('Consumo_m3');
-            $co2Papel = $datosConsumoPapel->pluck('Ton_CO2');
+            $co2Papel = $datosConsumoPapel->pluck('Ton_CO2')->map(function($value){
+                return number_format($value,3);
+            });
 
 
             //Consumo Agua
@@ -165,34 +195,49 @@ class DatosControllerUser extends Controller
             });
             $anioAnual = $datosAgua->pluck('id_Anio');
             $consumoAguaAnual = $datosAgua->pluck('Consumo_Agua_Anual');
-    
+            $consumoAguaTon = $datosAgua->pluck('Ton_CO2_Anual')->map(function($value){
+                return number_format($value,3);
+            });
+
             //Consumo Diesel
             $datosDiesel = ConsumoDieselAnual::where('id_colegio', $idColegio)->get();
             $datosDiesel = $datosDiesel->sortBy(function ($registro) use ($ordenAño) {
                 return $ordenAño[strtolower($registro->id_Anio)];
             });
             $consumoDieselAnual = $datosDiesel->pluck('Cantidad_Anual');
-    
+            $consumoDieselTon = $datosDiesel->pluck('Ton_CO2_m3_Anual')->map(function($value){
+                return number_format($value,3);
+            });
+
             //Consumo Energetico
             $datosEnergia = ConsumoEnergeticoAnual::where('id_colegio', $idColegio)->get();
             $datosEnergia = $datosEnergia->sortBy(function ($registro) use ($ordenAño) {
                 return $ordenAño[strtolower($registro->id_Anio)];
             });
             $consumoEnergiaAnual = $datosEnergia->pluck('Consumo_kWts_Anual');
-    
+            $consumoEnergiaTon = $datosEnergia->pluck('Ton_CO2_Anual')->map(function($value){
+                return number_format($value,3);
+            });
+
             //Consumo Gasolina
             $datosGasolina = ConsumoGasolinaAnual::where('id_colegio', $idColegio)->get();
             $datosGasolina = $datosGasolina->sortBy(function ($registro) use ($ordenAño) {
                 return $ordenAño[strtolower($registro->id_Anio)];
             });
             $consumoGasAnual = $datosGasolina->pluck('Cantidad_Anual');
-    
+            $consumoGasTon = $datosGasolina->pluck('Ton_CO2_m3_Anual')->map(function($value){
+                return number_format($value,3);
+            });
+
             //Consumo Papel
             $datosPapel = ConsumoPapelAnual::where('id_colegio', $idColegio)->get();
             $datosPapel = $datosPapel->sortBy(function ($registro) use ($ordenAño) {
                 return $ordenAño[strtolower($registro->id_Anio)];
             });
             $consumoPapelAnual = $datosPapel->pluck('Consumo_m3_Anual');
+            $consumoPapelTon = $datosPapel->pluck('Ton_CO2_Anual')->map(function($value){
+                return number_format($value,3);
+            });
             
             return view('GestionarDatos.indexColegio', [
                 'anioSeleccionado' =>$anio,
@@ -220,10 +265,15 @@ class DatosControllerUser extends Controller
 
                 'anioAnual' =>$anioAnual,
                 'consumoAguaAnual' => $consumoAguaAnual,
+                'consumoAguaTon' => $consumoAguaTon,
                 'consumoDieselAnual' => $consumoDieselAnual,
+                'consumoDieselTon' => $consumoDieselTon,
                 'consumoEnergiaAnual' => $consumoEnergiaAnual,
+                'consumoEnergiaTon' => $consumoEnergiaTon,
                 'consumoGasAnual' => $consumoGasAnual,
+                'consumoGasTon' => $consumoGasTon,
                 'consumoPapelAnual' => $consumoPapelAnual,
+                'consumoPapelTon' => $consumoPapelTon,
             ]);
 
         }
@@ -467,25 +517,6 @@ class DatosControllerUser extends Controller
             }
         }
     }
-
-    /**
-     * Display the specified resource.
-     */
-    /*public function show()
-    {
-        $nombre = session('nombre');
-        $colegio = json_decode(User::where('nombre',$nombre)->get());
-        //var_dump($colegio[0]->id_colegio); //Obteniendo el id del colegio
-        $idColegio = $colegio[0]->id_colegio;
-
-        $viewBag = array();
-        $viewBag['consumoAgua'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->get();
-        //$viewBag['consumoDiesel'] = DB::table('consumo_diesel')->join('colegio','colegio.id_colegio','=','consumo_diesel.id_colegio')->get();
-        //$viewBag['consumoGasolina'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->get();
-        //$viewBag['consumoPapel'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->get();
-        //$viewBag['consumoAgua'] = DB::table('consumo_agua')->join('colegio','colegio.id_colegio','=','consumo_agua.id_colegio')->where('colegio.id_colegio',$idColegio)->get();
-        return view('GestionarDatos.verDatos',$viewBag);
-    }*/
 
     public function showAguaC()
     {

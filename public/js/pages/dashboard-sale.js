@@ -1004,4 +1004,70 @@ function floatchart() {
           var chart = new ApexCharts(document.querySelector("#chart"), options);
           chart.render();
     });
+
+    // [ Tabla anual ] start
+    $(function() {
+        $(function() {
+            var options = {
+                series: [{
+                name: 'Consumo Agua',
+                data: consumoAguaTon
+              }, {
+                name: 'Consumo Diesel',
+                data: consumoDieselTon
+              }, {
+                name: 'Consumo Energia',
+                data: consumoEnergiaTon
+              }, {
+                name: 'Consumo Gasolina',
+                data: consumoGasTon
+              }, {
+                name: 'Consumo Papel',
+                data: consumoPapelTon
+              }
+            ],
+                chart: {
+                type: 'bar',
+                height: 350
+              },
+              plotOptions: {
+                bar: {
+                  horizontal: false,
+                  columnWidth: '55%',
+                  //endingShape: 'rounded'
+                },
+              },
+              dataLabels: {
+                enabled: false
+              },
+              stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+              },
+              xaxis: {
+                categories: anioAnual
+              },
+              yaxis: {
+                title: {
+                  text: 'Consumo por año'
+                }
+              },
+              fill: {
+                opacity: 1
+              },
+              tooltip: {
+                y: {
+                  formatter: function (val) {
+                    return "" + val + ""
+                  }
+                }
+              }
+              };
+      
+            var chart = new ApexCharts(document.querySelector("#consumo-co2"), options);
+            chart.render();
+            
+        });
+    });
 }

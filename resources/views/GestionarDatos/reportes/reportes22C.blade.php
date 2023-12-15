@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.templateUser')
 @section('content')
 @section('title','Gestionar Datos')
 @csrf
@@ -21,29 +21,11 @@
         </div>
 
         <!-- fin de breadcrumb -->
-
         <!-- INICIO DE CONTENIDO -->
-        <div class="container mt-4">
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="GenerarReporteDos">Año 2022</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="GenerarReporteTres">Consumo 2023</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="GenerarReporteCuatro">Consumo 2024</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="GenerarReporteCinco">Consumo 2025</a>
-                </li>
-            </ul>
-
-            <div class="card table-card">
-                
+        <div class="card table-card mt-4">
                 <div class="row m-3">
                     <div class="card-group">
-                        <div class="col-6">
+                        <div class="col-xl-6 col-sm-12">
                             <div class="card border text-center">
                                 <div class="card-body p-4">
                                     <h5 class="card-title m-4">Reporte Mensual</h5>
@@ -77,16 +59,13 @@
                                                 <option value="2025">2025</option>
                                             </select>
                                         </div>
-
-                                            
-
                                         <button type="submit" class="btn btn-primary">Generar Reporte</button>
                                     </form>
 
                                 </div>  
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-xl-6 col-sm-12">
                             <div class="card border text-center">
                                 <div class="card-body p-4">
                                     <h5 class="card-title m-4">Reporte Anual</h5>
@@ -94,17 +73,16 @@
                                     <form action="pdf_anio" method="post" target="_blank">
                                         @csrf                                                                                
                                         <div class="mb-2">
-                                            <label for="anio" class="form-label">Seleccione el año</label>
+                                            <br>
+                                            <label for="anio" class="form-label my-4">Seleccione el año</label>
                                             <select name="anio" class="form-select">
                                                 <option value="2022">2022</option>
                                                 <option value="2023">2023</option>
                                                 <option value="2024">2024</option>
                                                 <option value="2025">2025</option>
                                             </select>
+                                            <br>
                                         </div>
-
-                                        
-
                                         <button type="submit" class="btn btn-primary">Generar Reporte</button>
                                     </form>
                                 </div>
@@ -112,9 +90,7 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-        </div>
     </div> <!-- NO BORRAR -->
 
 

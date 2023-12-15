@@ -24,19 +24,27 @@
 
         <!-- INICIO DE CONTENIDO -->
 
+
         <div class="mt-3">
         <div class="col-12">
                 <div class="card">
                     <script>
                         var anioAnual = @json($anioAnual);
                         var consumoAguaAnual = @json($consumoAguaAnual);
+                        var consumoAguaTon = @json($consumoAguaTon);
                         var consumoDieselAnual = @json($consumoDieselAnual);
+                        var consumoDieselTon = @json($consumoDieselTon);
                         var consumoEnergiaAnual = @json($consumoEnergiaAnual);
+                        var consumoEnergiaTon = @json($consumoEnergiaTon);
                         var consumoGasAnual = @json($consumoGasAnual);
+                        var consumoGasTon = @json($consumoGasTon);
                         var consumoPapelAnual = @json($consumoPapelAnual);
+                        var consumoPapelTon = @json($consumoPapelTon);
                     </script>
                     <center><h4 class="my-4">Consumo por año</h4></center>
                     <div class="m-4" id="consumo-anual"></div>
+                    <center><h4 class="mt-4">Ton de CO2 por año</h4></center>
+                    <div class="m-4" id="consumo-co2"></div>
                 </div>
             </div>
             <div class="col-12">

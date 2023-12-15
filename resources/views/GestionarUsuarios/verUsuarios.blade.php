@@ -41,7 +41,7 @@
                                         <th>Nombre</th>
                                         <th>Correo</th>
                                         <th>Colegio Perteneciente</th>
-                                        <th>Acciones</th>
+                                        <th>Eliminar Usuario</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -52,7 +52,6 @@
                                         <td>{{$usuario->Nombre}}</td>
                                         <td>
                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#eliminar{{$usuario->id_usuario}}">Eliminar</button>
-                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editar{{$usuario->id_usuario}}">Editar</button>
                                         </td>
                                     </tr>
                                     @endforeach

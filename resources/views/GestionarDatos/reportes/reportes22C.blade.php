@@ -30,7 +30,7 @@
                                 <div class="card-body p-4">
                                     <h5 class="card-title m-4">Reporte Mensual</h5>
                                     <hr>
-                                    <form action="pdf_mes" method="post" target="_blank">
+                                    <form action="pdf_mes_c" method="post" target="_blank">
                                         @csrf
                                         <div class="mb-2">
                                             <label for="mes" class="form-label">Seleccione el mes</label>
@@ -70,7 +70,7 @@
                                 <div class="card-body p-4">
                                     <h5 class="card-title m-4">Reporte Anual</h5>
                                     <hr>
-                                    <form action="pdf_anio" method="post" target="_blank">
+                                    <form action="pdf_anio_c" method="post" target="_blank">
                                         @csrf                                                                                
                                         <div class="mb-2">
                                             <br>

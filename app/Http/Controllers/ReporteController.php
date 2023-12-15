@@ -79,15 +79,15 @@ class ReporteController extends Controller
     
 
         public function pdf_anio_mes(Request $request){
-            //$colegioSeleccionado = $request->input('colegio');
-            //$colegio = json_decode(Colegio::where('Nombre',$colegioSeleccionado)->get());
-            //$idColegio = $colegio[0]->id_colegio;
-
-            $nombre = session('nombre');
-            $colegio = json_decode(User::where('nombre',$nombre)->get());
-            //var_dump($colegio[0]->id_colegio); //Obteniendo el id del colegio
+            $colegioSeleccionado = $request->input('colegio');
+            $colegio = json_decode(Colegio::where('Nombre',$colegioSeleccionado)->get());
             $idColegio = $colegio[0]->id_colegio;
-            $colegioNombre = json_decode(Colegio::where('id_colegio',$idColegio)->get());
+
+            //$nombre = session('nombre');
+            //$colegio = json_decode(User::where('nombre',$nombre)->get());
+            //var_dump($colegio[0]->id_colegio); //Obteniendo el id del colegio
+            //$idColegio = $colegio[0]->id_colegio;
+            //$colegioNombre = json_decode(Colegio::where('id_colegio',$idColegio)->get());
             //var_dump($colegioNombre[0]->Nombre);
 
             $mes = $request->input('mes');
@@ -146,8 +146,8 @@ class ReporteController extends Controller
             $viewBag['consumoagua']=$consumoagua;
             $viewBag['consumoenergetico']=$consumoenergetico;
             //Solo para el nombre
-            $viewBag['colegio']=$colegioNombre[0]->Nombre;
-            //$viewBag['colegio']=$colegioSeleccionado;
+            //$viewBag['colegio']=$colegioNombre[0]->Nombre;
+            $viewBag['colegio']=$colegioSeleccionado;
             $viewBag['mes']=$mes;
             $viewBag['anio']=$anio;
 

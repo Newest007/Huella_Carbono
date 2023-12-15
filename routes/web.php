@@ -119,7 +119,7 @@ Route::view('AñadirInventarioC','GestionarInventarios.añadirInventariosColegio
 
 //GENERAR REPORTE
 //PDF → ADMIN Cole
-Route::post('pdf_mes',[Cole_ReporteController::class,'pdf_anio_mes'])->middleware('auth');
-Route::post('pdf_anio',[Cole_ReporteController::class,'pdf_anio'])->middleware('auth');
+Route::post('pdf_mes_c',[Cole_ReporteController::class,'pdf_anio_mes'])->middleware('auth');
+Route::post('pdf_anio_c',[Cole_ReporteController::class,'pdf_anio'])->middleware('auth');
 
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');

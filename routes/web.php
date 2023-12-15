@@ -7,6 +7,8 @@ use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\DatosController;
 use App\Http\Controllers\DatosControllerUser;
 use App\Http\Controllers\ReporteController;
+use App\Http\Controllers\Cole_ReporteController;
+
 use App\Http\Controllers\Auth;
 
 
@@ -74,10 +76,11 @@ Route::post('/mostrarGraficaSC',[DatosController::class,'mostrarGraficaSC'])->na
 Route::post('/mostrarGraficaSJ',[DatosController::class,'mostrarGraficaSJ'])->name('datos.mostrarGraficaSJ')->middleware('auth');
 Route::post('/mostrarGraficaMA',[DatosController::class,'mostrarGraficaMA'])->name('datos.mostrarGraficaMA')->middleware('auth');
 
-//PDF
+//PDF → ADMIN GENERAL
 Route::post('pdf_mes',[ReporteController::class,'pdf_anio_mes'])->middleware('auth');
-
 Route::post('pdf_anio',[ReporteController::class,'pdf_anio'])->middleware('auth');
+
+
 
 
 //ELIMINAR REGISTROS
@@ -137,6 +140,11 @@ Route::view('verDefault','layouts.defaultpage')->middleware('auth');
 Route::view('verColegio','GestionarDatos.indexColegio')->middleware('auth');
 
 //GENERAR REPORTE
+//PDF → ADMIN Cole
+Route::post('pdf_mes',[Cole_ReporteController::class,'pdf_anio_mes'])->middleware('auth');
+Route::post('pdf_anio',[Cole_ReporteController::class,'pdf_anio'])->middleware('auth');
+
+
 
 
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');

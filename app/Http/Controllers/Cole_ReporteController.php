@@ -8,22 +8,26 @@ use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use App\Models\Colegio;
 
-class ReporteController extends Controller
+class Cole_ReporteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $viewBag=array();
         $viewBag['colegios'] = Colegio::get();
-        return view('GestionarDatos.reportes.reportes22', $viewBag);
+        return view('GestionarDatos.reportes.reportes22C', $viewBag);
     }
 
     public function pdf_anio(Request $request){
-        $colegioSeleccionado = $request->input('colegio');
-        $colegio = json_decode(Colegio::where('Nombre',$colegioSeleccionado)->get());
-        $idColegio = $colegio[0]->id_colegio;
+
+        //$colegioSeleccionado = $request->input('colegio');
+        //$colegio = json_decode(Colegio::where('Nombre',$colegioSeleccionado)->get());
+        //$idColegio = $colegio[0]->id_colegio;
+
+        $nombre = session('nombre');
+            $colegio = json_decode(User::where('nombre',$nombre)->get());
+            //var_dump($colegio[0]->id_colegio); //Obteniendo el id del colegio
+            $idColegio = $colegio[0]->id_colegio;
+            $colegioNombre = json_decode(Colegio::where('id_colegio',$idColegio)->get());
 
         $anio = $request->input('anio');
 
@@ -66,8 +70,9 @@ class ReporteController extends Controller
             $viewBag['consumodiesel']=$consumodiesel;
             $viewBag['consumoagua']=$consumoagua;
             $viewBag['consumoenergetico']=$consumoenergetico;
-
-            $viewBag['colegio']=$colegioSeleccionado;
+            //Solo para el nombre
+            $viewBag['colegio']=$colegioNombre[0]->Nombre;
+            //$viewBag['colegio']=$colegioSeleccionado;
             $viewBag['anio']=$anio;
 
             $pdf = Pdf::loadView('GestionarDatos.reportes.reporte_anio', $viewBag);
@@ -155,6 +160,4 @@ class ReporteController extends Controller
             return $pdf->stream();
 
         }
-        
-        
 }

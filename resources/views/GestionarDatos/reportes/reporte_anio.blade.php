@@ -26,11 +26,12 @@
 </head>
 <body>
     <h3 class="centrado">RESULTADO NACIONAL DE ESTUDIO DE ECOEFICIENCIA Y HUELLA DE CARBONO AIS</h3>
+    <h3 class="centrado" style="text-decoration: underline;">Reporte Anual</h3>
     <br>
         @if($colegio)
         <div style="text-align: center;">
             <h3 style="font-family: 'Arial', sans-serif; color: #333; display: inline-block; margin-left: -10px;">{{$colegio}} - </h3>
-            <h3 style="font-family: 'Arial', sans-serif; color: #333; display: inline-block;">{{$anio}} - </h3>
+            <h3 style="font-family: 'Arial', sans-serif; color: #333; display: inline-block;"> {{$anio}}</h3>
         </div>
         @endif
 

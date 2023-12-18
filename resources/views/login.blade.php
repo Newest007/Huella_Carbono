@@ -47,13 +47,6 @@ header("Pragma: no-cache");
             <div class="form-outline mb-4">
               <input type="password" required autofocus name="password" id="typePasswordX-2" class="form-control form-control-lg" placeholder="Contraseña..." />
             </div>
-            
-              <!-- Checkbox -->
-              <div class="form-check d-flex justify-content-start mb-4">
-              <input class="form-check-input" name="remember" type="checkbox" value="" id="form1Example3" />
-              <label class="form-check-label" style="font-family: Verdana;position: relative;left:10px;" for="form1Example3"> Recordar mi sesion </label>
-            </div>
-
             <button class="btn btn-primary btn-lg btn-block" type="submit" style="background-color:green; border:green">Login</button>
 
             </form>
